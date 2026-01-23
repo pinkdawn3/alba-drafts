@@ -1,9 +1,9 @@
 function About() {
   return (
-    <>
-      <h1>Sobre mí</h1>
-      <p>Esto es una prueba. Me llamo Alba y me gusta el rosa.</p>
-    </>
+    <main>
+      <h2>¿Quién soy?</h2>
+      <p>Me llamo Alba y me gusta el rosa.</p>
+    </main>
   );
 }
 
