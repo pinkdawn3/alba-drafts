@@ -1,4 +1,6 @@
 import { BrowserRouter, NavLink, Route, Routes } from "react-router";
+import About from "../About/About";
+import Home from "../Home/Home";
 
 function Header() {
   return (
@@ -16,9 +18,9 @@ function Header() {
       </nav>
 
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<Home />} />
         <Route path="/projects" />
-        <Route path="/about" />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
