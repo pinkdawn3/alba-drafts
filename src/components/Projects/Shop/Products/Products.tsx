@@ -1,5 +1,6 @@
 import { useEffect, useState, type FunctionComponent } from "react";
 import useLocalStorageState from "use-local-storage-state";
+import { CartWidget } from "../CartWidget/CartWidget";
 
 const API_URL = "https://ecom-fake-api.onrender.com/products";
 
@@ -68,10 +69,14 @@ export const Products: FunctionComponent = () => {
 
   return (
     <section>
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-200">
-          Productos
-        </h2>
+      <div className="mx-auto max-w-2xl px-4 py-5 sm:px-6 sm:py- lg:max-w-7xl lg:px-8">
+        <div className="flex justify-between">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-200">
+            Productos
+          </h2>
+
+          <CartWidget productsCount={0} />
+        </div>
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
@@ -81,24 +86,25 @@ export const Products: FunctionComponent = () => {
                 alt={product.name}
                 className="aspect-square w-full rounded-md bg-gray-200 object-cover lg:aspect-auto lg:h-80"
               />
-              <p></p>
               <div className="mt-4 flex justify-between">
                 <div>
-                  <h3 className="text-sm text-gray-500">
-                    <span aria-hidden="true" className="absolute inset-0" />
+                  <h3 className="text-m text-gray-400 font-semibold">
                     {product.name}
                   </h3>
                 </div>
-                <p className="text-sm font-medium text-gray-400">
-                  {product.price}
+                <p className="text-m font-medium text-gray-400">
+                  {product.price} €
                 </p>
               </div>
-              <button
-                disabled={isInCart(product.id)}
-                onClick={() => addToCart(product)}
-              >
-                Add to Cart
-              </button>
+              <div className="flex py-2">
+                <button
+                  disabled={isInCart(product.id)}
+                  onClick={() => addToCart(product)}
+                  className="grow"
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           ))}
         </div>
