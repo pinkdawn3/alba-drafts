@@ -85,6 +85,7 @@ export const Cart: FunctionComponent = () => {
                     <button
                       type="button"
                       className=" button font-medium text-indigo-600 hover:text-indigo-500"
+                      onClick={() => handleRemoveProduct(product.id)}
                     >
                       Remove
                     </button>
