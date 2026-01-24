@@ -30,7 +30,6 @@ export const Products: FunctionComponent = () => {
     }
 
     const data = await response.json();
-    console.log(data);
 
     //We must do this because the api returns a list instead of an array
     return Object.values(data) as Product[];
@@ -84,7 +83,7 @@ export const Products: FunctionComponent = () => {
               <img
                 src={product.picture}
                 alt={product.name}
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover lg:aspect-auto lg:h-80"
+                className="aspect-square w-full rounded-md object-cover lg:aspect-auto lg:h-80"
               />
               <div className="mt-4 flex justify-between">
                 <div>
@@ -100,7 +99,7 @@ export const Products: FunctionComponent = () => {
                 <button
                   disabled={isInCart(product.id)}
                   onClick={() => addToCart(product)}
-                  className="grow"
+                  className="button grow"
                 >
                   Add to Cart
                 </button>
