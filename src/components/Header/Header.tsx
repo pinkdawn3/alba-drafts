@@ -12,7 +12,7 @@ function Header() {
       <NavLink to="/">Home</NavLink>
 
       <Menu as="div" className="relative inline-block">
-        <MenuButton className={"link-style"}>Proyectos</MenuButton>
+        <MenuButton className={"link-style"}>Projects</MenuButton>
 
         <MenuItems
           transition
@@ -24,7 +24,7 @@ function Header() {
                 onClick={navigateToShop}
                 className="block w-full px-4 py-2 text-left text-sm bg-transparent text-gray-300 data-focus:text-white data-focus:outline-hidden"
               >
-                Tienda
+                Shop
               </button>
             </MenuItem>
           </div>
