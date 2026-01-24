@@ -33,17 +33,18 @@ export const Quantifier: FunctionComponent<Props> = ({
   };
 
   return (
-    <div>
-      <input type="button" value="-" onClick={reduce} />
+    <div className="space-x-2">
+      <input type="button" value="-" onClick={reduce} className="button" />
       <input
         type="number"
         step="1"
         max=""
         value={value}
         onChange={(e) => setValue(parseInt(e.target.value))}
-        aria-label="product"
+        aria-label="quantity label"
+        className="px-2 py-2 rounded-md outline-1 -outline-offset-1 outline-gray-600 "
       />
-      <input type="button" value="+" onClick={increase} />
+      <input type="button" value="+" onClick={increase} className="button" />
     </div>
   );
 };
