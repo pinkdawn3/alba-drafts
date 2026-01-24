@@ -12,12 +12,12 @@ export const CartWidget: FunctionComponent<Props> = ({ productsCount }) => {
   const navigate = useNavigate();
 
   const navigateToCart = () => {
-    navigate("/cart");
+    navigate("/projects/shop/cart");
   };
 
   return (
-    <button onClick={navigateToCart}>
-      <span>{productsCount}</span>
+    <button onClick={navigateToCart} className="flex items-center space-x-2">
+      <span className="text-lg">{productsCount}</span>
       <span>
         <FontAwesomeIcon icon={faCartShopping} />
       </span>
