@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:98
+#: src/components/Projects/Shop/Cart/Cart.tsx:120
 msgid " Remove"
 msgstr "Eliminar"
 
@@ -37,7 +37,11 @@ msgstr "Añadir a la cesta"
 msgid "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
 msgstr "Sin embargo, por el camino descubrí un amor por el desarrollo web y de front-end que no esperaba encontrar. Y así llegamos hasta hoy. Esta página web es el producto de mi entusiasmo por seguir aprendiendo y desarrollar mis capacidades."
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:130
+#: src/components/Projects/Shop/Cart/Cart.tsx:59
+msgid "Cart"
+msgstr "Cesta"
+
+#: src/components/Projects/Shop/Cart/Cart.tsx:77
 msgid "Continue Shopping"
 msgstr "Continua comprando"
 
@@ -74,8 +78,8 @@ msgid "My professional journey didn't start in software development. I originall
 msgstr "Mi carrera profesional no empezó en el mundo de la programación. En realidad, yo estudié Traducción e Interpretación, pero tuve la mala suerte de que mi incorporación al mundo laboral coincidió con el año 2020."
 
 #: src/components/Projects/Shop/Cart/Cart.tsx:123
-msgid "or "
-msgstr "o "
+#~ msgid "or "
+#~ msgstr "o "
 
 #: src/components/Projects/Shop/Products/Products.tsx:78
 msgid "Products"
@@ -99,7 +103,7 @@ msgstr "Español"
 msgid "cv_language"
 msgstr "inglés"
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:62
+#: src/components/Projects/Shop/Cart/Cart.tsx:66
 msgid "The cart is empty."
 msgstr "La cesta está vacía."
 

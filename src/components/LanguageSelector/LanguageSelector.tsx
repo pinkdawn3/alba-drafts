@@ -4,8 +4,17 @@ import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { i18n } from "@lingui/core";
 import { Trans } from "@lingui/react/macro";
 import type { FunctionComponent } from "react";
+import { usePreferences } from "../../hooks/usePreferences";
+import type { Language } from "../../types/preferences";
 
 export const LanguageSelector: FunctionComponent = () => {
+  const { setLanguage } = usePreferences();
+
+  const handleLanguage = (lan: Language) => {
+    i18n.activate(lan);
+    setLanguage(lan);
+  };
+
   return (
     <>
       <Menu as="div" className="relative inline-block">
@@ -20,7 +29,7 @@ export const LanguageSelector: FunctionComponent = () => {
           <div className="py-1">
             <MenuItem>
               <button
-                onClick={() => i18n.activate("en")}
+                onClick={() => handleLanguage("en")}
                 className="block w-full px-4 py-2 text-left text-sm bg-transparent text-gray-300 data-focus:text-white data-focus:outline-hidden"
               >
                 <Trans>English</Trans>
@@ -29,7 +38,7 @@ export const LanguageSelector: FunctionComponent = () => {
 
             <MenuItem>
               <button
-                onClick={() => i18n.activate("es")}
+                onClick={() => handleLanguage("es")}
                 className="block w-full px-4 py-2 text-left text-sm bg-transparent text-gray-300 data-focus:text-white data-focus:outline-hidden"
               >
                 <Trans id="language_selector">Spanish</Trans>

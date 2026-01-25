@@ -17,7 +17,7 @@ msgstr ""
 #~ msgid " I felt stuck so I decided to reinvent myself. Apart from languages, my other great passion since I was a child was computers. So, I studied software development with my initial intention being working on Game Development."
 #~ msgstr " I felt stuck so I decided to reinvent myself. Apart from languages, my other great passion since I was a child was computers. So, I studied software development with my initial intention being working on Game Development."
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:98
+#: src/components/Projects/Shop/Cart/Cart.tsx:120
 msgid " Remove"
 msgstr " Remove"
 
@@ -41,7 +41,11 @@ msgstr "Add to Cart"
 msgid "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
 msgstr "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:130
+#: src/components/Projects/Shop/Cart/Cart.tsx:59
+msgid "Cart"
+msgstr "Cart"
+
+#: src/components/Projects/Shop/Cart/Cart.tsx:77
 msgid "Continue Shopping"
 msgstr "Continue Shopping"
 
@@ -78,8 +82,8 @@ msgid "My professional journey didn't start in software development. I originall
 msgstr "My professional journey didn't start in software development. I originally studied Translation and interpreting, but I had the misfortune of having to enter the job market in 2020."
 
 #: src/components/Projects/Shop/Cart/Cart.tsx:123
-msgid "or "
-msgstr "or "
+#~ msgid "or "
+#~ msgstr "or "
 
 #: src/components/Projects/Shop/Products/Products.tsx:78
 msgid "Products"
@@ -107,7 +111,7 @@ msgstr "Spanish"
 #~ msgid "Spanish"
 #~ msgstr "Spanish"
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:62
+#: src/components/Projects/Shop/Cart/Cart.tsx:66
 msgid "The cart is empty."
 msgstr "The cart is empty."
 
