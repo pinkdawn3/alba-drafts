@@ -25,15 +25,15 @@ function About() {
               misfortune of having to enter the job market in 2020.
             </p>
             <p>
-              I felt stuck, so I decided to reinvent myself. Apart from
+              I felt stuck so I decided to reinvent myself. Apart from
               languages, my other great passion since I was a child was
-              computers. So I studied software development with my initial
+              computers. So, I studied software development with my initial
               intention being working on Game Development.
             </p>
             <p>
               Along the way, however, I uncovered a passion for web development
               and front-end, and here I am now. I am excited to keep learning
-              and create new things along the way.
+              and creating new things along the way.
             </p>
 
             <div className="flex items-center">
