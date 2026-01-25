@@ -10,7 +10,7 @@ interface PreferencesProviderProps {
 
 export function PreferencesProvider({ children }: PreferencesProviderProps) {
   const [theme, setTheme] = useLocalStorageState<Theme>("theme", {
-    defaultValue: "light",
+    defaultValue: "dark",
   });
 
   const [language, setLanguage] = useLocalStorageState<Language>("language", {
