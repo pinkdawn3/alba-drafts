@@ -1,6 +1,7 @@
 import { useEffect, useState, type FunctionComponent } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { CartWidget } from "../CartWidget/CartWidget";
+import { Spinner } from "../../../Spinner/Spinner";
 
 const API_URL = "https://ecom-fake-api.onrender.com/products";
 
@@ -17,7 +18,7 @@ export interface CartProps {
 }
 
 export const Products: FunctionComponent = () => {
-  //const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState(false);
   const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
@@ -39,7 +40,8 @@ export const Products: FunctionComponent = () => {
   useEffect(() => {
     fetchData(API_URL)
       .then(setProducts)
-      .catch(() => setError(true));
+      .catch(() => setError(true))
+      .finally(() => setIsLoading(false));
   }, []);
 
   const addToCart = (product: Product): void => {
@@ -63,9 +65,9 @@ export const Products: FunctionComponent = () => {
     );
   }
 
-  /*  if (isLoading) {
-    return <Loader />;
-  } */
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <section>
