@@ -1,28 +1,19 @@
 import { useEffect, useState, type FunctionComponent } from "react";
-import useLocalStorageState from "use-local-storage-state";
+import { usePreferences } from "../../../../hooks/usePreferences";
 import { CartWidget } from "../CartWidget/CartWidget";
 import { Spinner } from "../../../Spinner/Spinner";
 import { Trans } from "@lingui/react/macro";
+import type { CartProps, Product } from "../../../../types/cart";
 
 const API_URL = "https://ecom-fake-api.onrender.com/products";
 
-export type Product = {
-  id: number;
-  name: string;
-  price: number;
-  picture: string;
-  quantity: number;
-};
-
-export interface CartProps {
-  [productId: string]: Product;
-}
-
 export const Products: FunctionComponent = () => {
+  const { cart, setCart } = usePreferences();
+
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState(false);
-  const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
+
   const productsCount: number = Object.keys(cart || {}).length;
 
   async function fetchData(url: string) {
@@ -48,7 +39,7 @@ export const Products: FunctionComponent = () => {
   const addToCart = (product: Product): void => {
     product.quantity = 1;
 
-    setCart((prevCart) => ({
+    setCart((prevCart: CartProps) => ({
       ...prevCart,
       [product.id]: product,
     }));

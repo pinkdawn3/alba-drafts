@@ -9,12 +9,19 @@ import { messages as enMessages } from "./locales/en/messages.ts";
 import { messages as esMessages } from "./locales/es/messages.ts";
 import { i18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
+import { usePreferences } from "./hooks/usePreferences.tsx";
+import { useMemo } from "react";
 
 i18n.load("en", enMessages);
 i18n.load("es", esMessages);
-i18n.activate("en");
 
 function App() {
+  const { language } = usePreferences();
+
+  useMemo(() => {
+    i18n.activate(language);
+  }, [language]);
+
   return (
     <>
       <I18nProvider i18n={i18n}>
