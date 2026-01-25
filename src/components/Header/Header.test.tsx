@@ -1,18 +1,20 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../../App";
-//import { BrowserRouter } from "react-router";
+import { MemoryRouter, Route, Routes } from "react-router";
 
-/* describe("Header", () => {
+describe("Header", () => {
   const user = userEvent.setup();
 
   //Navigates between components
 
   it("should navigate to About component", async () => {
     render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
+      <MemoryRouter initialEntries={["/"]}>
+        <Routes>
+          <Route path="/*" element={<App />} />
+        </Routes>
+      </MemoryRouter>,
     );
     const aboutButton = screen.getByText(/about/i);
 
@@ -22,4 +24,4 @@ import App from "../../App";
 
     expect(screen.getByRole("heading", { name: /sobre/i })).toBeInTheDocument();
   });
-}); */
+});
