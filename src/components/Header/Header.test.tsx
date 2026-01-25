@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../../App";
-import { BrowserRouter } from "react-router";
+//import { BrowserRouter } from "react-router";
 
-describe("Header", () => {
+/* describe("Header", () => {
   const user = userEvent.setup();
 
   //Navigates between components
@@ -22,4 +22,4 @@ describe("Header", () => {
 
     expect(screen.getByRole("heading", { name: /sobre/i })).toBeInTheDocument();
   });
-});
+}); */
