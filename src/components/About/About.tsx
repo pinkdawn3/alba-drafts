@@ -39,7 +39,7 @@ function About() {
             <div className="flex items-center">
               <a
                 aria-label="download cv in english"
-                className="button"
+                className="button text-center"
                 href={CVEnglish}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -47,19 +47,21 @@ function About() {
                 Download CV
               </a>
 
-              <span className="pl-5 whitespace-pre-wrap">
-                ... or download my CV in{" "}
-              </span>
+              <p className="pl-5 text-center">
+                <span className=" whitespace-pre-wrap">
+                  ...or download it in{" "}
+                </span>
 
-              <a
-                aria-label="download cv in spanish"
-                className="text-blue-500 underline hover:cursor-pointer"
-                href={CVSpanish}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Spanish
-              </a>
+                <a
+                  aria-label="download cv in spanish"
+                  className="text-blue-500 underline hover:cursor-pointer"
+                  href={CVSpanish}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Spanish
+                </a>
+              </p>
             </div>
           </div>
         </div>
