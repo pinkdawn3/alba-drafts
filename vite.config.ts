@@ -14,4 +14,7 @@ export default defineConfig({
     lingui(),
   ],
   base: "/alba-drafts/",
+  build: {
+    sourcemap: true,
+  },
 });

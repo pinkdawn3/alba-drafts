@@ -6,19 +6,103 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: es\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
-#: src/components/Header/Header.tsx:40
+#: src/components/Projects/Shop/Cart/Cart.tsx:98
+msgid " Remove"
+msgstr "Eliminar"
+
+#: src/components/About/About.tsx:88
+msgid "...or download it in "
+msgstr "...o descárgalo en "
+
+#: src/components/Header/Header.tsx:42
 msgid "About me"
 msgstr "Sobre mí"
 
-#: src/components/Header/Header.tsx:14
+#: src/components/About/About.tsx:46
+msgid "About Me"
+msgstr "Sobre mí"
+
+#: src/components/Projects/Shop/Products/Products.tsx:114
+msgid "Add to Cart"
+msgstr "Añadir a la cesta"
+
+#: src/components/About/About.tsx:68
+msgid "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
+msgstr "Sin embargo, por el camino descubrí un amor por el desarrollo web y de front-end que no esperaba encontrar. Y así llegamos hasta hoy. Esta página web es el producto de mi entusiasmo por seguir aprendiendo y desarrollar mis capacidades."
+
+#: src/components/Projects/Shop/Cart/Cart.tsx:130
+msgid "Continue Shopping"
+msgstr "Continua comprando"
+
+#: src/components/About/About.tsx:83
+msgid "Download CV"
+msgstr "Descarga mi CV"
+
+#: src/components/LanguageSelector/LanguageSelector.tsx:26
+msgid "English"
+msgstr "Inglés"
+
+#: src/components/Home/Home.tsx:7
+msgid "Hello!"
+msgstr "¡Hola!"
+
+#: src/components/Header/Header.tsx:16
 msgid "Home"
 msgstr "Inicio"
 
-#: src/components/Header/Header.tsx:19
+#: src/components/About/About.tsx:60
+msgid "I felt stuck so I decided to reinvent myself. Apart from languages, my other great passion since I was a child was computers. So, I studied software development with my initial intention being working on Game Development."
+msgstr "Llegó un punto en el que me sentí atascada, así que decidí reinventarme. Aparte de los idiomas, mi otra gran pasión desde chiquitita eran los ordenadores.  Así que me dispuse a estudiar programación con la idea inicial de dedicarme al Desarrollo de Videojuegos."
+
+#: src/components/LanguageSelector/LanguageSelector.tsx:11
+#~ msgid "Language"
+#~ msgstr "Idioma"
+
+#: src/components/Home/Home.tsx:11
+msgid "My name is Alba, and I'm a front-end developer! <0/> This website is a porfolio with the things I know how to do."
+msgstr "¡Me llamo Alba, y soy una desarolladora de front-end! <0/> Esta página es un porfolio con las cosas que sé hacer."
+
+#: src/components/About/About.tsx:53
+msgid "My professional journey didn't start in software development. I originally studied Translation and interpreting, but I had the misfortune of having to enter the job market in 2020."
+msgstr "Mi carrera profesional no empezó en el mundo de la programación. En realidad, yo estudié Traducción e Interpretación, pero tuve la mala suerte de que mi incorporación al mundo laboral coincidió con el año 2020."
+
+#: src/components/Projects/Shop/Cart/Cart.tsx:123
+msgid "or "
+msgstr "o "
+
+#: src/components/Projects/Shop/Products/Products.tsx:78
+msgid "Products"
+msgstr "Productos"
+
+#: src/components/Header/Header.tsx:21
 msgid "Projects"
 msgstr "Proyectos"
 
-#: src/components/Header/Header.tsx:32
+#: src/components/Header/Header.tsx:34
 msgid "Shop"
 msgstr "Tienda"
+
+#. js-lingui-explicit-id
+#: src/components/LanguageSelector/LanguageSelector.tsx:35
+msgid "language_selector"
+msgstr "Español"
+
+#. js-lingui-explicit-id
+#: src/components/About/About.tsx:98
+msgid "cv_language"
+msgstr "inglés"
+
+#: src/components/Projects/Shop/Cart/Cart.tsx:62
+msgid "The cart is empty."
+msgstr "La cesta está vacía."
+
+#: src/components/Projects/Shop/Products/Products.tsx:88
+msgid "The product list is empty."
+msgstr "No hay productos que mostrar."

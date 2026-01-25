@@ -2,6 +2,7 @@ import { useEffect, useState, type FunctionComponent } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { CartWidget } from "../CartWidget/CartWidget";
 import { Spinner } from "../../../Spinner/Spinner";
+import { Trans } from "@lingui/react/macro";
 
 const API_URL = "https://ecom-fake-api.onrender.com/products";
 
@@ -74,7 +75,7 @@ export const Products: FunctionComponent = () => {
       <div className="mx-auto max-w-2xl px-4 py-5 sm:px-6 sm:py- lg:max-w-7xl lg:px-8">
         <div className="flex justify-between">
           <h2 className="text-2xl font-bold tracking-tight text-gray-200">
-            Products
+            <Trans>Products</Trans>
           </h2>
 
           <CartWidget productsCount={productsCount} />
@@ -82,7 +83,10 @@ export const Products: FunctionComponent = () => {
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.length === 0 ? (
-            <p> The product list is empty.</p>
+            <p>
+              {" "}
+              <Trans>The product list is empty.</Trans>{" "}
+            </p>
           ) : (
             products.map((product) => (
               <div key={product.id} className="group relative">
@@ -107,7 +111,7 @@ export const Products: FunctionComponent = () => {
                     onClick={() => addToCart(product)}
                     className="button grow"
                   >
-                    Add to Cart
+                    <Trans>Add to Cart</Trans>
                   </button>
                 </div>
               </div>
