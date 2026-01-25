@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { Trans } from "@lingui/react/macro";
 
 function Header() {
   const navigate = useNavigate();
@@ -9,10 +10,14 @@ function Header() {
   };
   return (
     <nav className="py-5 px-5 shadow-xl space-x-5 font-bold">
-      <NavLink to="/">Home</NavLink>
+      <NavLink to="/">
+        <Trans>Home</Trans>
+      </NavLink>
 
       <Menu as="div" className="relative inline-block">
-        <MenuButton className={"link-style"}>Projects</MenuButton>
+        <MenuButton className={"link-style"}>
+          <Trans>Projects</Trans>
+        </MenuButton>
 
         <MenuItems
           transition
@@ -24,14 +29,16 @@ function Header() {
                 onClick={navigateToShop}
                 className="block w-full px-4 py-2 text-left text-sm bg-transparent text-gray-300 data-focus:text-white data-focus:outline-hidden"
               >
-                Shop
+                <Trans>Shop</Trans>
               </button>
             </MenuItem>
           </div>
         </MenuItems>
       </Menu>
 
-      <NavLink to="/about">About me</NavLink>
+      <NavLink to="/about">
+        <Trans>About me</Trans>
+      </NavLink>
     </nav>
   );
 }

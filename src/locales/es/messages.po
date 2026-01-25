@@ -1,0 +1,24 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-01-25 18:05+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: es\n"
+
+#: src/components/Header/Header.tsx:40
+msgid "About me"
+msgstr "Sobre mí"
+
+#: src/components/Header/Header.tsx:14
+msgid "Home"
+msgstr "Inicio"
+
+#: src/components/Header/Header.tsx:19
+msgid "Projects"
+msgstr "Proyectos"
+
+#: src/components/Header/Header.tsx:32
+msgid "Shop"
+msgstr "Tienda"
