@@ -81,34 +81,38 @@ export const Products: FunctionComponent = () => {
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
-            <div key={product.id} className="group relative">
-              <img
-                src={product.picture}
-                alt={product.name}
-                className="aspect-square w-full rounded-md object-cover lg:aspect-auto lg:h-80"
-              />
-              <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="text-m text-gray-400 font-semibold">
-                    {product.name}
-                  </h3>
+          {products.length === 0 ? (
+            <p> The product list is empty.</p>
+          ) : (
+            products.map((product) => (
+              <div key={product.id} className="group relative">
+                <img
+                  src={product.picture}
+                  alt={product.name}
+                  className="aspect-square w-full rounded-md object-cover lg:aspect-auto lg:h-80"
+                />
+                <div className="mt-4 flex justify-between">
+                  <div>
+                    <h3 className="text-m text-gray-400 font-semibold">
+                      {product.name}
+                    </h3>
+                  </div>
+                  <p className="text-m font-medium text-gray-400">
+                    {product.price} €
+                  </p>
                 </div>
-                <p className="text-m font-medium text-gray-400">
-                  {product.price} €
-                </p>
+                <div className="flex py-2">
+                  <button
+                    disabled={isInCart(product.id)}
+                    onClick={() => addToCart(product)}
+                    className="button grow"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-              <div className="flex py-2">
-                <button
-                  disabled={isInCart(product.id)}
-                  onClick={() => addToCart(product)}
-                  className="button grow"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
 

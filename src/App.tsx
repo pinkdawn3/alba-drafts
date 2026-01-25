@@ -4,8 +4,13 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import { Products } from "./components/Projects/Shop/Products/Products";
 import { Cart } from "./components/Projects/Shop/Cart/Cart";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
+
   return (
     <>
       <Header />
