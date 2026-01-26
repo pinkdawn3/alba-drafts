@@ -36,16 +36,16 @@ export const Table: FunctionComponent = () => {
   const generateRow = (task: TaskType) => {
     return (
       <tr key={task.id} className="text-white">
-        <th className="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
+        <th className="border-t-0 px-4 text-sm font-normal whitespace-nowrap p-4 text-left">
           {task.taskName}
         </th>
-        <td className="border-t-0 px-4 align-middle text-xs font-medium text-white whitespace-nowrap p-4">
+        <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
           {task.assigned}
         </td>
-        <td className="border-t-0 px-4 align-middle text-xs font-medium text-white whitespace-nowrap p-4">
+        <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
           {task.priority}
         </td>
-        <td className="border-t-0 px-4 align-middle text-xs font-medium text-white whitespace-nowrap p-4">
+        <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
           <input type="checkbox" aria-label="Checkbox for completed task" />
         </td>
       </tr>
@@ -54,20 +54,20 @@ export const Table: FunctionComponent = () => {
 
   return (
     <div className="w-full overflow-x-auto border border-zinc-700 rounded-lg">
-      <table className="items-center w-full bg-transparent border-collapse rounded-lg ">
+      <table className="items-center w-full bg-transparent border-collapse rounded-lg [&_:is(th,td):where(:nth-child(2),:nth-child(3),:nth-child(4))]:text-center">
         {/* Header for table */}
         <thead>
           <tr className="text-center">
-            <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+            <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
               Task
             </th>
-            <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+            <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
               Assigned to
             </th>
             <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
               Priority
             </th>
-            <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
+            <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
               Completed
             </th>
           </tr>
