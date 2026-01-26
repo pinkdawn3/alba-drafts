@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:120
+#: src/components/Projects/Shop/Cart/Cart.tsx:119
 msgid " Remove"
 msgstr "Eliminar"
 
@@ -29,7 +29,7 @@ msgstr "Sobre mí"
 msgid "About Me"
 msgstr "Sobre mí"
 
-#: src/components/Projects/Shop/Products/Products.tsx:114
+#: src/components/Projects/Shop/Products/Products.tsx:105
 msgid "Add to Cart"
 msgstr "Añadir a la cesta"
 
@@ -37,11 +37,15 @@ msgstr "Añadir a la cesta"
 msgid "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
 msgstr "Sin embargo, por el camino descubrí un amor por el desarrollo web y de front-end que no esperaba encontrar. Y así llegamos hasta hoy. Esta página web es el producto de mi entusiasmo por seguir aprendiendo y desarrollar mis capacidades."
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:59
+#: src/components/Projects/Shop/Cart/Cart.tsx:58
 msgid "Cart"
 msgstr "Cesta"
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:77
+#: src/components/Home/Home.tsx:21
+msgid "Check the repo in Github"
+msgstr "Echa un vistazo al repo en Github"
+
+#: src/components/Projects/Shop/Cart/Cart.tsx:76
 msgid "Continue Shopping"
 msgstr "Continua comprando"
 
@@ -49,7 +53,7 @@ msgstr "Continua comprando"
 msgid "Download CV"
 msgstr "Descarga mi CV"
 
-#: src/components/LanguageSelector/LanguageSelector.tsx:26
+#: src/components/LanguageSelector/LanguageSelector.tsx:35
 msgid "English"
 msgstr "Inglés"
 
@@ -81,7 +85,7 @@ msgstr "Mi carrera profesional no empezó en el mundo de la programación. En re
 #~ msgid "or "
 #~ msgstr "o "
 
-#: src/components/Projects/Shop/Products/Products.tsx:78
+#: src/components/Projects/Shop/Products/Products.tsx:69
 msgid "Products"
 msgstr "Productos"
 
@@ -94,7 +98,7 @@ msgid "Shop"
 msgstr "Tienda"
 
 #. js-lingui-explicit-id
-#: src/components/LanguageSelector/LanguageSelector.tsx:35
+#: src/components/LanguageSelector/LanguageSelector.tsx:44
 msgid "language_selector"
 msgstr "Español"
 
@@ -103,10 +107,10 @@ msgstr "Español"
 msgid "cv_language"
 msgstr "inglés"
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:66
+#: src/components/Projects/Shop/Cart/Cart.tsx:65
 msgid "The cart is empty."
 msgstr "La cesta está vacía."
 
-#: src/components/Projects/Shop/Products/Products.tsx:88
+#: src/components/Projects/Shop/Products/Products.tsx:79
 msgid "The product list is empty."
 msgstr "No hay productos que mostrar."
