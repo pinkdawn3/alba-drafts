@@ -13,6 +13,7 @@ Other libraries include:
 - React Router
 - Fontawesome
 - useLocalStorage
+- lingui
 
 To run the project, clone the repo and run:
 

@@ -13,6 +13,14 @@ function Home() {
           a porfolio with the things I know how to do.
         </Trans>
       </p>
+
+      <a
+        aria-label="Github repo link"
+        href="https://github.com/pinkdawn3/alba-drafts"
+        className="py-5"
+      >
+        <Trans>Check the repo in Github</Trans>
+      </a>
     </main>
   );
 }
