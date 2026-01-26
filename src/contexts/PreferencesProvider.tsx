@@ -9,8 +9,13 @@ interface PreferencesProviderProps {
 }
 
 export function PreferencesProvider({ children }: PreferencesProviderProps) {
+  const browserTheme: Theme = window.matchMedia("(prefers-color-scheme: dark)")
+    .matches
+    ? "dark"
+    : "light";
+
   const [theme, setTheme] = useLocalStorageState<Theme>("theme", {
-    defaultValue: "dark",
+    defaultValue: browserTheme,
   });
 
   const [language, setLanguage] = useLocalStorageState<Language>("language", {
