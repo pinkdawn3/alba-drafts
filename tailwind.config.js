@@ -6,12 +6,10 @@ export default {
       colors: {
         background: "rgb(var(--color-background) / <alpha-value>)",
         font: "rgb(var(--color-font) / <alpha-value>)",
-        foreground: "rgb(var(--color-foreground) / <alpha-value>)",
         primary: "rgb(var(--color-primary) / <alpha-value>)",
         primaryHover: "rgb(var(--color-primaryHover) / <alpha-value>)",
+        button: "rgb(var(--color-button) / <alpha-value>)",
         secondary: "rgb(var(--color-secondary) / <alpha-value>)",
-        border: "rgb(var(--color-border) / <alpha-value>)",
-        card: "rgb(var(--color-card) / <alpha-value>)",
       },
     },
   },

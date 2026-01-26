@@ -10,8 +10,8 @@ export const Cart: FunctionComponent = () => {
 
   const navigate = useNavigate();
 
-  const navigateToShop = () => {
-    navigate("/projects/shop/");
+  const navigateToShop = async () => {
+    await navigate("/projects/shop/");
   };
 
   const handleRemoveProduct = (productId: number): void => {
@@ -53,7 +53,7 @@ export const Cart: FunctionComponent = () => {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-5 sm:px-6 sm:py- lg:max-w-7xl lg:px-8">
-      <h2 className="text-2xl font-bold tracking-tight text-gray-200">
+      <h2 className="text-2xl font-bold tracking-tight text-font">
         {" "}
         <Trans>Cart</Trans>
       </h2>
@@ -67,11 +67,11 @@ export const Cart: FunctionComponent = () => {
             </div>
 
             <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-              <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+              <div className="mt-6 flex justify-center text-center text-sm text-font">
                 <button
                   type="button"
                   onClick={navigateToShop}
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                  className="font-medium text-primary hover:text-primaryHover"
                 >
                   <Trans>Continue Shopping</Trans>
 
@@ -113,7 +113,7 @@ export const Cart: FunctionComponent = () => {
                       <div className="flex">
                         <button
                           type="button"
-                          className=" button font-medium text-indigo-600 hover:text-indigo-500"
+                          className=" button font-medium text-primary hover:text-primaryHover"
                           onClick={() => handleRemoveProduct(product.id)}
                         >
                           <Trans> Remove</Trans>
@@ -132,7 +132,7 @@ export const Cart: FunctionComponent = () => {
               <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                 <button
                   type="button"
-                  className="bg-blue-500 hover:bg-blue-700 text-xl text-white font-semibold py-2 px-4 rounded-xl"
+                  className="bg-primary hover:bg-primaryHover text-xl text-white font-semibold py-2 px-4 rounded-xl"
                 >
                   Checkout
                 </button>
@@ -143,7 +143,7 @@ export const Cart: FunctionComponent = () => {
                   <button
                     type="button"
                     onClick={navigateToShop}
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                    className="font-medium text-primary hover:text-primaryHover"
                   >
                     Continue Shopping
                     <span aria-hidden="true"> &rarr;</span>

@@ -42,7 +42,7 @@ function About() {
       </div>
       <div className="sm:w-1/2 p-5">
         <div className="text">
-          <span className="text-gray-500 border-b-2 border-indigo-600 uppercase">
+          <span className="text-font border-b-2 border-indigo-600 uppercase">
             <Trans>About Me</Trans>
           </span>
           <h2 className="my-4 font-bold text-3xl  sm:text-4xl ">
@@ -72,10 +72,10 @@ function About() {
               </Trans>
             </p>
 
-            <div className="flex items-center">
+            <div className="flex items-center font-semibold">
               <a
                 aria-label="download cv in english"
-                className="button text-center"
+                className="button text-center font-semibold!"
                 href={CVPrimary}
                 target="_blank"
                 rel="noopener noreferrer"

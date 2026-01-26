@@ -6,10 +6,11 @@
 @theme {
   /* Light mode colors */
   --color-background: #f0f1f2;
-  --color-font: #000000;
-  --color-foreground: 17 24 39;
+  --color-font: #364153;
+  --color-foreground: #d1d5dc;
   --color-primary: #646cff;
   --color-primaryHover: #535bf2;
+  --color-button: #d6d6d6;
   --color-secondary: 107 114 128;
   --color-border: 229 231 235;
   --color-card: 249 250 251;
@@ -19,9 +20,11 @@
   /* Dark mode colors */
   --color-background: #242424;
   --color-font: rgba(255, 255, 255, 0.87);
-  --color-foreground: 243 244 246;
+  --color-foreground: #1e2939;
   --color-primary: #646cff;
   --color-primaryHover: #535bf2;
+  --color-button: #1a1a1a;
+
   --color-secondary: 156 163 175;
   --color-border: 55 65 81;
   --color-card: 31 41 55;
@@ -60,12 +63,12 @@ button:hover {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-button);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 .button:hover {
-  border-color: #646cff;
+  border-color: var(--color-primary);
 }
 .button:focus,
 .button:focus-visible {

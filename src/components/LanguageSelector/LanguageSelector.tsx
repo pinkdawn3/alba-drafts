@@ -24,13 +24,13 @@ export const LanguageSelector: FunctionComponent = () => {
 
         <MenuItems
           transition
-          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 outline-1 -outline-offset-1 outline-white/10 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-primary transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
         >
           <div className="py-1">
             <MenuItem>
               <button
                 onClick={() => handleLanguage("en")}
-                className="block w-full px-4 py-2 text-left text-sm bg-transparent text-gray-300 data-focus:text-white data-focus:outline-hidden"
+                className="block w-full px-4 py-2 text-left text-sm bg-primary text-gray-200 data-focus:text-white"
               >
                 <Trans>English</Trans>
               </button>
@@ -39,7 +39,7 @@ export const LanguageSelector: FunctionComponent = () => {
             <MenuItem>
               <button
                 onClick={() => handleLanguage("es")}
-                className="block w-full px-4 py-2 text-left text-sm bg-transparent text-gray-300 data-focus:text-white data-focus:outline-hidden"
+                className="block w-full px-4 py-2 text-left text-sm bg-primary text-gray-200 data-focus:text-white"
               >
                 <Trans id="language_selector">Spanish</Trans>
               </button>
