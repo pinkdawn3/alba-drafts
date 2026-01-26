@@ -1,13 +1,35 @@
 @import "tailwindcss";
+@tailwind utilities;
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Light mode colors */
+  --color-background: #f0f1f2;
+  --color-font: #000000;
+  --color-foreground: 17 24 39;
+  --color-primary: #646cff;
+  --color-primaryHover: #535bf2;
+  --color-secondary: 107 114 128;
+  --color-border: 229 231 235;
+  --color-card: 249 250 251;
+}
+
+.dark {
+  /* Dark mode colors */
+  --color-background: #242424;
+  --color-font: rgba(255, 255, 255, 0.87);
+  --color-foreground: 243 244 246;
+  --color-primary: #646cff;
+  --color-primaryHover: #535bf2;
+  --color-secondary: 156 163 175;
+  --color-border: 55 65 81;
+  --color-card: 31 41 55;
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,26 +37,20 @@
 }
 
 a {
-  color: #646cff;
-  text-decoration: inherit;
+  color: var(--color-primary);
 }
+
 a:hover {
-  color: #535bf2;
-}
-
-.link-style {
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-.link-style:hover {
-  color: #535bf2;
-  cursor: pointer;
+  color: var(--color-primaryHover);
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .button {

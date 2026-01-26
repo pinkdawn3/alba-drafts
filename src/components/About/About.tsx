@@ -48,7 +48,7 @@ function About() {
           <h2 className="my-4 font-bold text-3xl  sm:text-4xl ">
             Alba <span className="text-indigo-600">De Taoro González</span>
           </h2>
-          <div className="text-gray-200 space-y-4">
+          <div className="space-y-4">
             <p>
               <Trans>
                 My professional journey didn't start in software development. I

@@ -1,6 +1,6 @@
 import useLocalStorageState from "use-local-storage-state";
 import { PreferencesContext } from "./PreferencesContext";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import type { CartProps } from "../types/cart";
 import type { Language, Theme } from "../types/preferences";
 
@@ -24,6 +24,15 @@ export function PreferencesProvider({ children }: PreferencesProviderProps) {
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
+
+  useEffect(() => {
+    const html = document.documentElement;
+    if (theme === "dark") {
+      html.classList.add("dark");
+    } else {
+      html.classList.remove("dark");
+    }
+  }, [theme]);
 
   const value = {
     theme,
