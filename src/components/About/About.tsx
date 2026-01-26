@@ -3,8 +3,9 @@ import CVEnglish from "../../assets/AlbaDeTaoro_SoftwareDeveloper_CV (English).p
 import CVSpanish from "../../assets/AlbaDeTaoro_SoftwareDeveloper_CV (Español).pdf";
 import { Trans } from "@lingui/react/macro";
 import { i18n } from "@lingui/core";
+import type { FunctionComponent } from "react";
 
-function About() {
+export const About: FunctionComponent = () => {
   const handleCVLanguage = (button: string) => {
     switch (button) {
       case "primary":
@@ -104,6 +105,4 @@ function About() {
       </div>
     </main>
   );
-}
-
-export default About;
+};
