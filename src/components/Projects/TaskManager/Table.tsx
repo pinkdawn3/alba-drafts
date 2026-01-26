@@ -1,0 +1,84 @@
+import type { FunctionComponent } from "react";
+
+type TaskType = {
+  id: number;
+  taskName: string;
+  assigned: string;
+  priority: string;
+  completed: boolean;
+};
+
+const TaskMockup: TaskType[] = [
+  {
+    id: 1,
+    taskName: "Make Table",
+    assigned: "Alba",
+    priority: "medium",
+    completed: false,
+  },
+  {
+    id: 2,
+    taskName: "Make rows dynamic",
+    assigned: "Alba",
+    priority: "high",
+    completed: false,
+  },
+  {
+    id: 3,
+    taskName: "Save data in localstorage",
+    assigned: "Alba",
+    priority: "low",
+    completed: false,
+  },
+];
+
+export const Table: FunctionComponent = () => {
+  const generateRow = (task: TaskType) => {
+    return (
+      <tr key={task.id} className="text-white">
+        <th className="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
+          {task.taskName}
+        </th>
+        <td className="border-t-0 px-4 align-middle text-xs font-medium text-white whitespace-nowrap p-4">
+          {task.assigned}
+        </td>
+        <td className="border-t-0 px-4 align-middle text-xs font-medium text-white whitespace-nowrap p-4">
+          {task.priority}
+        </td>
+        <td className="border-t-0 px-4 align-middle text-xs font-medium text-white whitespace-nowrap p-4">
+          <input type="checkbox" aria-label="Checkbox for completed task" />
+        </td>
+      </tr>
+    );
+  };
+
+  return (
+    <div className="w-full overflow-x-auto border border-zinc-700 rounded-lg">
+      <table className="items-center w-full bg-transparent border-collapse rounded-lg ">
+        {/* Header for table */}
+        <thead>
+          <tr className="text-center">
+            <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+              Task
+            </th>
+            <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+              Assigned to
+            </th>
+            <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+              Priority
+            </th>
+            <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
+              Completed
+            </th>
+          </tr>
+        </thead>
+        {/* Body of table*/}
+        <tbody className="divide-y divide-zinc-700">
+          {/* 1 Row*/}
+
+          {TaskMockup.map((task: TaskType) => generateRow(task))}
+        </tbody>
+      </table>
+    </div>
+  );
+};

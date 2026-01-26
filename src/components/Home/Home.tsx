@@ -1,6 +1,7 @@
 import { Trans } from "@lingui/react/macro";
+import type { FunctionComponent } from "react";
 
-function Home() {
+export const Home: FunctionComponent = () => {
   return (
     <main className="flex flex-col h-screen items-center justify-center space-y-2 text-center">
       <h1>
@@ -23,6 +24,4 @@ function Home() {
       </a>
     </main>
   );
-}
-
-export default Home;
+};

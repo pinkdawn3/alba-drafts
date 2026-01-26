@@ -3,12 +3,13 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Trans } from "@lingui/react/macro";
 import { LanguageSelector } from "../LanguageSelector/LanguageSelector";
 import { ThemeSelector } from "../ThemeSelector/ThemeSelector";
+import type { FunctionComponent } from "react";
 
-function Header() {
+export const Header: FunctionComponent = () => {
   const navigate = useNavigate();
 
-  const navigateToShop = async () => {
-    await navigate("/projects/shop");
+  const navigateToDemo = async (route: string) => {
+    await navigate(`/projects/${route}`);
   };
 
   return (
@@ -30,10 +31,22 @@ function Header() {
             <div className="py-1">
               <MenuItem>
                 <button
-                  onClick={navigateToShop}
+                  type="button"
+                  aria-label="Button for the Shop demo"
+                  onClick={() => navigateToDemo("shop")}
                   className="block w-full px-4 py-2 text-left text-sm bg-primary text-gray-200 data-focus:text-white"
                 >
                   <Trans>Shop</Trans>
+                </button>
+              </MenuItem>
+              <MenuItem>
+                <button
+                  type="button"
+                  aria-label="Button for the Task Manager demo"
+                  onClick={() => navigateToDemo("taskManager")}
+                  className="block w-full px-4 py-2 text-left text-sm bg-primary text-gray-200 data-focus:text-white"
+                >
+                  <Trans>Task Manager</Trans>
                 </button>
               </MenuItem>
             </div>
@@ -51,6 +64,4 @@ function Header() {
       </div>
     </div>
   );
-}
-
-export default Header;
+};
