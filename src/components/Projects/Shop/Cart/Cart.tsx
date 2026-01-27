@@ -1,11 +1,10 @@
-import { type FunctionComponent } from "react";
 import { type Operation, Quantifier } from "../Quantifier/Quantifier";
 import { useNavigate } from "react-router";
 import { Trans } from "@lingui/react/macro";
 import { usePreferences } from "../../../../hooks/usePreferences";
 import type { CartProps } from "../../../../types/cart";
 
-export const Cart: FunctionComponent = () => {
+function Cart() {
   const { cart, setCart } = usePreferences();
 
   const navigate = useNavigate();
@@ -52,7 +51,7 @@ export const Cart: FunctionComponent = () => {
   console.log(getProducts());
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-5 sm:px-6 sm:py- lg:max-w-7xl lg:px-8">
+    <section className="mx-auto max-w-2xl px-4 py-5 sm:px-6 sm:py- lg:max-w-7xl lg:px-8">
       <h2 className="text-2xl font-bold tracking-tight text-font">
         {" "}
         <Trans>Cart</Trans>
@@ -154,6 +153,8 @@ export const Cart: FunctionComponent = () => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
-};
+}
+
+export default Cart;

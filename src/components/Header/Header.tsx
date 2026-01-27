@@ -12,7 +12,7 @@ function Header() {
   };
 
   return (
-    <div className="flex justify-between shadow-xl bg-background text-primary ">
+    <header className="flex justify-between shadow-xl bg-background text-primary ">
       <nav className="py-5 px-5  space-x-5 font-bold">
         <NavLink to="/">
           <Trans>Home</Trans>
@@ -49,7 +49,7 @@ function Header() {
         <ThemeSelector />
         <LanguageSelector />
       </div>
-    </div>
+    </header>
   );
 }
 

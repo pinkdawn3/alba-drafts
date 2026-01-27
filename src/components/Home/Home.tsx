@@ -2,7 +2,7 @@ import { Trans } from "@lingui/react/macro";
 
 function Home() {
   return (
-    <main className="flex flex-col h-screen items-center justify-center space-y-2 text-center">
+    <section className="flex flex-col h-screen items-center justify-center space-y-2 text-center">
       <h1>
         <Trans>Hello!</Trans>
       </h1>
@@ -21,7 +21,7 @@ function Home() {
       >
         <Trans>Check the repo in Github</Trans>
       </a>
-    </main>
+    </section>
   );
 }
 
