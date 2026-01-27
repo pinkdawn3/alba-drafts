@@ -39,7 +39,7 @@ export const Header: FunctionComponent = () => {
                   <Trans>Shop</Trans>
                 </button>
               </MenuItem>
-              <MenuItem>
+              {/*  <MenuItem>
                 <button
                   type="button"
                   aria-label="Button for the Task Manager demo"
@@ -48,7 +48,7 @@ export const Header: FunctionComponent = () => {
                 >
                   <Trans>Task Manager</Trans>
                 </button>
-              </MenuItem>
+              </MenuItem> */}
             </div>
           </MenuItems>
         </Menu>
