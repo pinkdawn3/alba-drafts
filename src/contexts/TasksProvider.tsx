@@ -11,7 +11,11 @@ interface TasksProviderProviderProps {
 export type Action =
   | { type: "add"; task: TaskType }
   | { type: "remove"; id: string }
-  | { type: "update"; task: TaskType };
+  | {
+      type: "update";
+      id: string;
+      changes: Partial<TaskType>;
+    };
 
 function tasksReducer(state: TaskProps, action: Action): TaskProps {
   switch (action.type) {
@@ -27,14 +31,18 @@ function tasksReducer(state: TaskProps, action: Action): TaskProps {
       return newState;
     }
 
-    case "update":
+    case "update": {
+      const task = state[action.id];
+      if (!task) return state;
+
       return {
         ...state,
-        [action.task.id]: action.task,
+        [action.id]: {
+          ...task,
+          ...action.changes,
+        },
       };
-
-    default:
-      return state;
+    }
   }
 }
 
@@ -50,10 +58,16 @@ export function TasksProvider({ children }: TasksProviderProviderProps) {
     setStoredTasks(tasks);
   }, [tasks, setStoredTasks]);
 
+  const getTasks = () => {
+    return Object.values(tasks).filter((t) => t && t.id);
+  };
+
   const value = {
     tasks,
     dispatch,
+    getTasks,
   };
+
   return (
     <TasksContext.Provider value={value}>{children}</TasksContext.Provider>
   );
