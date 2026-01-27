@@ -1,9 +1,8 @@
 import { Trans } from "@lingui/react/macro";
-import type { FunctionComponent } from "react";
 
-export const Home: FunctionComponent = () => {
+function Home() {
   return (
-    <main className="flex flex-col h-screen items-center justify-center space-y-2 text-center">
+    <section className="flex flex-col h-screen items-center justify-center space-y-2 text-center">
       <h1>
         <Trans>Hello!</Trans>
       </h1>
@@ -22,6 +21,8 @@ export const Home: FunctionComponent = () => {
       >
         <Trans>Check the repo in Github</Trans>
       </a>
-    </main>
+    </section>
   );
-};
+}
+
+export default Home;

@@ -1,6 +1,4 @@
-import type { FunctionComponent } from "react";
-
-export const Spinner: FunctionComponent = () => {
+function Spinner() {
   return (
     <div className="flex py-10 justify-center">
       <div
@@ -13,4 +11,6 @@ export const Spinner: FunctionComponent = () => {
       </div>
     </div>
   );
-};
+}
+
+export default Spinner;

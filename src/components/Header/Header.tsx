@@ -3,9 +3,8 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Trans } from "@lingui/react/macro";
 import { LanguageSelector } from "../LanguageSelector/LanguageSelector";
 import { ThemeSelector } from "../ThemeSelector/ThemeSelector";
-import type { FunctionComponent } from "react";
 
-export const Header: FunctionComponent = () => {
+function Header() {
   const navigate = useNavigate();
 
   const navigateToDemo = async (route: string) => {
@@ -13,7 +12,7 @@ export const Header: FunctionComponent = () => {
   };
 
   return (
-    <div className="flex justify-between shadow-xl bg-background text-primary ">
+    <header className="flex justify-between shadow-xl bg-background text-primary ">
       <nav className="py-5 px-5  space-x-5 font-bold">
         <NavLink to="/">
           <Trans>Home</Trans>
@@ -62,6 +61,8 @@ export const Header: FunctionComponent = () => {
         <ThemeSelector />
         <LanguageSelector />
       </div>
-    </div>
+    </header>
   );
-};
+}
+
+export default Header;
