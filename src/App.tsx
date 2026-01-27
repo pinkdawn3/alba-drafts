@@ -1,18 +1,23 @@
+import { lazy, useMemo } from "react";
+import { Route, Routes } from "react-router";
 import { i18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
-import { Route, Routes } from "react-router";
 
+const About = lazy(() => import("./components/About/About"));
+const Cart = lazy(() => import("./components/Projects/Shop/Cart/Cart"));
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
-import About from "./components/About/About";
-import Products from "./components/Projects/Shop/Products/Products";
-import Cart from "./components/Projects/Shop/Cart/Cart";
+const Products = lazy(
+  () => import("./components/Projects/Shop/Products/Products"),
+);
+const TaskManager = lazy(
+  () => import("./components/Projects/TaskManager/TaskManager.tsx"),
+);
 
 import { messages as enMessages } from "./locales/en/messages.ts";
 import { messages as esMessages } from "./locales/es/messages.ts";
 
 import { usePreferences } from "./hooks/usePreferences.tsx";
-import { useMemo } from "react";
 import { Toaster } from "react-hot-toast";
 
 i18n.load("en", enMessages);
@@ -35,6 +40,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects/shop" element={<Products />} />
           <Route path="/projects/shop/cart" element={<Cart />} />
+          <Route path="/projects/taskManager" element={<TaskManager />} />
         </Routes>
       </I18nProvider>
     </>

@@ -38,7 +38,7 @@ function Header() {
                   <Trans>Shop</Trans>
                 </button>
               </MenuItem>
-              {/*  <MenuItem>
+              <MenuItem>
                 <button
                   type="button"
                   aria-label="Button for the Task Manager demo"
@@ -47,7 +47,7 @@ function Header() {
                 >
                   <Trans>Task Manager</Trans>
                 </button>
-              </MenuItem> */}
+              </MenuItem>
             </div>
           </MenuItems>
         </Menu>
