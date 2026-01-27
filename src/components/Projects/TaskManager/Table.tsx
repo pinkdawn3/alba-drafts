@@ -1,53 +1,9 @@
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { useState, type FunctionComponent } from "react";
 import { useTasks } from "../../../hooks/useTasks";
-import type { TaskType } from "../../../types/task";
-
-const Dropdown: FunctionComponent = () => {
-  return (
-    <>
-      <Menu as="div" className="relative inline-block">
-        <MenuButton className={"link-style"}> Priority</MenuButton>
-
-        <MenuItems
-          transition
-          className="absolute z-10 top-0 mb-2 w-56 origin-top-right rounded-md bg-zinc-700 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
-        >
-          <div className="py-1">
-            <MenuItem>
-              <button
-                type="button"
-                aria-label="Button for the Shop demo"
-                className="block w-full px-4 py-2 text-left text-sm bg-zinc-700"
-              >
-                High
-              </button>
-            </MenuItem>
-            <MenuItem>
-              <button
-                type="button"
-                aria-label="Button for the Task Manager demo"
-                className="block w-full px-4 py-2 text-left text-sm bg-zinc-700"
-              >
-                Medium
-              </button>
-            </MenuItem>
-
-            <MenuItem>
-              <button
-                type="button"
-                aria-label="Button for the Task Manager demo"
-                className="block w-full px-4 py-2 text-left text-sm bg-zinc-700"
-              >
-                Low
-              </button>
-            </MenuItem>
-          </div>
-        </MenuItems>
-      </Menu>
-    </>
-  );
-};
+import { priorities, statuses, type TaskType } from "../../../types/task";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Dropdown } from "../../../utils/Dropdown";
 
 export const Table: FunctionComponent = () => {
   const esFormatter = new Intl.DateTimeFormat("es-ES");
@@ -60,14 +16,28 @@ export const Table: FunctionComponent = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (isDraft) {
         setDraftTask((prev) =>
-          prev ? { ...prev, taskName: e.target.value } : null,
+          prev ? { ...prev, [e.target.name]: e.target.value } : null,
         );
       } else {
         dispatch({
           type: "update",
           id: taskId,
-          changes: { taskName: e.target.value },
+          changes: { [e.target.name]: e.target.value },
         });
+      }
+    };
+
+    const handleAdd = (
+      e: React.ChangeEvent<HTMLInputElement>,
+      task: TaskType,
+    ) => {
+      if (e.target.value.trim() !== "") {
+        dispatch({
+          type: "add",
+          task: task,
+        });
+
+        setDraftTask(null);
       }
     };
 
@@ -78,24 +48,70 @@ export const Table: FunctionComponent = () => {
             type="text"
             placeholder="Introduce task..."
             value={task.taskName}
+            name="taskName"
             onChange={handleChange}
+            onBlur={(e) => handleAdd(e, task)}
             autoFocus={isDraft && true}
           />
         </th>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
-          {task.assigned}
+          <input
+            type="text"
+            placeholder="Add person..."
+            value={task.assigned}
+            name="assigned"
+            onChange={handleChange}
+            className="text-center"
+          />
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
-          {task.status}
+          <Dropdown
+            value={task.status}
+            options={statuses}
+            onChange={(newStatus) => {
+              if (isDraft) {
+                setDraftTask((prev) =>
+                  prev ? { ...prev, status: newStatus } : null,
+                );
+              } else {
+                dispatch({
+                  type: "update",
+                  id: task.id,
+                  changes: { status: newStatus },
+                });
+              }
+            }}
+          />
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
           {esFormatter.format(task.date)}
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
-          <Dropdown />
+          <Dropdown
+            value={task.priority}
+            options={priorities}
+            onChange={(newPriority) => {
+              if (isDraft) {
+                setDraftTask((prev) =>
+                  prev ? { ...prev, priority: newPriority } : null,
+                );
+              } else {
+                dispatch({
+                  type: "update",
+                  id: task.id,
+                  changes: { priority: newPriority },
+                });
+              }
+            }}
+          />
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
           <input type="checkbox" aria-label="Checkbox for completed task" />
+        </td>
+        <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
+          <button type="button" aria-label="delete task">
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
         </td>
       </tr>
     );
@@ -115,6 +131,7 @@ export const Table: FunctionComponent = () => {
 
   return (
     <section className="w-full space-y-5">
+      {/* Add task button */}
       <button
         type="button"
         aria-label="add task"
@@ -124,7 +141,8 @@ export const Table: FunctionComponent = () => {
         Add Task
       </button>
 
-      <div className="overflow-x-auto border border-zinc-700 rounded-lg">
+      {/* Table */}
+      <div className="border border-zinc-700 rounded-lg">
         <table className="items-center w-full bg-transparent border-collapse rounded-lg text-center [&_:is(th,td):first-child]:text-left">
           {/* Header for table */}
           <thead>
@@ -147,12 +165,11 @@ export const Table: FunctionComponent = () => {
               <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
                 Completed
               </th>
+              <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px"></th>
             </tr>
           </thead>
           {/* Body of table*/}
-          <tbody className="divide-y divide-zinc-700">
-            {/* 1 Row*/}
-
+          <tbody className="overflow-x-auto divide-y divide-zinc-700">
             {draftTask && generateRow(draftTask, true)}
             {getTasks().length === 0 && !draftTask ? (
               <tr className="text-white">
