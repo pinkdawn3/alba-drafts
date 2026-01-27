@@ -19,10 +19,16 @@ export const Table: FunctionComponent = () => {
           prev ? { ...prev, [e.target.name]: e.target.value } : null,
         );
       } else {
+        console.log(e.target.name);
+        console.log(e.target.checked);
+
+        const value =
+          e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
         dispatch({
           type: "update",
           id: taskId,
-          changes: { [e.target.name]: e.target.value },
+          changes: { [e.target.name]: value },
         });
       }
     };
@@ -32,6 +38,27 @@ export const Table: FunctionComponent = () => {
       task: TaskType,
     ) => {
       if (e.target.value.trim() !== "") {
+        dispatch({
+          type: "add",
+          task: task,
+        });
+
+        setDraftTask(null);
+      }
+    };
+
+    const handleDelete = (task: TaskType) => {
+      dispatch({
+        type: "remove",
+        id: task.id,
+      });
+    };
+
+    const handleEnter = (
+      e: React.KeyboardEvent<HTMLElement>,
+      task: TaskType,
+    ) => {
+      if (e.key == "Enter" && task.taskName.trim() !== "") {
         dispatch({
           type: "add",
           task: task,
@@ -51,6 +78,7 @@ export const Table: FunctionComponent = () => {
             name="taskName"
             onChange={handleChange}
             onBlur={(e) => handleAdd(e, task)}
+            onKeyDown={(e) => handleEnter(e, task)}
             autoFocus={isDraft && true}
           />
         </th>
@@ -106,10 +134,20 @@ export const Table: FunctionComponent = () => {
           />
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
-          <input type="checkbox" aria-label="Checkbox for completed task" />
+          <input
+            type="checkbox"
+            name="completed"
+            checked={task.completed}
+            aria-label="Checkbox for completed task"
+            onChange={handleChange}
+          />
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
-          <button type="button" aria-label="delete task">
+          <button
+            type="button"
+            aria-label="delete task"
+            onClick={() => handleDelete(task)}
+          >
             <FontAwesomeIcon icon={faTrash} />
           </button>
         </td>
