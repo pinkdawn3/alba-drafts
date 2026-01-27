@@ -1,5 +1,5 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import type { FunctionComponent } from "react";
+import { useState, type FunctionComponent } from "react";
 import { useTasks } from "../../../hooks/useTasks";
 import type { TaskType } from "../../../types/task";
 
@@ -52,19 +52,25 @@ const Dropdown: FunctionComponent = () => {
 export const Table: FunctionComponent = () => {
   const esFormatter = new Intl.DateTimeFormat("es-ES");
   const { getTasks, dispatch } = useTasks();
+  const [draftTask, setDraftTask] = useState<TaskType | null>(null);
 
-  const generateRow = (task: TaskType) => {
+  const generateRow = (task: TaskType, isDraft?: boolean) => {
     const taskId = task.id;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      dispatch({
-        type: "update",
-        id: taskId,
-        changes: {
-          taskName: e.target.value,
-        },
-      });
+      if (isDraft) {
+        setDraftTask((prev) =>
+          prev ? { ...prev, taskName: e.target.value } : null,
+        );
+      } else {
+        dispatch({
+          type: "update",
+          id: taskId,
+          changes: { taskName: e.target.value },
+        });
+      }
     };
+
     return (
       <tr key={task.id} className="text-white">
         <th className="border-t-0 px-4 text-sm font-normal whitespace-nowrap p-4 text-left">
@@ -73,6 +79,7 @@ export const Table: FunctionComponent = () => {
             placeholder="Introduce task..."
             value={task.taskName}
             onChange={handleChange}
+            autoFocus={isDraft && true}
           />
         </th>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
@@ -94,9 +101,26 @@ export const Table: FunctionComponent = () => {
     );
   };
 
+  const addTask = () => {
+    setDraftTask({
+      id: crypto.randomUUID(),
+      taskName: "",
+      assigned: "",
+      priority: "low",
+      status: "not-started",
+      date: Date.now(),
+      completed: false,
+    });
+  };
+
   return (
     <section className="w-full space-y-5">
-      <button type="button" aria-label="add task" className="button">
+      <button
+        type="button"
+        aria-label="add task"
+        className="button"
+        onClick={addTask}
+      >
         Add Task
       </button>
 
@@ -129,7 +153,8 @@ export const Table: FunctionComponent = () => {
           <tbody className="divide-y divide-zinc-700">
             {/* 1 Row*/}
 
-            {getTasks().length === 0 ? (
+            {draftTask && generateRow(draftTask, true)}
+            {getTasks().length === 0 && !draftTask ? (
               <tr className="text-white">
                 <th
                   key={1}
