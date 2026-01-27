@@ -1,6 +1,9 @@
 export type Priority = "low" | "medium" | "high";
 export type Status = "not-started" | "in-progress" | "completed";
 
+export const priorities: Priority[] = ["low", "medium", "high"];
+export const statuses: Status[] = ["not-started", "in-progress", "completed"];
+
 export type TaskType = {
   id: string;
   taskName: string;
