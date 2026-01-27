@@ -34,7 +34,7 @@ function About() {
   const CVSecondary = handleCVLanguage("secondary");
 
   return (
-    <main className="sm:flex items-center max-w-7xl">
+    <section className="sm:flex items-center max-w-7xl">
       <div className="sm:w-1/2 p-10 flex justify-content">
         <div className="image mx-auto">
           <img src={ProfilePic} alt="profile picture" className="rounded-3xl" />
@@ -102,7 +102,7 @@ function About() {
           </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
 
