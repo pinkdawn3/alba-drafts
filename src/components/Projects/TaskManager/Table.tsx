@@ -4,9 +4,9 @@ import { priorities, statuses, type TaskType } from "../../../types/task";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "../../../utils/Dropdown";
+import { Datepicker } from "flowbite-react";
 
 export const Table: FunctionComponent = () => {
-  const esFormatter = new Intl.DateTimeFormat("es-ES");
   const { getTasks, dispatch } = useTasks();
   const [draftTask, setDraftTask] = useState<TaskType | null>(null);
 
@@ -112,7 +112,7 @@ export const Table: FunctionComponent = () => {
           />
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
-          {esFormatter.format(task.date)}
+          <Datepicker value={new Date(task.date)} />
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
           <Dropdown
