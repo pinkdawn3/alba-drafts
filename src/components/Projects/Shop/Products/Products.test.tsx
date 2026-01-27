@@ -1,7 +1,7 @@
 // components/Projects/Shop/Products/Products.test.tsx
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { screen, fireEvent, waitFor } from "@testing-library/react";
-import { Products } from "./Products";
+import Products from "./Products";
 import { renderWithProviders } from "../../../../utils/test-utils";
 
 describe("Products", () => {
