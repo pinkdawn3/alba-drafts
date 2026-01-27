@@ -6,6 +6,8 @@ type TaskType = {
   taskName: string;
   assigned: string;
   priority: string;
+  status: string;
+  date: number;
   completed: boolean;
 };
 
@@ -15,6 +17,8 @@ const TaskMockup: TaskType[] = [
     taskName: "Make Table",
     assigned: "Alba",
     priority: "medium",
+    status: "Not started",
+    date: Date.now(),
     completed: false,
   },
   {
@@ -22,6 +26,8 @@ const TaskMockup: TaskType[] = [
     taskName: "Make rows dynamic",
     assigned: "Alba",
     priority: "high",
+    status: "Not started",
+    date: Date.now(),
     completed: false,
   },
   {
@@ -29,6 +35,8 @@ const TaskMockup: TaskType[] = [
     taskName: "Save data in localstorage",
     assigned: "Alba",
     priority: "low",
+    status: "Not started",
+    date: Date.now(),
     completed: false,
   },
   {
@@ -36,6 +44,8 @@ const TaskMockup: TaskType[] = [
     taskName: "Create columns dinamically",
     assigned: "Alba",
     priority: "low",
+    status: "Not started",
+    date: Date.now(),
     completed: false,
   },
 ];
@@ -87,6 +97,8 @@ const Dropdown: FunctionComponent = () => {
 };
 
 export const Table: FunctionComponent = () => {
+  const esFormatter = new Intl.DateTimeFormat("es-ES");
+
   const generateRow = (task: TaskType) => {
     return (
       <tr key={task.id} className="text-white">
@@ -95,6 +107,12 @@ export const Table: FunctionComponent = () => {
         </th>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
           {task.assigned}
+        </td>
+        <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
+          {task.status}
+        </td>
+        <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
+          {esFormatter.format(task.date)}
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
           <Dropdown />
@@ -108,7 +126,7 @@ export const Table: FunctionComponent = () => {
 
   return (
     <div className="w-full overflow-x-auto border border-zinc-700 rounded-lg">
-      <table className="items-center w-full bg-transparent border-collapse rounded-lg [&_:is(th,td):where(:nth-child(2),:nth-child(3),:nth-child(4))]:text-center">
+      <table className="items-center w-full bg-transparent border-collapse rounded-lg text-center [&_:is(th,td):first-child]:text-left">
         {/* Header for table */}
         <thead>
           <tr className="text-center">
@@ -120,6 +138,12 @@ export const Table: FunctionComponent = () => {
             </th>
             <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
               Priority
+            </th>
+            <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
+              Status
+            </th>
+            <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
+              Date
             </th>
             <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
               Completed
