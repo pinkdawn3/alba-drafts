@@ -68,6 +68,18 @@ export const Table: FunctionComponent = () => {
       }
     };
 
+    const handleDate = (date: Date | null) => {
+      if (date !== null) {
+        dispatch({
+          type: "update",
+          id: task.id,
+          changes: {
+            date: date.getTime(),
+          },
+        });
+      }
+    };
+
     return (
       <tr key={task.id} className="text-white">
         <th className="border-t-0 px-4 text-sm font-normal whitespace-nowrap p-4 text-left">
@@ -92,6 +104,26 @@ export const Table: FunctionComponent = () => {
             className="text-center"
           />
         </td>
+
+        <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
+          <Dropdown
+            value={task.priority}
+            options={priorities}
+            onChange={(newPriority) => {
+              if (isDraft) {
+                setDraftTask((prev) =>
+                  prev ? { ...prev, priority: newPriority } : null,
+                );
+              } else {
+                dispatch({
+                  type: "update",
+                  id: task.id,
+                  changes: { priority: newPriority },
+                });
+              }
+            }}
+          />
+        </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
           <Dropdown
             value={task.status}
@@ -112,26 +144,7 @@ export const Table: FunctionComponent = () => {
           />
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
-          <Datepicker value={new Date(task.date)} />
-        </td>
-        <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
-          <Dropdown
-            value={task.priority}
-            options={priorities}
-            onChange={(newPriority) => {
-              if (isDraft) {
-                setDraftTask((prev) =>
-                  prev ? { ...prev, priority: newPriority } : null,
-                );
-              } else {
-                dispatch({
-                  type: "update",
-                  id: task.id,
-                  changes: { priority: newPriority },
-                });
-              }
-            }}
-          />
+          <Datepicker value={new Date(task.date)} onChange={handleDate} />
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
           <input
