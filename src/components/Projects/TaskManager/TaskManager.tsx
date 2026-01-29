@@ -20,7 +20,7 @@ function TaskManager() {
 
   return (
     <div className="flex flex-row ">
-      <div className="mx-auto justify-center max-w-2xl px-4 py-5 sm:px-6 sm:py- lg:max-w-7xl lg:px-8 space-y-5">
+      <div className="mx-auto justify-center max-w-4xl px-4 py-5 sm:px-6 lg:max-w-7xl lg:px-8 space-y-5">
         <div className="space-x-3">
           <button
             type="button"
