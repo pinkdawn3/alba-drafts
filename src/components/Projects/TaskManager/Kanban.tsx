@@ -19,15 +19,24 @@ import {
   type Status,
   type TaskType,
 } from "../../../types/task";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 interface KanbanCardProps {
   task: TaskType;
   onUpdate: (taskId: string, changes: Partial<TaskType>) => void;
   onSave: (task: TaskType) => void;
+  onDelete: (task: TaskType) => void;
   isDraft?: boolean;
 }
 
-function KanbanCard({ task, onUpdate, onSave, isDraft }: KanbanCardProps) {
+function KanbanCard({
+  task,
+  onUpdate,
+  onSave,
+  onDelete,
+  isDraft,
+}: KanbanCardProps) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -50,27 +59,64 @@ function KanbanCard({ task, onUpdate, onSave, isDraft }: KanbanCardProps) {
 
   return (
     <Card className="max-w-sm">
-      <input
-        className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white bg-transparent border-none outline-none w-full"
-        placeholder="Introduce task..."
-        type="text"
-        value={task.taskName}
-        name="taskName"
-        onChange={handleChange}
-        onKeyDown={(e) => handleEnter(e, task)}
-        onBlur={handleBlur}
-        autoFocus={isDraft}
-      />
+      <div className="flex justify-between">
+        <input
+          className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white bg-transparent border-none outline-none w-full"
+          placeholder="Introduce task..."
+          type="text"
+          value={task.taskName}
+          name="taskName"
+          onChange={handleChange}
+          onKeyDown={(e) => handleEnter(e, task)}
+          onBlur={handleBlur}
+          autoFocus={isDraft}
+        />
+        <button
+          type="button"
+          aria-label="delete task"
+          onClick={() => onDelete(task)}
+        >
+          <FontAwesomeIcon icon={faTrash} />
+        </button>
+      </div>
+
       <p className="font-normal text-gray-700 dark:text-gray-400">
-        Assigned: {task.assigned || "Unassigned"}
+        <input
+          className="font-normal text-gray-700 dark:text-gray-400"
+          placeholder="Assigned to.."
+          type="text"
+          value={task.assigned}
+          name="assigned"
+          onChange={handleChange}
+          onKeyDown={(e) => handleEnter(e, task)}
+          onBlur={handleBlur}
+        />
       </p>
       <div className="flex gap-2">
-        <span className="text-xs px-2 py-1 bg-zinc-700 rounded capitalize">
-          {task.priority}
-        </span>
-        <span className="text-xs px-2 py-1 bg-zinc-700 rounded capitalize">
-          {task.status}
-        </span>
+        <Dropdown
+          value={task.priority}
+          options={priorities}
+          onChange={() => onSave(task)}
+          style="text-xs px-2 py-1 bg-zinc-700 rounded capitalize"
+        />
+        <Dropdown
+          value={task.status}
+          options={statuses}
+          onChange={() => onSave(task)}
+          style="text-xs px-2 py-1 bg-zinc-700 rounded capitalize"
+        />
+      </div>
+      <div>
+        <input
+          placeholder="Input date..."
+          type="date"
+          value={new Date(task.date).toISOString().split("T")[0]}
+          onChange={(e) => {
+            const newDate = new Date(e.target.value).getTime();
+            onUpdate(task.id, { date: newDate });
+          }}
+          className="bg-zinc-700 px-2 py-1 rounded text-sm"
+        />
       </div>
     </Card>
   );
@@ -82,6 +128,7 @@ interface KanbanColumnProps {
   filterBy: keyof TaskType;
   onUpdate: (taskId: string, changes: Partial<TaskType>) => void;
   onSave: (task: TaskType) => void;
+  onDelete: (task: TaskType) => void;
   onAddTask: (filterValue: string) => void;
   draftTaskId?: string;
 }
@@ -92,6 +139,7 @@ function KanbanColumn({
   filterBy,
   onUpdate,
   onSave,
+  onDelete,
   onAddTask,
   draftTaskId,
 }: KanbanColumnProps) {
@@ -132,6 +180,7 @@ function KanbanColumn({
                               task={filteredTask}
                               onUpdate={onUpdate}
                               onSave={onSave}
+                              onDelete={onDelete}
                               isDraft={filteredTask.id === draftTaskId}
                             />
                           </div>
@@ -238,6 +287,15 @@ function Kanban() {
     });
   };
 
+  const handleDelete = (task: TaskType) => {
+    if (task) {
+      dispatch({
+        type: "remove",
+        id: task.id,
+      });
+    }
+  };
+
   const allTasks = draftTask ? [draftTask, ...getTasks()] : getTasks();
 
   return (
@@ -255,6 +313,7 @@ function Kanban() {
           filterBy={filter}
           onUpdate={handleUpdateTask}
           onSave={handleSaveDraft}
+          onDelete={handleDelete}
           onAddTask={handleAddTaskInColumn}
           draftTaskId={draftTask?.id}
         />
