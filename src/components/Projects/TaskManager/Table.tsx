@@ -142,7 +142,7 @@ export const Table: FunctionComponent = () => {
             }}
           />
         </td>
-        <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
+        <td className="border-t-0 px-4 text-xs font-medium p-4">
           <Datepicker value={new Date(task.date)} onChange={handleDate} />
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">

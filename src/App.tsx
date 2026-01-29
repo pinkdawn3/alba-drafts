@@ -2,10 +2,10 @@ import { lazy, useMemo } from "react";
 import { Route, Routes } from "react-router";
 import { i18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
-const About = lazy(() => import("./components/About/About"));
+const About = lazy(() => import("./pages/About.tsx"));
 const Cart = lazy(() => import("./components/Projects/Shop/Cart/Cart"));
 import Header from "./components/Header/Header";
-import Home from "./components/Home/Home";
+import Home from "./pages/Home.tsx";
 const Products = lazy(
   () => import("./components/Projects/Shop/Products/Products"),
 );

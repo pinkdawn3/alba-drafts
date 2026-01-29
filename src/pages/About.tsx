@@ -1,6 +1,6 @@
-import ProfilePic from "../../assets/profile-pic.jpg";
-import CVEnglish from "../../assets/AlbaDeTaoro_SoftwareDeveloper_CV (English).pdf";
-import CVSpanish from "../../assets/AlbaDeTaoro_SoftwareDeveloper_CV (Español).pdf";
+import ProfilePic from "../assets/profile-pic.jpg";
+import CVEnglish from "../assets/AlbaDeTaoro_SoftwareDeveloper_CV (English).pdf";
+import CVSpanish from "../assets/AlbaDeTaoro_SoftwareDeveloper_CV (Español).pdf";
 import { Trans } from "@lingui/react/macro";
 import { i18n } from "@lingui/core";
 
