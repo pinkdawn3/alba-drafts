@@ -1,4 +1,4 @@
-import { useState, type FunctionComponent } from "react";
+import { type FunctionComponent } from "react";
 import { useTasks } from "../../../hooks/useTasks";
 import { priorities, statuses, type TaskType } from "../../../types/task";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,8 +7,7 @@ import { Dropdown } from "../../../utils/Dropdown";
 import { Datepicker } from "flowbite-react";
 
 export const Table: FunctionComponent = () => {
-  const { getTasks, dispatch } = useTasks();
-  const [draftTask, setDraftTask] = useState<TaskType | null>(null);
+  const { draftTask, setDraftTask, getTasks, dispatch } = useTasks();
 
   const generateRow = (task: TaskType, isDraft?: boolean) => {
     const taskId = task.id;
