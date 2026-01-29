@@ -280,15 +280,36 @@ export const Table: FunctionComponent = () => {
       </button>
 
       {/* Desktop + Landscape Mobile: Table */}
-      <div className="hidden sm:block border border-zinc-700 rounded-lg overflow-x-auto">
-        {" "}
-        {/* ← Changed md:block to sm:block */}
+      <div className="hidden sm:block border border-zinc-700 rounded-lg">
         <table className="items-center w-full min-w-200 bg-transparent border-collapse rounded-lg text-center [&_:is(th,td):first-child]:text-left">
-          {/* ← Added min-w-[200px] so table has proper width */}
+          {/* Header for table */}
           <thead>
-            <tr className="text-center">{/* ... headers ... */}</tr>
+            <tr className="text-center">
+              <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+                Task
+              </th>
+              <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold  uppercase border-l-0 border-r-0 whitespace-nowrap">
+                Assigned to
+              </th>
+              <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
+                Priority
+              </th>
+              <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
+                Status
+              </th>
+              <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
+                Date
+              </th>
+              <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
+                Completed
+              </th>
+              <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
+                Delete
+              </th>
+              <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px"></th>
+            </tr>
           </thead>
-          <tbody className="divide-y divide-zinc-700">
+          <tbody className="divide-y divide-zinc-700 overflow-x-auto">
             {draftTask && generateRow(draftTask, true)}
             {allTasks.length === 0 && !draftTask ? (
               <tr className="text-white">
