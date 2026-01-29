@@ -21,23 +21,25 @@ function TaskManager() {
   return (
     <div className="flex flex-row ">
       <div className="mx-auto justify-center max-w-2xl px-4 py-5 sm:px-6 sm:py- lg:max-w-7xl lg:px-8 space-y-5">
-        <button
-          type="button"
-          aria-label="table view"
-          className="button"
-          onClick={() => setView("table")}
-        >
-          Table
-        </button>
+        <div className="space-x-3">
+          <button
+            type="button"
+            aria-label="table view"
+            className="button"
+            onClick={() => setView("table")}
+          >
+            Table
+          </button>
 
-        <button
-          type="button"
-          aria-label="kanban view"
-          className="button"
-          onClick={() => setView("kanban")}
-        >
-          Kanban
-        </button>
+          <button
+            type="button"
+            aria-label="kanban view"
+            className="button"
+            onClick={() => setView("kanban")}
+          >
+            Kanban
+          </button>
+        </div>
 
         {toggleView(view)}
       </div>

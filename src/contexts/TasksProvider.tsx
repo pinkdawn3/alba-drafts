@@ -1,5 +1,5 @@
 import useLocalStorageState from "use-local-storage-state";
-import { useEffect, useReducer, type ReactNode } from "react";
+import { useEffect, useReducer, useState, type ReactNode } from "react";
 
 import type { TaskProps, TaskType } from "../types/task";
 import { TasksContext } from "./TasksContext";
@@ -52,6 +52,8 @@ export function TasksProvider({ children }: TasksProviderProviderProps) {
     { defaultValue: {} },
   );
 
+
+  const [draftTask, setDraftTask] = useState<TaskType | null>(null);
   const [tasks, dispatch] = useReducer(tasksReducer, storedTasks);
 
   useEffect(() => {
@@ -63,6 +65,8 @@ export function TasksProvider({ children }: TasksProviderProviderProps) {
   };
 
   const value = {
+    draftTask,
+    setDraftTask,
     tasks,
     dispatch,
     getTasks,
