@@ -38,6 +38,7 @@ function KanbanCard({ task, onUpdate, onSave, isDraft }: KanbanCardProps) {
   const handleEnter = (e: React.KeyboardEvent<HTMLElement>, task: TaskType) => {
     if (e.key == "Enter" && task.taskName.trim() !== "") {
       onSave(task);
+      e.currentTarget.blur();
     }
   };
 
@@ -95,7 +96,7 @@ function KanbanColumn({
   draftTaskId,
 }: KanbanColumnProps) {
   return (
-    <section className="flex gap-4">
+    <div className="flex flex-col md:flex-row gap-4">
       {filters &&
         filters.map((filter) => (
           <Droppable key={filter} droppableId={filter}>
@@ -104,13 +105,13 @@ function KanbanColumn({
               <div
                 ref={provided.innerRef}
                 {...provided.droppableProps}
-                className="flex-1 bg-zinc-800 rounded-lg p-4 min-w-75"
+                className="w-full md:flex-1 bg-zinc-800 rounded-lg p-4 md:min-w-75 flex flex-col"
               >
                 {/* Title of column */}
                 <h3 className="font-semibold mb-4 capitalize">{filter}</h3>
 
                 {/* Column */}
-                <div className="space-y-2">
+                <div className="space-y-2 overflow-y-auto max-h-75 md:max-h-150">
                   {data
                     .filter((task) => task[filterBy] === filter)
                     .map((filteredTask, index) => (
@@ -149,7 +150,7 @@ function KanbanColumn({
             )}
           </Droppable>
         ))}
-    </section>
+    </div>
   );
 }
 
@@ -240,17 +241,12 @@ function Kanban() {
   const allTasks = draftTask ? [draftTask, ...getTasks()] : getTasks();
 
   return (
-    <section>
-      <div className="space-y-5 space-x-4">
-        <button type="button" aria-label="add task" className="button">
-          Add Task
-        </button>
-        <Dropdown
-          value={filter}
-          options={kanbanFilters}
-          onChange={(newFilter: keyof TaskType) => getFilters(newFilter)}
-        />
-      </div>
+    <section className="space-y-5">
+      <Dropdown
+        value={filter}
+        options={kanbanFilters}
+        onChange={(newFilter: keyof TaskType) => getFilters(newFilter)}
+      />
 
       <DragDropContext onDragEnd={onDragEnd}>
         <KanbanColumn
