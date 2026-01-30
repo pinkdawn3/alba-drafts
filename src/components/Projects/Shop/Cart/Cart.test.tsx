@@ -1,7 +1,7 @@
 // components/Projects/Shop/Cart/Cart.test.tsx
 import { describe, it, expect, beforeEach } from "vitest";
 import { screen, fireEvent } from "@testing-library/react";
-import { Cart } from "./Cart";
+import Cart from "./Cart";
 import { renderWithProviders } from "../../../../utils/test-utils";
 
 // Mock the navigate function

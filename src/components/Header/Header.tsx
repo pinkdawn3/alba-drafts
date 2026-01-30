@@ -7,12 +7,12 @@ import { ThemeSelector } from "../ThemeSelector/ThemeSelector";
 function Header() {
   const navigate = useNavigate();
 
-  const navigateToShop = async () => {
-    await navigate("/projects/shop");
+  const navigateToDemo = async (route: string) => {
+    await navigate(`/projects/${route}`);
   };
 
   return (
-    <div className="flex justify-between shadow-xl bg-background text-primary ">
+    <header className="flex justify-between shadow-xl bg-background text-primary ">
       <nav className="py-5 px-5  space-x-5 font-bold">
         <NavLink to="/">
           <Trans>Home</Trans>
@@ -30,10 +30,22 @@ function Header() {
             <div className="py-1">
               <MenuItem>
                 <button
-                  onClick={navigateToShop}
+                  type="button"
+                  aria-label="Button for the Shop demo"
+                  onClick={() => navigateToDemo("shop")}
                   className="block w-full px-4 py-2 text-left text-sm bg-primary text-gray-200 data-focus:text-white"
                 >
                   <Trans>Shop</Trans>
+                </button>
+              </MenuItem>
+              <MenuItem>
+                <button
+                  type="button"
+                  aria-label="Button for the Task Manager demo"
+                  onClick={() => navigateToDemo("taskManager")}
+                  className="block w-full px-4 py-2 text-left text-sm bg-primary text-gray-200 data-focus:text-white"
+                >
+                  <Trans>Task Manager</Trans>
                 </button>
               </MenuItem>
             </div>
@@ -49,7 +61,7 @@ function Header() {
         <ThemeSelector />
         <LanguageSelector />
       </div>
-    </div>
+    </header>
   );
 }
 
