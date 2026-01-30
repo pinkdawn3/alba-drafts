@@ -13,47 +13,95 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. js-lingui-explicit-id
+#: src/components/Projects/TaskManager/Kanban.tsx:65
+#: src/components/Projects/TaskManager/Table.tsx:115
+#: src/components/Projects/TaskManager/Table.tsx:196
+msgid "Introduce task..."
+msgstr "Introduce task..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/TaskManager/Kanban.tsx:78
+msgid "Assign to..."
+msgstr "Assign to..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/TaskManager/Kanban.tsx:103
+#: src/components/Projects/TaskManager/Table.tsx:238
+msgid "Input date..."
+msgstr "Input date..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/TaskManager/Table.tsx:127
+msgid "Add person..."
+msgstr "Add person..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/TaskManager/Table.tsx:211
+msgid "Assign person..."
+msgstr "Assign person..."
+
 #: src/components/About/About.tsx:60
 #~ msgid " I felt stuck so I decided to reinvent myself. Apart from languages, my other great passion since I was a child was computers. So, I studied software development with my initial intention being working on Game Development."
 #~ msgstr " I felt stuck so I decided to reinvent myself. Apart from languages, my other great passion since I was a child was computers. So, I studied software development with my initial intention being working on Game Development."
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:119
+#: src/components/Projects/Shop/Cart/Cart.tsx:121
 msgid " Remove"
 msgstr " Remove"
 
-#: src/components/About/About.tsx:88
+#: src/components/Projects/TaskManager/Table.tsx:308
+msgid " Status"
+msgstr " Status"
+
+#: src/pages/About.tsx:88
 msgid "...or download it in "
 msgstr "...or download it in "
 
-#: src/components/Header/Header.tsx:42
+#: src/components/Header/Header.tsx:56
 msgid "About me"
 msgstr "About me"
 
-#: src/components/About/About.tsx:46
+#: src/pages/About.tsx:46
 msgid "About Me"
 msgstr "About Me"
 
-#: src/components/Projects/Shop/Products/Products.tsx:105
+#: src/components/Projects/Shop/Products/Products.tsx:106
 msgid "Add to Cart"
 msgstr "Add to Cart"
 
-#: src/components/About/About.tsx:68
+#: src/pages/About.tsx:68
 msgid "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
 msgstr "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:58
+#: src/components/Projects/TaskManager/Table.tsx:302
+msgid "Assigned to"
+msgstr "Assigned to"
+
+#: src/components/Projects/Shop/Cart/Cart.tsx:60
 msgid "Cart"
 msgstr "Cart"
 
-#: src/components/Home/Home.tsx:21
+#: src/pages/Home.tsx:22
 msgid "Check the repo in Github"
 msgstr "Check the repo in Github"
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:76
+#: src/components/Projects/TaskManager/Table.tsx:314
+msgid "Completed"
+msgstr "Completed"
+
+#: src/components/Projects/Shop/Cart/Cart.tsx:78
 msgid "Continue Shopping"
 msgstr "Continue Shopping"
 
-#: src/components/About/About.tsx:83
+#: src/components/Projects/TaskManager/Table.tsx:311
+msgid "Date Due"
+msgstr "Date Due"
+
+#: src/components/Projects/TaskManager/Table.tsx:317
+msgid "Delete"
+msgstr "Delete"
+
+#: src/pages/About.tsx:83
 msgid "Download CV"
 msgstr "Download CV"
 
@@ -61,15 +109,15 @@ msgstr "Download CV"
 msgid "English"
 msgstr "English"
 
-#: src/components/Home/Home.tsx:7
+#: src/pages/Home.tsx:7
 msgid "Hello!"
 msgstr "Hello!"
 
-#: src/components/Header/Header.tsx:16
+#: src/components/Header/Header.tsx:18
 msgid "Home"
 msgstr "Home"
 
-#: src/components/About/About.tsx:60
+#: src/pages/About.tsx:60
 msgid "I felt stuck so I decided to reinvent myself. Apart from languages, my other great passion since I was a child was computers. So, I studied software development with my initial intention being working on Game Development."
 msgstr "I felt stuck so I decided to reinvent myself. Apart from languages, my other great passion since I was a child was computers. So, I studied software development with my initial intention being working on Game Development."
 
@@ -77,48 +125,65 @@ msgstr "I felt stuck so I decided to reinvent myself. Apart from languages, my o
 #~ msgid "Language"
 #~ msgstr "Language"
 
-#: src/components/Home/Home.tsx:11
+#: src/pages/Home.tsx:11
 msgid "My name is Alba, and I'm a front-end developer! <0/> This website is a porfolio with the things I know how to do."
 msgstr "My name is Alba, and I'm a front-end developer! <0/> This website is a porfolio with the things I know how to do."
 
-#: src/components/About/About.tsx:53
+#: src/pages/About.tsx:53
 msgid "My professional journey didn't start in software development. I originally studied Translation and interpreting, but I had the misfortune of having to enter the job market in 2020."
 msgstr "My professional journey didn't start in software development. I originally studied Translation and interpreting, but I had the misfortune of having to enter the job market in 2020."
+
+#: src/components/Projects/TaskManager/Table.tsx:329
+#: src/components/Projects/TaskManager/Table.tsx:347
+msgid "No tasks available."
+msgstr "No tasks available."
 
 #: src/components/Projects/Shop/Cart/Cart.tsx:123
 #~ msgid "or "
 #~ msgstr "or "
 
-#: src/components/Projects/Shop/Products/Products.tsx:69
+#: src/components/Projects/TaskManager/Table.tsx:305
+msgid "Priority"
+msgstr "Priority"
+
+#: src/components/Projects/Shop/Products/Products.tsx:70
 msgid "Products"
 msgstr "Products"
 
-#: src/components/Header/Header.tsx:21
+#: src/components/Header/Header.tsx:23
 msgid "Projects"
 msgstr "Projects"
 
-#: src/components/Header/Header.tsx:34
+#: src/components/Header/Header.tsx:38
 msgid "Shop"
 msgstr "Shop"
+
+#. js-lingui-explicit-id
+#: src/pages/About.tsx:98
+msgid "cv_language"
+msgstr "Spanish"
 
 #. js-lingui-explicit-id
 #: src/components/LanguageSelector/LanguageSelector.tsx:44
 msgid "language_selector"
 msgstr "Spanish"
 
-#. js-lingui-explicit-id
-#: src/components/About/About.tsx:98
-msgid "cv_language"
-msgstr "Spanish"
-
 #: src/components/LanguageSelector/LanguageSelector.tsx:35
 #~ msgid "Spanish"
 #~ msgstr "Spanish"
 
-#: src/components/Projects/Shop/Cart/Cart.tsx:65
+#: src/components/Projects/TaskManager/Table.tsx:299
+msgid "Task"
+msgstr "Task"
+
+#: src/components/Header/Header.tsx:48
+msgid "Task Manager"
+msgstr "Task Manager"
+
+#: src/components/Projects/Shop/Cart/Cart.tsx:67
 msgid "The cart is empty."
 msgstr "The cart is empty."
 
-#: src/components/Projects/Shop/Products/Products.tsx:79
+#: src/components/Projects/Shop/Products/Products.tsx:80
 msgid "The product list is empty."
 msgstr "The product list is empty."

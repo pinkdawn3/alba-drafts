@@ -8,8 +8,8 @@ import {
   type DropResult,
 } from "@hello-pangea/dnd";
 
-import { useTasks } from "../../../hooks/useTasks";
-import { Dropdown } from "../../../utils/Dropdown";
+import { useTasks } from "../../../../hooks/useTasks";
+import { Dropdown } from "../../../../utils/Dropdown";
 
 import {
   kanbanFilters,
@@ -18,9 +18,10 @@ import {
   type Priority,
   type Status,
   type TaskType,
-} from "../../../types/task";
+} from "../../../../types/task";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { i18n } from "@lingui/core";
 
 interface KanbanCardProps {
   task: TaskType;
@@ -61,7 +62,7 @@ function KanbanCard({
     <Card className="max-w-sm">
       <input
         className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white bg-transparent border-none outline-none w-full"
-        placeholder="Introduce task..."
+        placeholder={i18n._("Introduce task...")}
         type="text"
         value={task.taskName}
         name="taskName"
@@ -74,7 +75,7 @@ function KanbanCard({
       <p className="font-normal text-gray-700 dark:text-gray-400">
         <input
           className="font-normal text-gray-700 dark:text-gray-400"
-          placeholder="Assigned to..."
+          placeholder={i18n._("Assign to...")}
           type="text"
           value={task.assigned}
           name="assigned"
@@ -87,35 +88,35 @@ function KanbanCard({
         <Dropdown
           value={task.priority}
           options={priorities}
-          onChange={() => onSave(task)}
+          onChange={(priority) => onUpdate(task.id, { priority: priority })}
           style="text-xs px-2 py-1 bg-header text-font rounded capitalize"
         />
         <Dropdown
           value={task.status}
           options={statuses}
-          onChange={() => onSave(task)}
+          onChange={(status) => onUpdate(task.id, { status: status })}
           style="text-xs px-2 py-1 bg-header text-font rounded capitalize"
         />
       </div>
       <div>
         <input
-          placeholder="Input date..."
+          placeholder={i18n._("Input date...")}
           type="date"
           value={new Date(task.date).toISOString().split("T")[0]}
           onChange={(e) => {
             const newDate = new Date(e.target.value).getTime();
             onUpdate(task.id, { date: newDate });
           }}
-          className="bg-zinc-700 px-2 py-1 rounded text-sm"
+          className="bg-header text-font px-2 py-1 rounded text-sm"
         />
       </div>
       <div className="flex items-center justify-between pt-2">
-        <label className="flex items-center gap-2 text-xs text-gray-400">
+        <label className="flex items-center gap-2 text-xs text-font">
           <input
             type="checkbox"
             name="completed"
             checked={task.completed}
-            onChange={() => onUpdate("checked", task)}
+            onChange={(e) => onUpdate(task.id, { completed: e.target.checked })}
             className="w-4 h-4"
           />
           {task.completed ? "Completed" : "Mark complete"}
@@ -167,7 +168,7 @@ function KanbanColumn({
               <div
                 ref={provided.innerRef}
                 {...provided.droppableProps}
-                className="w-full md:flex-1 bg-zinc-800 rounded-lg p-4 md:min-w-75 flex flex-col"
+                className="w-full md:flex-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg p-4 md:min-w-75 flex flex-col"
               >
                 {/* Title of column */}
                 <h3 className="font-semibold mb-4 capitalize">{filter}</h3>
@@ -285,8 +286,9 @@ function Kanban() {
         type: "add",
         task,
       });
-      setDraftTask(null);
     }
+
+    setDraftTask(null);
   };
 
   const handleAddTaskInColumn = (columnValue: string) => {
