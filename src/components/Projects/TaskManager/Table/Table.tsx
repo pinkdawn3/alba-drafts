@@ -57,8 +57,9 @@ function Table() {
         type: "add",
         task: task,
       });
+
+      setDraftTask(null);
     }
-    setDraftTask(null);
   };
 
   const handleDate = (taskId: string, date: Date | null) => {
@@ -314,7 +315,7 @@ function Table() {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-bg-header overflow-x-auto">
+          <tbody className="divide-y divide-header overflow-x-auto">
             {allTasks.length === 0 ? (
               <tr className="text-font">
                 <th

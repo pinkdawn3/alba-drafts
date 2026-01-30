@@ -22,6 +22,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { i18n } from "@lingui/core";
+import { useTranslate } from "../../../../hooks/useTranslations";
 
 interface KanbanCardProps {
   task: TaskType;
@@ -38,6 +39,8 @@ function KanbanCard({
   onDelete,
   isDraft,
 }: KanbanCardProps) {
+  const t = useTranslate();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -55,6 +58,13 @@ function KanbanCard({
   const handleBlur = () => {
     if (isDraft) {
       onSave(task);
+    }
+  };
+
+  const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newDate = new Date(e.target.value).getTime();
+    if (newDate) {
+      onUpdate(task.id, { date: newDate });
     }
   };
 
@@ -103,11 +113,9 @@ function KanbanCard({
           placeholder={i18n._("Input date...")}
           type="date"
           value={new Date(task.date).toISOString().split("T")[0]}
-          onChange={(e) => {
-            const newDate = new Date(e.target.value).getTime();
-            onUpdate(task.id, { date: newDate });
-          }}
+          onChange={handleDate}
           className="bg-header text-font px-2 py-1 rounded text-sm"
+          required
         />
       </div>
       <div className="flex items-center justify-between pt-2">
@@ -119,7 +127,7 @@ function KanbanCard({
             onChange={(e) => onUpdate(task.id, { completed: e.target.checked })}
             className="w-4 h-4"
           />
-          {task.completed ? "Completed" : "Mark complete"}
+          {task.completed ? t("Completed") : t("Mark Completed")}
         </label>
 
         {!isDraft && (
@@ -158,6 +166,8 @@ function KanbanColumn({
   onAddTask,
   draftTaskId,
 }: KanbanColumnProps) {
+  const t = useTranslate();
+
   return (
     <div className="flex flex-col md:flex-row gap-4">
       {filters &&
@@ -171,7 +181,7 @@ function KanbanColumn({
                 className="w-full md:flex-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg p-4 md:min-w-75 flex flex-col"
               >
                 {/* Title of column */}
-                <h3 className="font-semibold mb-4 capitalize">{filter}</h3>
+                <h3 className="font-semibold mb-4 capitalize"> {t(filter)} </h3>
 
                 {/* Column */}
                 <div className="space-y-2 overflow-y-auto max-h-75 md:max-h-150">
@@ -205,6 +215,7 @@ function KanbanColumn({
                   {provided.placeholder}
                 </div>
                 <button
+                  type="button"
                   onClick={() => onAddTask(filter)} // Pass which column
                   className="w-full mt-2 p-2 text-sm text-gray-400 hover:text-white hover:bg-zinc-700 rounded border border-dashed border-zinc-600"
                 >

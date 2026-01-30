@@ -1,6 +1,6 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import type { ComponentProps } from "react";
-import { useTranslateOption } from "../hooks/useTranslations";
+import { useTranslate } from "../hooks/useTranslations";
 
 // Extract AnchorProps from Menu component
 type AnchorProps = ComponentProps<typeof MenuItems>["anchor"];
@@ -25,7 +25,7 @@ export const Dropdown = <T extends string>({
 
   const userPosition = position ? position : "bottom start";
 
-  const t = useTranslateOption();
+  const t = useTranslate();
 
   return (
     <Menu as="div" className="relative inline-block text-left">
