@@ -14,30 +14,30 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/components/Projects/TaskManager/Kanban.tsx:65
-#: src/components/Projects/TaskManager/Table.tsx:115
-#: src/components/Projects/TaskManager/Table.tsx:196
+#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:75
+#: src/components/Projects/TaskManager/Table/Table.tsx:101
+#: src/components/Projects/TaskManager/Table/Table.tsx:182
 msgid "Introduce task..."
 msgstr "Introduce task..."
 
 #. js-lingui-explicit-id
-#: src/components/Projects/TaskManager/Kanban.tsx:78
+#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:88
 msgid "Assign to..."
 msgstr "Assign to..."
 
 #. js-lingui-explicit-id
-#: src/components/Projects/TaskManager/Kanban.tsx:103
-#: src/components/Projects/TaskManager/Table.tsx:238
+#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:113
+#: src/components/Projects/TaskManager/Table/Table.tsx:223
 msgid "Input date..."
 msgstr "Input date..."
 
 #. js-lingui-explicit-id
-#: src/components/Projects/TaskManager/Table.tsx:127
+#: src/components/Projects/TaskManager/Table/Table.tsx:113
 msgid "Add person..."
 msgstr "Add person..."
 
 #. js-lingui-explicit-id
-#: src/components/Projects/TaskManager/Table.tsx:211
+#: src/components/Projects/TaskManager/Table/Table.tsx:197
 msgid "Assign person..."
 msgstr "Assign person..."
 
@@ -50,8 +50,8 @@ msgid " Remove"
 msgstr " Remove"
 
 #: src/components/Projects/TaskManager/Table.tsx:308
-msgid " Status"
-msgstr " Status"
+#~ msgid " Status"
+#~ msgstr " Status"
 
 #: src/pages/About.tsx:88
 msgid "...or download it in "
@@ -73,7 +73,7 @@ msgstr "Add to Cart"
 msgid "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
 msgstr "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
 
-#: src/components/Projects/TaskManager/Table.tsx:302
+#: src/components/Projects/TaskManager/Table/Table.tsx:299
 msgid "Assigned to"
 msgstr "Assigned to"
 
@@ -85,7 +85,7 @@ msgstr "Cart"
 msgid "Check the repo in Github"
 msgstr "Check the repo in Github"
 
-#: src/components/Projects/TaskManager/Table.tsx:314
+#: src/components/Projects/TaskManager/Table/Table.tsx:311
 msgid "Completed"
 msgstr "Completed"
 
@@ -93,11 +93,11 @@ msgstr "Completed"
 msgid "Continue Shopping"
 msgstr "Continue Shopping"
 
-#: src/components/Projects/TaskManager/Table.tsx:311
+#: src/components/Projects/TaskManager/Table/Table.tsx:308
 msgid "Date Due"
 msgstr "Date Due"
 
-#: src/components/Projects/TaskManager/Table.tsx:317
+#: src/components/Projects/TaskManager/Table/Table.tsx:314
 msgid "Delete"
 msgstr "Delete"
 
@@ -133,8 +133,8 @@ msgstr "My name is Alba, and I'm a front-end developer! <0/> This website is a p
 msgid "My professional journey didn't start in software development. I originally studied Translation and interpreting, but I had the misfortune of having to enter the job market in 2020."
 msgstr "My professional journey didn't start in software development. I originally studied Translation and interpreting, but I had the misfortune of having to enter the job market in 2020."
 
-#: src/components/Projects/TaskManager/Table.tsx:329
-#: src/components/Projects/TaskManager/Table.tsx:347
+#: src/components/Projects/TaskManager/Table/Table.tsx:325
+#: src/components/Projects/TaskManager/Table/Table.tsx:344
 msgid "No tasks available."
 msgstr "No tasks available."
 
@@ -142,7 +142,7 @@ msgstr "No tasks available."
 #~ msgid "or "
 #~ msgstr "or "
 
-#: src/components/Projects/TaskManager/Table.tsx:305
+#: src/components/Projects/TaskManager/Table/Table.tsx:302
 msgid "Priority"
 msgstr "Priority"
 
@@ -172,7 +172,11 @@ msgstr "Spanish"
 #~ msgid "Spanish"
 #~ msgstr "Spanish"
 
-#: src/components/Projects/TaskManager/Table.tsx:299
+#: src/components/Projects/TaskManager/Table/Table.tsx:305
+msgid "Status"
+msgstr "Status"
+
+#: src/components/Projects/TaskManager/Table/Table.tsx:296
 msgid "Task"
 msgstr "Task"
 
