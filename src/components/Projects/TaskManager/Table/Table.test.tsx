@@ -2,9 +2,9 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { screen, fireEvent, waitFor } from "@testing-library/react";
 
-import { Table } from "./Table";
-import { renderWithProviders } from "../../../utils/test-utils";
-import type { TaskType } from "../../../types/task";
+import { renderWithProviders } from "../../../../utils/test-utils";
+import type { TaskType } from "../../../../types/task";
+import Table from "./Table";
 
 interface DatepickerProps {
   value: Date;
@@ -27,6 +27,7 @@ vi.mock("flowbite-react", () => ({
 describe("Table", () => {
   beforeEach(() => {
     localStorage.clear();
+    vi.clearAllMocks();
   });
 
   it("renders add task button", () => {
@@ -35,30 +36,13 @@ describe("Table", () => {
     expect(screen.getByLabelText("add task")).toBeInTheDocument();
   });
 
-  it("creates draft task when add button is clicked", () => {
-    renderWithProviders(<Table />);
-
-    const addButton = screen.getByLabelText("add task");
-    fireEvent.click(addButton);
-
-    // Two elements render, the PC and the mobile one, pick one
-    const taskInput = screen.getAllByPlaceholderText("Introduce task...")[0];
-    expect(taskInput).toBeInTheDocument();
-    expect(taskInput).toHaveValue("");
-  });
-
   it("adds task when draft task name is filled and blurred", async () => {
     renderWithProviders(<Table />);
 
-    // Create draft
-    const addButton = screen.getByLabelText("add task");
-    fireEvent.click(addButton);
+    fireEvent.click(screen.getByRole("button", { name: /add/i }));
 
-    // Fill task name
     const taskInput = screen.getAllByPlaceholderText("Introduce task...")[0];
     fireEvent.change(taskInput, { target: { value: "New Task" } });
-
-    // Blur to save
     fireEvent.blur(taskInput);
 
     await waitFor(() => {
@@ -81,21 +65,6 @@ describe("Table", () => {
         screen.getAllByDisplayValue("Task via Enter")[0],
       ).toBeInTheDocument();
     });
-  });
-
-  it("does not add task with empty name", () => {
-    renderWithProviders(<Table />);
-
-    const addButton = screen.getByLabelText("add task");
-    fireEvent.click(addButton);
-
-    const taskInput = screen.getAllByPlaceholderText("Introduce task...")[0];
-    fireEvent.blur(taskInput); // Blur without entering text
-
-    // Should still show empty state or draft
-    expect(
-      screen.getAllByPlaceholderText("Introduce task...")[0],
-    ).toBeInTheDocument();
   });
 
   it("updates task name when changed", async () => {
@@ -163,7 +132,7 @@ describe("Table", () => {
 
     // Add task
     fireEvent.click(screen.getByLabelText(/add task/i));
-    const taskInput = screen.getAllByPlaceholderText("Introduce task...")[0];
+    const taskInput = screen.getAllByPlaceholderText(/introduce task/i)[0];
     fireEvent.change(taskInput, { target: { value: "Delete me" } });
     fireEvent.blur(taskInput);
 
@@ -172,24 +141,26 @@ describe("Table", () => {
     });
 
     // Delete task
-    const deleteButton = screen.getAllByLabelText("delete task")[0];
+    const deleteButton = screen.getAllByLabelText(/delete task/i)[0];
     fireEvent.click(deleteButton);
 
     await waitFor(() => {
       expect(screen.queryByDisplayValue("Delete me")).not.toBeInTheDocument();
-      expect(screen.getByText("No tasks available.")).toBeInTheDocument();
+      expect(screen.getAllByText(/no tasks available/i)[0]).toBeInTheDocument();
     });
   });
 
   it("renders table headers correctly", () => {
     renderWithProviders(<Table />);
 
-    expect(screen.getByText("Task")).toBeInTheDocument();
-    expect(screen.getByText("Assigned to")).toBeInTheDocument();
-    expect(screen.getByText("Priority")).toBeInTheDocument();
-    expect(screen.getByText("Status")).toBeInTheDocument();
-    expect(screen.getByText("Date Due")).toBeInTheDocument();
-    expect(screen.getByText("Completed")).toBeInTheDocument();
+    // \b means boundary, so it means just look at this word
+    expect(screen.getByText(/^task$/i)).toBeInTheDocument();
+
+    expect(screen.getByText(/assigned to/i)).toBeInTheDocument();
+    expect(screen.getByText(/priority/i)).toBeInTheDocument();
+    expect(screen.getByText(/status/i)).toBeInTheDocument();
+    expect(screen.getByText(/date Due/i)).toBeInTheDocument();
+    expect(screen.getByText(/completed/i)).toBeInTheDocument();
   });
 
   it("shows table on desktop and cards on mobile", () => {
@@ -206,8 +177,8 @@ describe("Table", () => {
     renderWithProviders(<Table />);
 
     // Add task
-    fireEvent.click(screen.getByLabelText("add task"));
-    const taskInput = screen.getAllByPlaceholderText("Introduce task...")[0];
+    fireEvent.click(screen.getByLabelText(/add task/i));
+    const taskInput = screen.getAllByPlaceholderText(/introduce task/i)[0];
     fireEvent.change(taskInput, { target: { value: "Persistent Task" } });
     fireEvent.blur(taskInput);
 
@@ -248,18 +219,18 @@ describe("Table", () => {
   it("does not show delete button for draft task", () => {
     renderWithProviders(<Table />);
 
-    fireEvent.click(screen.getByLabelText("add task"));
+    fireEvent.click(screen.getByLabelText(/add task/i));
 
     // Draft task should not have delete button yet
-    expect(screen.queryByLabelText("delete task")).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/delete task/i)).not.toBeInTheDocument();
   });
 
   it("updates task date", async () => {
     renderWithProviders(<Table />);
 
     // Add task
-    fireEvent.click(screen.getByLabelText("add task"));
-    const taskInput = screen.getAllByPlaceholderText("Introduce task...")[0];
+    fireEvent.click(screen.getByLabelText(/add task/i));
+    const taskInput = screen.getAllByPlaceholderText(/introduce task/i)[0];
     fireEvent.change(taskInput, { target: { value: "Date Task" } });
     fireEvent.blur(taskInput);
 

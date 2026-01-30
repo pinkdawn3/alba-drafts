@@ -5,11 +5,11 @@ import { renderWithProviders } from "../../../utils/test-utils";
 import TaskManager from "./TaskManager";
 
 // Mock the child components
-vi.mock("./Table", () => ({
-  Table: () => <div data-testid="table-view">Table View</div>,
+vi.mock("./Table/Table", () => ({
+  default: () => <div data-testid="table-view">Table View</div>,
 }));
 
-vi.mock("./Kanban", () => ({
+vi.mock("./Kanban/Kanban", () => ({
   default: () => <div data-testid="kanban-view">Kanban View</div>,
 }));
 

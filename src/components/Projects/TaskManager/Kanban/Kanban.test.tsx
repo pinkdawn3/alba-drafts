@@ -4,8 +4,8 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { screen, fireEvent, waitFor } from "@testing-library/react";
 
 import Kanban from "./Kanban";
-import type { TaskType } from "../../../types/task";
-import { renderWithProviders } from "../../../utils/test-utils";
+import type { TaskType } from "../../../../types/task";
+import { renderWithProviders } from "../../../../utils/test-utils";
 
 // Mock drag and drop library
 
@@ -73,15 +73,15 @@ describe("Kanban", () => {
     renderWithProviders(<Kanban />);
 
     // Should show priority filter by default
-    expect(screen.getByText("priority")).toBeInTheDocument();
+    expect(screen.getByText(/priority/i)).toBeInTheDocument();
   });
 
   it("renders columns for priority by default", () => {
     renderWithProviders(<Kanban />);
 
-    expect(screen.getByText("low")).toBeInTheDocument();
-    expect(screen.getByText("medium")).toBeInTheDocument();
-    expect(screen.getByText("high")).toBeInTheDocument();
+    expect(screen.getByText(/low/i)).toBeInTheDocument();
+    expect(screen.getByText(/medium/i)).toBeInTheDocument();
+    expect(screen.getByText(/high/i)).toBeInTheDocument();
   });
 
   it("switches to status columns when filter changes", async () => {
@@ -98,19 +98,19 @@ describe("Kanban", () => {
   it("renders add task button in each column", () => {
     renderWithProviders(<Kanban />);
 
-    const addButtons = screen.getAllByText("+ Add task");
+    const addButtons = screen.getAllByText(/add task/i);
     expect(addButtons).toHaveLength(3); // 3 priority columns
   });
 
   it("creates draft task in correct column when add button clicked", async () => {
     renderWithProviders(<Kanban />);
 
-    const addButtons = screen.getAllByText("+ Add task");
+    const addButtons = screen.getAllByText(/add task/i);
     fireEvent.click(addButtons[0]); // Click first column (low)
 
     await waitFor(() => {
       // Should create a draft task with low priority
-      const taskInput = screen.getByPlaceholderText("Introduce task...");
+      const taskInput = screen.getByPlaceholderText(/introduce task/i);
       expect(taskInput).toBeInTheDocument();
       expect(taskInput).toHaveValue("");
     });
@@ -120,11 +120,11 @@ describe("Kanban", () => {
     renderWithProviders(<Kanban />);
 
     // Add task in first column
-    const addButtons = screen.getAllByText("+ Add task");
+    const addButtons = screen.getAllByText(/add task/i);
     fireEvent.click(addButtons[0]);
 
     await waitFor(() => {
-      const taskInput = screen.getByPlaceholderText("Introduce task...");
+      const taskInput = screen.getByPlaceholderText(/introduce task/i);
       fireEvent.change(taskInput, { target: { value: "New Kanban Task" } });
       fireEvent.blur(taskInput);
     });
@@ -141,7 +141,7 @@ describe("Kanban", () => {
     fireEvent.click(addButtons[0]);
 
     await waitFor(() => {
-      const taskInput = screen.getByPlaceholderText("Introduce task...");
+      const taskInput = screen.getByPlaceholderText(/introduce task/i);
       fireEvent.change(taskInput, { target: { value: "Task via Enter" } });
       fireEvent.keyDown(taskInput, { key: "Enter" });
     });
@@ -154,35 +154,33 @@ describe("Kanban", () => {
   it("does not save draft with empty task name", async () => {
     renderWithProviders(<Kanban />);
 
-    const addButtons = screen.getAllByText("+ Add task");
+    const addButtons = screen.getAllByText(/add task/i);
     fireEvent.click(addButtons[0]);
 
     await waitFor(() => {
-      const taskInput = screen.getByPlaceholderText("Introduce task...");
+      const taskInput = screen.getByPlaceholderText(/introduce task/i);
       fireEvent.blur(taskInput); // Blur without entering text
-    });
 
-    // Should still show placeholder
-    expect(
-      screen.getByPlaceholderText("Introduce task..."),
-    ).toBeInTheDocument();
+      // Placeholder should disappear
+      expect(taskInput).not.toBeInTheDocument();
+    });
   });
 
   it("updates task assigned field", async () => {
     renderWithProviders(<Kanban />);
 
     // Add a task first
-    const addButtons = screen.getAllByText("+ Add task");
+    const addButtons = screen.getAllByText(/add task/i);
     fireEvent.click(addButtons[0]);
 
     await waitFor(() => {
-      const taskInput = screen.getByPlaceholderText("Introduce task...");
+      const taskInput = screen.getByPlaceholderText(/introduce task/i);
       fireEvent.change(taskInput, { target: { value: "Test Task" } });
       fireEvent.blur(taskInput);
     });
 
     await waitFor(() => {
-      const assignedInput = screen.getByPlaceholderText("Assigned to...");
+      const assignedInput = screen.getByPlaceholderText(/assign to/i);
       fireEvent.change(assignedInput, { target: { value: "Alba" } });
       expect(screen.getByDisplayValue("Alba")).toBeInTheDocument();
     });
@@ -192,17 +190,17 @@ describe("Kanban", () => {
     renderWithProviders(<Kanban />);
 
     // Add task
-    const addButtons = screen.getAllByText("+ Add task");
+    const addButtons = screen.getAllByText(/add task/i);
     fireEvent.click(addButtons[0]);
 
     await waitFor(() => {
-      const taskInput = screen.getByPlaceholderText("Introduce task...");
+      const taskInput = screen.getByPlaceholderText(/introduce task/i);
       fireEvent.change(taskInput, { target: { value: "Date Task" } });
       fireEvent.blur(taskInput);
     });
 
     await waitFor(() => {
-      const dateInput = screen.getByPlaceholderText("Input date...");
+      const dateInput = screen.getByPlaceholderText(/input date/i);
       fireEvent.change(dateInput, { target: { value: "2025-12-31" } });
       expect(dateInput).toHaveValue("2025-12-31");
     });
@@ -212,17 +210,17 @@ describe("Kanban", () => {
     renderWithProviders(<Kanban />);
 
     // Add task
-    const addButtons = screen.getAllByText("+ Add task");
+    const addButtons = screen.getAllByText(/add task/i);
     fireEvent.click(addButtons[0]);
 
     await waitFor(() => {
-      const taskInput = screen.getByPlaceholderText("Introduce task...");
+      const taskInput = screen.getByPlaceholderText(/introduce task/i);
       fireEvent.change(taskInput, { target: { value: "Delete Me" } });
       fireEvent.blur(taskInput);
     });
 
     await waitFor(() => {
-      const deleteButton = screen.getByLabelText("delete task");
+      const deleteButton = screen.getByLabelText(/delete task/i);
       fireEvent.click(deleteButton);
     });
 
@@ -267,11 +265,11 @@ describe("Kanban", () => {
   it("persists tasks to localStorage", async () => {
     renderWithProviders(<Kanban />);
 
-    const addButtons = screen.getAllByText("+ Add task");
+    const addButtons = screen.getAllByText(/add task/i);
     fireEvent.click(addButtons[0]);
 
     await waitFor(() => {
-      const taskInput = screen.getByPlaceholderText("Introduce task...");
+      const taskInput = screen.getByPlaceholderText(/introduce task/i);
       fireEvent.change(taskInput, { target: { value: "Persistent Task" } });
       fireEvent.blur(taskInput);
     });
@@ -310,11 +308,11 @@ describe("Kanban", () => {
     renderWithProviders(<Kanban />);
 
     // Click add button in high priority column (third button)
-    const addButtons = screen.getAllByText("+ Add task");
+    const addButtons = screen.getAllByText(/add task/i);
     fireEvent.click(addButtons[2]); // High priority column
 
     await waitFor(() => {
-      const taskInput = screen.getByPlaceholderText("Introduce task...");
+      const taskInput = screen.getByPlaceholderText(/introduce task/i);
       fireEvent.change(taskInput, { target: { value: "High Priority Task" } });
       fireEvent.blur(taskInput);
     });

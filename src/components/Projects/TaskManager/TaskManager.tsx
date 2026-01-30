@@ -1,6 +1,7 @@
-import Kanban from "./Kanban";
-import { Table } from "./Table";
 import { useState } from "react";
+
+import Kanban from "./Kanban/Kanban";
+import Table from "./Table/Table";
 
 function TaskManager() {
   const [view, setView] = useState("");
