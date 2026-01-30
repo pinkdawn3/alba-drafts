@@ -104,7 +104,7 @@ export const Table: FunctionComponent = () => {
   // Generate table row
   const generateRow = (task: TaskType, isDraft?: boolean) => {
     return (
-      <tr key={task.id} className="text-white">
+      <tr key={task.id} className="text-font">
         <th className="border-t-0 px-4 text-sm font-normal whitespace-nowrap p-4 text-left">
           <input
             type="text"
@@ -181,7 +181,7 @@ export const Table: FunctionComponent = () => {
     return (
       <div
         key={task.id}
-        className="bg-zinc-900 border-l-4 border-primary p-4 space-y-2" // ← Different style: darker bg, left border accent
+        className="bg-button border-l-4 border-primary p-4 space-y-2" // ← Different style: darker bg, left border accent
       >
         {/* Task Name - More compact */}
         <input
@@ -193,7 +193,7 @@ export const Table: FunctionComponent = () => {
           onBlur={(e) => handleAdd(e, task)}
           onKeyDown={(e) => handleEnter(e, task)}
           autoFocus={isDraft}
-          className="text-base font-medium bg-transparent border-none outline-none w-full text-white placeholder-gray-500"
+          className="text-base text-font font-semibold bg-transparent border-none outline-none w-full placeholder-gray-500"
         />
 
         {/* Compact info row */}
@@ -207,7 +207,7 @@ export const Table: FunctionComponent = () => {
               onChange={(e) => handleChange(task, e, isDraft)}
               onBlur={(e) => handleAdd(e, task)}
               onKeyDown={(e) => handleEnter(e, task)}
-              className="px-2 py-1 bg-zinc-800 rounded text-gray-300"
+              className="px-2 py-1 bg-header text-font rounded"
             />
           </div>
           <div className="space-x-3 py-2">
@@ -217,7 +217,7 @@ export const Table: FunctionComponent = () => {
               onChange={(newPriority) =>
                 handleDropdownChange(task, "priority", newPriority, isDraft)
               }
-              style="text-xs px-2 py-1 bg-zinc-700 rounded capitalize"
+              style="bg-header text-font text-xs px-2 py-1 rounded capitalize"
             />
             <Dropdown
               value={task.status}
@@ -225,7 +225,7 @@ export const Table: FunctionComponent = () => {
               onChange={(newStatus) =>
                 handleDropdownChange(task, "status", newStatus, isDraft)
               }
-              style="text-xs px-2 py-1 bg-zinc-700 rounded capitalize"
+              style="bg-header text-font text-xs px-2 py-1 rounded capitalize"
             />
             <input
               placeholder="Input date..."
@@ -235,7 +235,7 @@ export const Table: FunctionComponent = () => {
                 const newDate = new Date(e.target.value);
                 handleDate(task.id, newDate);
               }}
-              className="bg-zinc-700 px-2 py-1 rounded text-sm"
+              className="bg-header text-font px-2 py-1 rounded text-sm"
             />
           </div>
         </div>
@@ -283,38 +283,38 @@ export const Table: FunctionComponent = () => {
       </button>
 
       {/* Desktop + Landscape Mobile: Table */}
-      <div className="hidden sm:block border border-zinc-700 rounded-lg">
+      <div className="hidden sm:block border border-header rounded-lg">
         <table className="items-center w-full min-w-200 bg-transparent border-collapse rounded-lg text-center [&_:is(th,td):first-child]:text-left">
           {/* Header for table */}
           <thead>
             <tr className="text-center">
-              <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+              <th className="px-4 bg-header text-font py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap rounded-tl-sm">
                 Task
               </th>
-              <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold  uppercase border-l-0 border-r-0 whitespace-nowrap">
+              <th className="px-4 bg-header text-font py-3 text-xs font-semibold  uppercase border-l-0 border-r-0 whitespace-nowrap">
                 Assigned to
               </th>
-              <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
+              <th className="px-4 bg-header text-font py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
                 Priority
               </th>
-              <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
+              <th className="px-4 bg-header text-font py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
                 Status
               </th>
-              <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
+              <th className="px-4 bg-header text-font py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
                 Date Due
               </th>
-              <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
+              <th className="px-4 bg-header text-font py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
                 Completed
               </th>
-              <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
+              <th className="px-4 bg-header text-font py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap rounded-tr-sm">
                 Delete
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-zinc-700 overflow-x-auto">
+          <tbody className="divide-y divide-bg-header overflow-x-auto">
             {draftTask && generateRow(draftTask, true)}
             {allTasks.length === 0 && !draftTask ? (
-              <tr className="text-white">
+              <tr className="text-font">
                 <th
                   colSpan={7}
                   className="border-t-0 px-4 text-sm font-normal whitespace-nowrap p-4 text-center"
@@ -335,7 +335,7 @@ export const Table: FunctionComponent = () => {
         {/* ← Changed md:hidden to sm:hidden */}
         {draftTask && generateCard(draftTask, true)}
         {allTasks.length === 0 && !draftTask ? (
-          <p className="text-center text-gray-400 py-8">No tasks available</p>
+          <p className="text-center text-font py-8">No tasks available</p>
         ) : (
           allTasks.map((task) => generateCard(task))
         )}
