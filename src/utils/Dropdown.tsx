@@ -24,7 +24,7 @@ export const Dropdown = <T extends string>({
 
   const userStyle = style
     ? style
-    : "px-2 py-1 bg-zinc-700 text-white rounded capitalize";
+    : "px-2 py-1 bg-header text-font rounded capitalize";
 
   const userPosition = position ? position : "bottom start";
 
@@ -33,13 +33,13 @@ export const Dropdown = <T extends string>({
       <MenuButton className={userStyle}>{normalizeString(value)}</MenuButton>
       <MenuItems
         anchor={userPosition}
-        className="absolute z-10 mt-2 w-32 bg-zinc-700 rounded shadow"
+        className="absolute z-10 mt-2 w-32 bg-header rounded shadow"
       >
         {options.map((opt) => (
           <MenuItem key={opt} as="div">
             <button
               type="button"
-              className="w-full text-left px-3 py-1 hover:bg-zinc-600 rounded capitalize"
+              className="w-full text-left px-3 py-1 dark:hover:bg-zinc-600 hover:bg-zinc-300 rounded capitalize"
               onClick={() => onChange(opt)}
             >
               {normalizeString(opt)}

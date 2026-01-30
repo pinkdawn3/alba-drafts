@@ -88,13 +88,13 @@ function KanbanCard({
           value={task.priority}
           options={priorities}
           onChange={() => onSave(task)}
-          style="text-xs px-2 py-1 bg-zinc-700 rounded capitalize"
+          style="text-xs px-2 py-1 bg-header text-font rounded capitalize"
         />
         <Dropdown
           value={task.status}
           options={statuses}
           onChange={() => onSave(task)}
-          style="text-xs px-2 py-1 bg-zinc-700 rounded capitalize"
+          style="text-xs px-2 py-1 bg-header text-font rounded capitalize"
         />
       </div>
       <div>

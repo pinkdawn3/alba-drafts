@@ -9,6 +9,7 @@ export default {
         primary: "rgb(var(--color-primary) / <alpha-value>)",
         primaryHover: "rgb(var(--color-primaryHover) / <alpha-value>)",
         button: "rgb(var(--color-button) / <alpha-value>)",
+        header: "rgb(var(--color-header) / <alpha-value>)",
         secondary: "rgb(var(--color-secondary) / <alpha-value>)",
       },
     },
