@@ -57,7 +57,7 @@ function Header() {
         </NavLink>
       </nav>
 
-      <div className="py-5 px-10 space-x-2 font-bold">
+      <div className="py-5 px-7 space-x-2 font-bold">
         <ThemeSelector />
         <LanguageSelector />
       </div>
