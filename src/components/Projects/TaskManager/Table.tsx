@@ -161,13 +161,16 @@ export const Table: FunctionComponent = () => {
           />
         </td>
         <td className="border-t-0 px-4 text-xs font-medium whitespace-nowrap p-4">
-          <button
-            type="button"
-            aria-label="delete task"
-            onClick={() => handleDelete(task)}
-          >
-            <FontAwesomeIcon icon={faTrash} />
-          </button>
+          {!isDraft && (
+            <button
+              type="button"
+              aria-label="delete task"
+              onClick={() => handleDelete(task)}
+              className="text-sm"
+            >
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
+          )}
         </td>
       </tr>
     );
@@ -298,7 +301,7 @@ export const Table: FunctionComponent = () => {
                 Status
               </th>
               <th className="px-4 bg-zinc-700 text-white align-middle py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap">
-                Date
+                Date Due
               </th>
               <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
                 Completed
@@ -306,7 +309,6 @@ export const Table: FunctionComponent = () => {
               <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
                 Delete
               </th>
-              <th className="px-4 bg-zinc-700 text-white py-3 text-xs font-semibold uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px"></th>
             </tr>
           </thead>
           <tbody className="divide-y divide-zinc-700 overflow-x-auto">
@@ -317,7 +319,7 @@ export const Table: FunctionComponent = () => {
                   colSpan={7}
                   className="border-t-0 px-4 text-sm font-normal whitespace-nowrap p-4 text-center"
                 >
-                  No tasks available
+                  No tasks available.
                 </th>
               </tr>
             ) : (
