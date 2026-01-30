@@ -14,7 +14,7 @@ describe("PreferencesProvider", () => {
       wrapper: PreferencesProvider,
     });
 
-    expect(result.current.theme).toBe("dark");
+    expect(result.current.theme).toBe("light");
     expect(result.current.language).toBe("en");
     expect(result.current.cart).toEqual({});
   });
@@ -25,10 +25,10 @@ describe("PreferencesProvider", () => {
     });
 
     act(() => {
-      result.current.setTheme("light");
+      result.current.setTheme("dark");
     });
 
-    expect(result.current.theme).toBe("light");
+    expect(result.current.theme).toBe("dark");
   });
 
   it("toggles theme", () => {
@@ -40,13 +40,13 @@ describe("PreferencesProvider", () => {
       result.current.toggleTheme();
     });
 
-    expect(result.current.theme).toBe("light");
+    expect(result.current.theme).toBe("dark");
 
     act(() => {
       result.current.toggleTheme();
     });
 
-    expect(result.current.theme).toBe("dark");
+    expect(result.current.theme).toBe("light");
   });
 
   it("persists values to localStorage", () => {

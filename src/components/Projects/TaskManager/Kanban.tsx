@@ -59,31 +59,22 @@ function KanbanCard({
 
   return (
     <Card className="max-w-sm">
-      <div className="flex justify-between">
-        <input
-          className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white bg-transparent border-none outline-none w-full"
-          placeholder="Introduce task..."
-          type="text"
-          value={task.taskName}
-          name="taskName"
-          onChange={handleChange}
-          onKeyDown={(e) => handleEnter(e, task)}
-          onBlur={handleBlur}
-          autoFocus={isDraft}
-        />
-        <button
-          type="button"
-          aria-label="delete task"
-          onClick={() => onDelete(task)}
-        >
-          <FontAwesomeIcon icon={faTrash} />
-        </button>
-      </div>
+      <input
+        className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white bg-transparent border-none outline-none w-full"
+        placeholder="Introduce task..."
+        type="text"
+        value={task.taskName}
+        name="taskName"
+        onChange={handleChange}
+        onKeyDown={(e) => handleEnter(e, task)}
+        onBlur={handleBlur}
+        autoFocus={isDraft}
+      />
 
       <p className="font-normal text-gray-700 dark:text-gray-400">
         <input
           className="font-normal text-gray-700 dark:text-gray-400"
-          placeholder="Assigned to.."
+          placeholder="Assigned to..."
           type="text"
           value={task.assigned}
           name="assigned"
@@ -117,6 +108,29 @@ function KanbanCard({
           }}
           className="bg-zinc-700 px-2 py-1 rounded text-sm"
         />
+      </div>
+      <div className="flex items-center justify-between pt-2">
+        <label className="flex items-center gap-2 text-xs text-gray-400">
+          <input
+            type="checkbox"
+            name="completed"
+            checked={task.completed}
+            onChange={() => onUpdate("checked", task)}
+            className="w-4 h-4"
+          />
+          {task.completed ? "Completed" : "Mark complete"}
+        </label>
+
+        {!isDraft && (
+          <button
+            type="button"
+            aria-label="delete task"
+            onClick={() => onDelete(task)}
+            className="text-sm"
+          >
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+        )}
       </div>
     </Card>
   );
