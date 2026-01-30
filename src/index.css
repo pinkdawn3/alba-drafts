@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
 @tailwind utilities;
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -11,9 +13,8 @@
   --color-primary: #646cff;
   --color-primaryHover: #535bf2;
   --color-button: #d6d6d6;
+  --color-header: #a8a8a8;
   --color-secondary: 107 114 128;
-  --color-border: 229 231 235;
-  --color-card: 249 250 251;
 }
 
 .dark {
@@ -24,10 +25,9 @@
   --color-primary: #646cff;
   --color-primaryHover: #535bf2;
   --color-button: #1a1a1a;
+  --color-header: #3f3f46;
 
   --color-secondary: 156 163 175;
-  --color-border: 55 65 81;
-  --color-card: 31 41 55;
 }
 
 :root {

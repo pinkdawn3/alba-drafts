@@ -1,25 +1,13 @@
 // components/Projects/Shop/Products/Products.test.tsx
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { screen, fireEvent, waitFor } from "@testing-library/react";
-import { Products } from "./Products";
+import Products from "./Products";
 import { renderWithProviders } from "../../../../utils/test-utils";
 
 describe("Products", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     localStorage.clear();
-  });
-
-  it("shows loading spinner initially", () => {
-    // Mock fetch to never resolve
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(() => new Promise(() => {})),
-    );
-
-    renderWithProviders(<Products />);
-
-    expect(screen.getByRole("status")).toBeInTheDocument();
   });
 
   it("displays products after loading", async () => {

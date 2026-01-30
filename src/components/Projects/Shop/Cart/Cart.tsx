@@ -1,11 +1,11 @@
-import { type FunctionComponent } from "react";
 import { type Operation, Quantifier } from "../Quantifier/Quantifier";
 import { useNavigate } from "react-router";
 import { Trans } from "@lingui/react/macro";
 import { usePreferences } from "../../../../hooks/usePreferences";
 import type { CartProps } from "../../../../types/cart";
+import toast from "react-hot-toast";
 
-export const Cart: FunctionComponent = () => {
+function Cart() {
   const { cart, setCart } = usePreferences();
 
   const navigate = useNavigate();
@@ -49,12 +49,14 @@ export const Cart: FunctionComponent = () => {
     0,
   );
 
-  console.log(getProducts());
+  const handleCheckout = () =>
+    toast("This a demo, so the button doesn't do anything.", {
+      icon: "ℹ️",
+    });
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-5 sm:px-6 sm:py- lg:max-w-7xl lg:px-8">
+    <section className="mx-auto max-w-2xl px-4 py-5 sm:px-6 sm:py- lg:max-w-7xl lg:px-8">
       <h2 className="text-2xl font-bold tracking-tight text-font">
-        {" "}
         <Trans>Cart</Trans>
       </h2>
       <div className="flow-root py-5">
@@ -133,6 +135,7 @@ export const Cart: FunctionComponent = () => {
                 <button
                   type="button"
                   className="bg-primary hover:bg-primaryHover text-xl text-white font-semibold py-2 px-4 rounded-xl"
+                  onClick={handleCheckout}
                 >
                   Checkout
                 </button>
@@ -154,6 +157,8 @@ export const Cart: FunctionComponent = () => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
-};
+}
+
+export default Cart;

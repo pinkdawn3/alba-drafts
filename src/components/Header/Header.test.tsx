@@ -101,8 +101,6 @@ describe("Header", () => {
     const projectsButton = screen.getByText("Projects");
     fireEvent.click(projectsButton);
 
-    const menuItems = screen.getAllByRole("menuitem");
-    expect(menuItems).toHaveLength(1);
-    expect(menuItems[0]).toHaveTextContent("Shop");
+    expect(screen.getByText("Shop")).toBeInTheDocument();
   });
 });

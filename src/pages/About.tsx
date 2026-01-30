@@ -1,6 +1,6 @@
-import ProfilePic from "../../assets/profile-pic.jpg";
-import CVEnglish from "../../assets/AlbaDeTaoro_SoftwareDeveloper_CV (English).pdf";
-import CVSpanish from "../../assets/AlbaDeTaoro_SoftwareDeveloper_CV (Español).pdf";
+import ProfilePic from "../assets/profile-pic.jpg";
+import CVEnglish from "../assets/AlbaDeTaoro_SoftwareDeveloper_CV (English).pdf";
+import CVSpanish from "../assets/AlbaDeTaoro_SoftwareDeveloper_CV (Español).pdf";
 import { Trans } from "@lingui/react/macro";
 import { i18n } from "@lingui/core";
 
@@ -34,7 +34,7 @@ function About() {
   const CVSecondary = handleCVLanguage("secondary");
 
   return (
-    <main className="sm:flex items-center max-w-7xl">
+    <section className="sm:flex items-center max-w-7xl">
       <div className="sm:w-1/2 p-10 flex justify-content">
         <div className="image mx-auto">
           <img src={ProfilePic} alt="profile picture" className="rounded-3xl" />
@@ -102,7 +102,7 @@ function About() {
           </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
 

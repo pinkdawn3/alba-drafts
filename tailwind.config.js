@@ -1,6 +1,6 @@
 export default {
   darkMode: "class",
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", flowbite.content()],
   theme: {
     extend: {
       colors: {
@@ -9,9 +9,10 @@ export default {
         primary: "rgb(var(--color-primary) / <alpha-value>)",
         primaryHover: "rgb(var(--color-primaryHover) / <alpha-value>)",
         button: "rgb(var(--color-button) / <alpha-value>)",
+        header: "rgb(var(--color-header) / <alpha-value>)",
         secondary: "rgb(var(--color-secondary) / <alpha-value>)",
       },
     },
   },
-  plugins: [],
+  plugins: [flowbite.plugin()],
 };

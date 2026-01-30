@@ -2,9 +2,9 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { screen } from "@testing-library/react";
 
-import About from "./About";
 import { i18n } from "@lingui/core";
-import { renderWithProviders } from "../../utils/test-utils";
+import { renderWithProviders } from "../utils/test-utils";
+import About from "./About";
 
 describe("About", () => {
   beforeEach(() => {

@@ -1,6 +1,4 @@
-import type { FunctionComponent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { useNavigate } from "react-router";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,11 +6,11 @@ interface Props {
   productsCount: number;
 }
 
-export const CartWidget: FunctionComponent<Props> = ({ productsCount }) => {
+function CartWidget({ productsCount }: Props) {
   const navigate = useNavigate();
 
-  const navigateToCart = () => {
-    navigate("/projects/shop/cart");
+  const navigateToCart = async () => {
+    await navigate("/projects/shop/cart");
   };
 
   return (
@@ -23,4 +21,6 @@ export const CartWidget: FunctionComponent<Props> = ({ productsCount }) => {
       </span>
     </button>
   );
-};
+}
+
+export default CartWidget;
