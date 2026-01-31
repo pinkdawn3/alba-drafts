@@ -53,7 +53,7 @@ Learning **React Query** with this one, plus getting comfortable working with ex
 
 ## Built with
 
-- **React** + **TypeScript** - because types are your friend
+- **React** + **TypeScript** - types are your friend
 - **Vite** - fast and simple
 - **Tailwind CSS** - for styling
 - **Vitest** - making sure things actually work
@@ -104,7 +104,7 @@ npm run test:ui
 ## What's next?
 
 - Finish the Book Tracker
-- Maybe add some animations
+- Add some animations
 - Build another project
 - Keep learning and improving!
 
