@@ -42,10 +42,20 @@ function Header() {
                 <button
                   type="button"
                   aria-label="Button for the Task Manager demo"
-                  onClick={() => navigateToDemo("taskManager")}
+                  onClick={() => navigateToDemo("task-manager")}
                   className="block w-full px-4 py-2 text-left text-sm bg-primary text-gray-200 data-focus:text-white"
                 >
                   <Trans>Task Manager</Trans>
+                </button>
+              </MenuItem>
+              <MenuItem>
+                <button
+                  type="button"
+                  aria-label="Button for the Task Manager demo"
+                  onClick={() => navigateToDemo("book-tracker")}
+                  className="block w-full px-4 py-2 text-left text-sm bg-primary text-gray-200 data-focus:text-white"
+                >
+                  <Trans>Book Tracker</Trans>
                 </button>
               </MenuItem>
             </div>
