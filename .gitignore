@@ -22,3 +22,6 @@ src/assets/devassets
 *.njsproj
 *.sln
 *.sw?
+
+.env
+.env.local
