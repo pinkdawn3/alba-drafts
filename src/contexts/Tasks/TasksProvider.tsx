@@ -1,7 +1,7 @@
 import useLocalStorageState from "use-local-storage-state";
 import { useEffect, useReducer, useState, type ReactNode } from "react";
 
-import type { TaskProps, TaskType } from "../types/task";
+import type { TaskProps, TaskType } from "../../types/task";
 import { TasksContext } from "./TasksContext";
 
 interface TasksProviderProviderProps {
@@ -51,7 +51,6 @@ export function TasksProvider({ children }: TasksProviderProviderProps) {
     "tasks",
     { defaultValue: {} },
   );
-
 
   const [draftTask, setDraftTask] = useState<TaskType | null>(null);
   const [tasks, dispatch] = useReducer(tasksReducer, storedTasks);

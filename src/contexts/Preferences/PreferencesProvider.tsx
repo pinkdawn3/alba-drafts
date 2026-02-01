@@ -1,8 +1,8 @@
 import useLocalStorageState from "use-local-storage-state";
 import { PreferencesContext } from "./PreferencesContext";
 import { useEffect, type ReactNode } from "react";
-import type { CartProps } from "../types/cart";
-import type { Language, Theme } from "../types/preferences";
+import type { CartProps } from "../../types/cart";
+import type { Language, Theme } from "../../types/preferences";
 
 interface PreferencesProviderProps {
   children: ReactNode;

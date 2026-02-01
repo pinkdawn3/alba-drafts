@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import type { CartProps } from "../types/cart";
-import type { Language, Theme } from "../types/preferences";
+import type { CartProps } from "../../types/cart";
+import type { Theme, Language } from "../../types/preferences";
 
 export interface PreferencesContextType {
   theme: Theme;

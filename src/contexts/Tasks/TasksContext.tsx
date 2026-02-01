@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { TaskProps, TaskType } from "../types/task";
+import type { TaskType, TaskProps } from "../../types/task";
 import type { Action } from "./TasksProvider";
 
 export type TaskContextType = {

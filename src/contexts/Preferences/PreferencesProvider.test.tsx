@@ -1,8 +1,8 @@
 // contexts/PreferencesProvider.test.tsx
 import { describe, it, expect, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
+import { usePreferences } from "../../hooks/usePreferences";
 import { PreferencesProvider } from "./PreferencesProvider";
-import { usePreferences } from "../hooks/usePreferences";
 
 describe("PreferencesProvider", () => {
   beforeEach(() => {

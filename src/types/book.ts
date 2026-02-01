@@ -32,7 +32,19 @@ export interface GoogleBooksResponse {
   items?: GoogleBook[];
 }
 
-export type Book = {
+export type BookStatus = "not-started" | "in-progress" | "paused" | "completed";
+
+export type BookType = {
+  id: string;
   title: string;
-  author: string;
+  authors?: string[];
+  img?: string;
+  description?: string;
+  status: BookStatus;
+  rating: number;
+  review: string;
 };
+
+export interface BookProps {
+  [bookId: string]: BookType;
+}

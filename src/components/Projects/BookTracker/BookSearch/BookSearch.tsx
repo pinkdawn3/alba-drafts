@@ -1,7 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import type { GoogleBook, GoogleBooksResponse } from "../../../../types/book";
+import type {
+  BookType,
+  GoogleBook,
+  GoogleBooksResponse,
+} from "../../../../types/book";
 import SearchBar from "../../../../utils/SearchBar";
+import { useBooks } from "../../../../hooks/useBooks";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
 
@@ -60,6 +65,28 @@ interface BookGalleryProp {
 }
 
 function BookGallery({ books }: BookGalleryProp) {
+  const { dispatch } = useBooks();
+
+  const handleSave = (googleBook: GoogleBook) => {
+    const book: BookType = {
+      id: googleBook.id,
+      title: googleBook.volumeInfo.title,
+      authors: googleBook.volumeInfo.authors,
+      img: getLargerImage(googleBook.volumeInfo.imageLinks?.thumbnail),
+      description: googleBook.volumeInfo.description,
+      status: "not-started",
+      rating: 0,
+      review: "",
+    };
+
+    if (book.title.trim() !== "") {
+      dispatch({
+        type: "add",
+        book,
+      });
+    }
+  };
+
   return (
     <div className="p-1 flex flex-wrap items-center justify-center">
       {books.map((book: GoogleBook) => (
@@ -77,6 +104,7 @@ function BookGallery({ books }: BookGalleryProp) {
               type="button"
               aria-label="add book"
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-1.5 bg-black/20 hover:bg-black/30 active:bg-black/40  border border-dashed border-white rounded-lg opacity-0 group-hover:opacity-100 transition"
+              onClick={() => handleSave(book)}
             >
               Add to shelf
             </button>
