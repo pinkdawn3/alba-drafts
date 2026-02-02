@@ -33,6 +33,12 @@ export interface GoogleBooksResponse {
 }
 
 export type BookStatus = "not-started" | "in-progress" | "paused" | "completed";
+export const BookStatuses: BookStatus[] = [
+  "not-started",
+  "in-progress",
+  "paused",
+  "completed",
+];
 
 export type BookType = {
   id: string;

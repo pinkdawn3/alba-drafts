@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faReact } from "@fortawesome/free-brands-svg-icons";
 import { Trans } from "@lingui/react/macro";
 
 function Home() {
@@ -14,13 +16,28 @@ function Home() {
         </Trans>
       </p>
 
-      <a
-        aria-label="Github repo link"
-        href="https://github.com/pinkdawn3/alba-drafts"
-        className="py-5"
-      >
-        <Trans>Check the repo in Github</Trans>
-      </a>
+      <div className="py-5">
+        <a
+          aria-label="Github repo link"
+          href="https://github.com/pinkdawn3/alba-drafts"
+        >
+          <Trans>Check the repo in Github</Trans>
+        </a>
+        <p className="text-xs">
+          Made with React <FontAwesomeIcon icon={faReact} /> (+ Vite{" "}
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg"
+            alt="vite icon"
+            className="size-3 inline"
+          />
+          ) & Tailwind{" "}
+          <img
+            src="https://tailwindcss.com/_next/static/media/tailwindcss-mark.96ee6a5a.svg"
+            alt="tailwind icon"
+            className="size-4 inline"
+          />
+        </p>
+      </div>
     </section>
   );
 }

@@ -2,8 +2,8 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { TasksProvider } from "./TasksProvider";
-import { useTasks } from "../hooks/useTasks";
-import type { TaskType } from "../types/task";
+import type { TaskType } from "../../types/task";
+import { useTasks } from "../../hooks/useTasks";
 
 // Mock useLocalStorageState
 vi.mock("use-local-storage-state", () => ({
