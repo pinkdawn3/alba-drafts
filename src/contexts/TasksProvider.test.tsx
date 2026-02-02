@@ -7,7 +7,7 @@ import type { TaskType } from "../types/task";
 
 // Mock useLocalStorageState
 vi.mock("use-local-storage-state", () => ({
-  default: <T,>(key: string, options: { defaultValue: T }) => {
+  default: <T,>(_key: string, options: { defaultValue: T }) => {
     let value = options.defaultValue;
     const setValue = (newValue: T | ((prev: T) => T)) => {
       value =

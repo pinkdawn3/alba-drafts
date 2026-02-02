@@ -18,7 +18,6 @@ export function renderWithProviders(ui: React.ReactElement) {
     <HashRouter>
       <PreferencesProvider>
         <TasksProvider>
-          {" "}
           <I18nProvider i18n={i18n}>{ui}</I18nProvider>
         </TasksProvider>
       </PreferencesProvider>
