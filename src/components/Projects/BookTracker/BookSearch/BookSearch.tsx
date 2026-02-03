@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type {
   BookType,
   GoogleBook,
@@ -11,17 +11,26 @@ import { useBooks } from "../../../../hooks/useBooks";
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
 
 const searchBooks = async (query: string): Promise<GoogleBooksResponse> => {
-  if (!query) return { kind: "books#volumes", totalItems: 0, items: [] };
+  if (!query || query.length <= 2) {
+    return { kind: "books#volumes", totalItems: 0, items: [] };
+  }
 
-  // Language or country restrictions for some reason don't work :c I guess it's because it's coming from the front-end instead of server-side
-  const response = await fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&printType=books&orderBy=relevance&maxResults=40&key=${API_KEY}`,
-  );
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&printType=books&orderBy=relevance&maxResults=40&key=${API_KEY}`;
+
+  console.log("Fetching URL:", url); // See the actual URL
+
+  const response = await fetch(url);
+
+  console.log("Response status:", response.status); // Check status code
 
   if (!response.ok) {
     throw new Error("Failed to fetch books");
   }
-  return response.json();
+
+  const data = await response.json();
+  console.log("API Response:", data);
+
+  return data;
 };
 
 const getUniqueBooks = (books?: GoogleBook[]) => {
@@ -35,6 +44,9 @@ const getUniqueBooks = (books?: GoogleBook[]) => {
     const key = `${title}-${author}`;
     const image = book.volumeInfo.imageLinks;
 
+    /* console.log("title", book.volumeInfo.title);
+    console.log("img", book.volumeInfo.imageLinks);
+ */
     if (image == undefined) {
       return false;
     }
@@ -130,14 +142,28 @@ function BookGallery({ books }: BookGalleryProp) {
 
 function BookSearch() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+
+  // Debounce the search term
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 500); // Wait 500ms after user stops typing
+
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["books", searchTerm],
-    queryFn: () => searchBooks(searchTerm),
-    enabled: searchTerm.length > 2,
+    queryKey: ["books", debouncedSearchTerm],
+    queryFn: () => searchBooks(debouncedSearchTerm),
+    enabled: debouncedSearchTerm.length > 2,
+    staleTime: 0, // Changed to 0
+    gcTime: 0, // Add this - don't cache results
   });
 
   const uniqueBooks = getUniqueBooks(data?.items);
+
+  //console.log(uniqueBooks);
 
   return (
     <div className="w-full">
