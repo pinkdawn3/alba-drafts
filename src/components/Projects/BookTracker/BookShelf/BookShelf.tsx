@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useBooks } from "../../../../hooks/useBooks";
-import { BookStatuses, type BookStatus } from "../../../../types/book";
+import {
+  BookStatuses,
+  type BookStatus,
+  type BookType,
+} from "../../../../types/book";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import {
   DragDropContext,
@@ -8,9 +13,12 @@ import {
   Droppable,
   type DropResult,
 } from "@hello-pangea/dnd";
+import BookPage from "../BookPage/BookPage";
 
 function BookShelf() {
   const { getBooks, dispatch } = useBooks();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
 
   const normalizeString = (string: string) => {
     return string.replace("-", " ");
@@ -20,6 +28,14 @@ function BookShelf() {
     dispatch({
       type: "remove",
       id: bookId,
+    });
+  };
+
+  const handleUpdateBook = (bookId: string, changes: Partial<BookType>) => {
+    dispatch({
+      type: "update",
+      id: bookId,
+      changes,
     });
   };
 
@@ -47,6 +63,16 @@ function BookShelf() {
         status: destination.droppableId as BookStatus,
       },
     });
+  };
+
+  const handleBookClick = (bookId: string) => {
+    setSelectedBookId(bookId);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedBookId(null);
   };
 
   const books = getBooks();
@@ -82,34 +108,49 @@ function BookShelf() {
                             {...provided.dragHandleProps}
                           >
                             <article className="relative overflow-hidden bg-zinc-700 rounded-lg w-32 sm:w-48 mb-3">
-                              <div className="relative flex flex-col justify-center items-center group">
-                                <img
-                                  className="w-full h-44 sm:h-64 object-cover group-hover:opacity-50 transition"
-                                  alt={filteredBook.title}
-                                  src={filteredBook.img}
-                                />
-                                <button
-                                  type="button"
-                                  aria-label="delete book"
-                                  className="absolute top-3 right-1 -translate-x-1 -translate-y-1 p-1.5 bg-black/20 hover:bg-black/30 active:bg-black/40  border border-dashed border-white rounded-lg opacity-0 group-hover:opacity-100 transition"
-                                  onClick={() =>
-                                    handleDeleteBook(filteredBook.id)
-                                  }
+                              <button
+                                type="button"
+                                aria-label="book button"
+                                className="object-cover w-full"
+                                onClick={() => handleBookClick(filteredBook.id)}
+                              >
+                                <div
+                                  aria-label="book button"
+                                  className="object-cover"
                                 >
-                                  <FontAwesomeIcon icon={faTrash} />
-                                </button>
-                              </div>
-                              <div className="p-2 sm:p-4">
-                                <h3
-                                  className="font-bold text-xs sm:text-sm line-clamp-2 mb-2"
-                                  title={filteredBook.title}
-                                >
-                                  {filteredBook.title}
-                                </h3>
-                                <p className="text-xs text-gray-400 line-clamp-1">
-                                  {filteredBook.authors?.join(", ")}
-                                </p>
-                              </div>
+                                  <div
+                                    aria-label="book"
+                                    className="relative flex flex-col justify-center items-center group"
+                                  >
+                                    <img
+                                      className="w-full h-44 sm:h-64 object-cover group-hover:opacity-50 transition"
+                                      alt={filteredBook.title}
+                                      src={filteredBook.img}
+                                    />
+                                    <button
+                                      type="button"
+                                      aria-label="delete book"
+                                      className="absolute top-3 right-1 -translate-x-1 -translate-y-1 p-1.5 bg-black/20 hover:bg-black/30 active:bg-black/40  border border-dashed border-white rounded-lg opacity-0 group-hover:opacity-100 transition"
+                                      onClick={() =>
+                                        handleDeleteBook(filteredBook.id)
+                                      }
+                                    >
+                                      <FontAwesomeIcon icon={faTrash} />
+                                    </button>
+                                  </div>
+                                  <div className="p-2 sm:p-4">
+                                    <h3
+                                      className="font-bold text-xs sm:text-sm line-clamp-2 mb-2"
+                                      title={filteredBook.title}
+                                    >
+                                      {filteredBook.title}
+                                    </h3>
+                                    <p className="text-xs text-gray-400 line-clamp-1">
+                                      {filteredBook.authors?.join(", ")}
+                                    </p>
+                                  </div>
+                                </div>
+                              </button>
                             </article>
                           </div>
                         )}
@@ -122,6 +163,13 @@ function BookShelf() {
           </Droppable>
         ))}
       </DragDropContext>
+      {isModalOpen && selectedBookId && (
+        <BookPage
+          bookId={selectedBookId}
+          onClose={handleCloseModal}
+          onUpdate={handleUpdateBook}
+        />
+      )}
     </div>
   );
 }
