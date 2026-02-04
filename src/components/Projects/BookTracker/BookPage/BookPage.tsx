@@ -4,6 +4,8 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarEmpty } from "@fortawesome/free-regular-svg-icons";
 import { useBooks } from "../../../../hooks/useBooks";
 import { Dropdown } from "../../../../utils/Dropdown";
+import { i18n } from "@lingui/core";
+import { Trans } from "@lingui/react/macro";
 
 interface StarRatingProps {
   bookId: string;
@@ -41,7 +43,6 @@ interface BookPageProps {
 function BookPage({ bookId, onUpdate, onClose }: BookPageProps) {
   const { getBooks } = useBooks();
   const book = getBooks().find((b) => b.id === bookId);
-
   if (!book) return null;
 
   return (
@@ -50,23 +51,31 @@ function BookPage({ bookId, onUpdate, onClose }: BookPageProps) {
       onClick={onClose}
     >
       <div
-        className="w-full sm:w-3/4 lg:w-3/4 xl:w-2/3 2xl:w-1/2 max-h-[95vh] overflow-y-auto py-4 sm:py-5 px-4 sm:px-10 flex flex-col bg-background rounded-2xl"
+        className="w-full sm:w-[90%] md:w-[85%] lg:w-3/4 xl:w-2/3 2xl:w-1/2 max-h-[95vh] overflow-y-auto py-4 sm:py-6 px-4 sm:px-6 md:px-8 lg:px-10 flex flex-col bg-background rounded-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="space-y-4 sm:space-y-5">
+          {/* Title Section */}
           <div>
-            <h1 className="font-semibold text-lg sm:text-xl">{book.title}</h1>
-            <p className="text-sm sm:text-base text-gray-400">{book.authors}</p>
+            <h1 className="font-semibold text-lg sm:text-xl md:text-2xl">
+              {book.title}
+            </h1>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400">
+              {book.authors}
+            </p>
           </div>
 
-          <div className="flex flex-col md:flex-row md:space-x-5 space-y-4 sm:space-y-0">
+          {/* Content Section */}
+          <div className="flex flex-col md:flex-row md:gap-6 lg:gap-8 space-y-4 md:space-y-0">
+            {/* Book Image */}
             <img
               src={book.img}
               alt={book.title}
-              className="rounded-3xl w-48 md:w-64 mx-auto sm:mx-0 object-cover shrink-0"
+              className="rounded-2xl w-40 sm:w-48 md:w-56 lg:w-64 mx-auto md:mx-0 object-cover shrink-0"
             />
 
-            <div className="w-full flex-1 text-font space-y-3 sm:space-y-4 sm: px-10">
+            {/* Book Details */}
+            <div className="w-full flex-1 text-font space-y-3 sm:space-y-4">
               <Dropdown
                 value={book.status}
                 options={BookStatuses}
@@ -75,33 +84,45 @@ function BookPage({ bookId, onUpdate, onClose }: BookPageProps) {
                 }
               />
 
-              <p className="text-justify text-sm sm:text-base">
+              <p className="text-justify text-sm sm:text-base leading-relaxed">
                 {book.description}
               </p>
 
-              <StarRating
-                rating={book.rating}
-                bookId={book.id}
-                onUpdate={onUpdate}
-              />
+              <div>
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
+                  <Trans>Rating</Trans>:
+                </p>
+                <StarRating
+                  rating={book.rating}
+                  bookId={book.id}
+                  onUpdate={onUpdate}
+                />
+              </div>
 
-              <textarea
-                placeholder="Write a review..."
-                value={book.review}
-                rows={4}
-                className="border border-white rounded-lg p-2 w-full text-sm sm:text-base bg-transparent"
-                onChange={(e) => onUpdate(bookId, { review: e.target.value })}
-              />
+              <div>
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
+                  <Trans>Review</Trans>:
+                </p>
+                <textarea
+                  placeholder={i18n._("Write a review...")}
+                  value={book.review}
+                  rows={4}
+                  className="border border-gray-600 rounded-lg p-2 sm:p-3 w-full text-sm sm:text-base bg-transparent focus:outline-none focus:border-primary transition resize-none"
+                  onChange={(e) => onUpdate(bookId, { review: e.target.value })}
+                />
+              </div>
             </div>
           </div>
 
+          {/* Close Button */}
           <button
             type="button"
             title="Close Button"
             onClick={onClose}
-            className="w-full sm:w-auto py-2 px-4 text-white font-bold bg-primary hover:bg-primaryHover rounded-lg transition"
+            className="w-full sm:w-auto py-2 sm:py-2.5 px-6 text-sm sm:text-base text-white font-bold bg-primary hover:bg-primaryHover rounded-lg transition mt-2"
           >
-            Go back
+            {" "}
+            <Trans>Close</Trans>
           </button>
         </div>
       </div>

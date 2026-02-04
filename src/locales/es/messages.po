@@ -41,6 +41,16 @@ msgstr "Se encarga..."
 msgid "Assign person..."
 msgstr "Se encarga..."
 
+#. js-lingui-explicit-id
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:174
+msgid "Search books..."
+msgstr "Buscar libros..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:105
+msgid "Write a review..."
+msgstr "Añade una reseña..."
+
 #: src/components/Projects/Shop/Cart/Cart.tsx:121
 msgid " Remove"
 msgstr "Eliminar"
@@ -49,7 +59,7 @@ msgstr "Eliminar"
 msgid "...or download it in "
 msgstr "...o descárgalo en "
 
-#: src/components/Header/Header.tsx:56
+#: src/components/Header/Header.tsx:66
 msgid "About me"
 msgstr "Sobre mí"
 
@@ -61,6 +71,10 @@ msgstr "Sobre mí"
 msgid "Add to Cart"
 msgstr "Añadir a la cesta"
 
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:123
+msgid "Add to shelf"
+msgstr "Añadir a estantería"
+
 #: src/pages/About.tsx:68
 msgid "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
 msgstr "Sin embargo, por el camino descubrí un amor por el desarrollo web y de front-end que no esperaba encontrar. Y así llegamos hasta hoy. Esta página web es el producto de mi entusiasmo por seguir aprendiendo y desarrollar mis capacidades."
@@ -69,13 +83,25 @@ msgstr "Sin embargo, por el camino descubrí un amor por el desarrollo web y de 
 msgid "Assigned to"
 msgstr "Responsable"
 
+#: src/components/Header/Header.tsx:58
+msgid "Book Tracker"
+msgstr "Biblioteca Virtual"
+
+#: src/components/Projects/BookTracker/BookDashboard.tsx:39
+msgid "Books"
+msgstr "Libros"
+
 #: src/components/Projects/Shop/Cart/Cart.tsx:60
 msgid "Cart"
 msgstr "Cesta"
 
-#: src/pages/Home.tsx:22
+#: src/pages/Home.tsx:24
 msgid "Check the repo in Github"
 msgstr "Echa un vistazo al repo en Github"
+
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:123
+msgid "Close"
+msgstr "Cerrar"
 
 #: src/components/Projects/TaskManager/Table/Table.tsx:311
 msgid "Completed"
@@ -101,7 +127,7 @@ msgstr "Descarga mi CV"
 msgid "English"
 msgstr "Inglés"
 
-#: src/pages/Home.tsx:7
+#: src/pages/Home.tsx:9
 msgid "Hello!"
 msgstr "¡Hola!"
 
@@ -117,7 +143,7 @@ msgstr "Llegó un punto en el que me sentí atascada, así que decidí reinventa
 #~ msgid "Language"
 #~ msgstr "Idioma"
 
-#: src/pages/Home.tsx:11
+#: src/pages/Home.tsx:13
 msgid "My name is Alba, and I'm a front-end developer! <0/> This website is a porfolio with the things I know how to do."
 msgstr "¡Me llamo Alba, y soy una desarolladora de front-end! <0/> Esta página es un porfolio con las cosas que sé hacer."
 
@@ -145,6 +171,22 @@ msgstr "Productos"
 #: src/components/Header/Header.tsx:23
 msgid "Projects"
 msgstr "Proyectos"
+
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:91
+msgid "Rating"
+msgstr "Puntuación"
+
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:102
+msgid "Review"
+msgstr "Reseña"
+
+#: src/utils/SearchBar.tsx:56
+msgid "Search"
+msgstr "Buscar"
+
+#: src/components/Projects/BookTracker/BookDashboard.tsx:49
+msgid "Shelf"
+msgstr "Estantería"
 
 #: src/components/Header/Header.tsx:38
 msgid "Shop"

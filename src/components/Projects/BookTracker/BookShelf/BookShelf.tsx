@@ -1,32 +1,36 @@
 import { useState } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useBooks } from "../../../../hooks/useBooks";
-import {
-  BookStatuses,
-  type BookStatus,
-  type BookType,
-} from "../../../../types/book";
-import {
-  faTrash,
-  faGripVertical as faGrip,
-} from "@fortawesome/free-solid-svg-icons";
 import {
   DragDropContext,
   Draggable,
   Droppable,
   type DropResult,
 } from "@hello-pangea/dnd";
+
+import {
+  faTrash,
+  faGripVertical as faGrip,
+} from "@fortawesome/free-solid-svg-icons";
+
 import BookPage from "../BookPage/BookPage";
+
 import "./BookShelf.css";
+
+import { useBooks } from "../../../../hooks/useBooks";
+
+import {
+  BookStatuses,
+  type BookStatus,
+  type BookType,
+} from "../../../../types/book";
+import { useTranslate } from "../../../../hooks/useTranslations";
 
 function BookShelf() {
   const { getBooks, dispatch } = useBooks();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
-
-  const normalizeString = (string: string) => {
-    return string.replace("-", " ");
-  };
+  const t = useTranslate();
 
   const handleDeleteBook = (bookId: string) => {
     dispatch({
@@ -97,11 +101,11 @@ function BookShelf() {
                 className="w-full md:flex-1 rounded-lg p-4 md:min-w-75 flex flex-col mb-6"
               >
                 <h3 className="text-lg font-semibold mb-4 capitalize">
-                  {normalizeString(bookStatus)}
+                  {t(bookStatus)}
                 </h3>
 
                 {/* Div that controls the shelf */}
-                <div className="shelf-container">
+                <div className="shelf-container ">
                   {books
                     .filter((book) => book.status == bookStatus)
                     .map((filteredBook, index) => (
@@ -117,7 +121,7 @@ function BookShelf() {
                             className="shrink-0"
                             style={provided.draggableProps.style}
                           >
-                            <article className="relative overflow-hidden bg-zinc-700 rounded-lg w-32 sm:w-48 mb-3">
+                            <article className="relative overflow-hidden bg-indigo-200 dark:bg-zinc-700 rounded-lg w-32 sm:w-48 mb-3">
                               <div className="relative flex flex-col justify-center items-center group">
                                 <button
                                   type="button"
@@ -140,7 +144,10 @@ function BookShelf() {
                                   className="absolute top-3 left-1 p-1 cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition bg-black/20 rounded-lg border border-dashed border-white"
                                   aria-label="drag handle"
                                 >
-                                  <FontAwesomeIcon icon={faGrip} />
+                                  <FontAwesomeIcon
+                                    icon={faGrip}
+                                    color="white"
+                                  />
                                 </div>
 
                                 <button
@@ -152,7 +159,10 @@ function BookShelf() {
                                     handleDeleteBook(filteredBook.id);
                                   }}
                                 >
-                                  <FontAwesomeIcon icon={faTrash} />
+                                  <FontAwesomeIcon
+                                    icon={faTrash}
+                                    color="white"
+                                  />
                                 </button>
                               </div>
 
@@ -164,12 +174,12 @@ function BookShelf() {
                               >
                                 <div className="p-2 sm:p-4">
                                   <h3
-                                    className="font-bold text-xs sm:text-sm line-clamp-2 mb-2"
+                                    className="font-bold text-xs sm:text-sm line-clamp-2 mb-2 h-8 sm:h-10 text-font"
                                     title={filteredBook.title}
                                   >
                                     {filteredBook.title}
                                   </h3>
-                                  <p className="text-xs text-gray-400 line-clamp-1">
+                                  <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1 h-4 sm:h-5">
                                     {filteredBook.authors?.join(", ")}
                                   </p>
                                 </div>

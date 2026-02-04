@@ -1,3 +1,5 @@
+import { Trans } from "@lingui/react/macro";
+
 interface SearchBarProps {
   value: string;
   onChange: (value: string) => void;
@@ -51,7 +53,7 @@ function SearchBar({ value, onChange, placeholder, onSubmit }: SearchBarProps) {
           type="submit"
           className="absolute end-1.5 bottom-2 text-white bg-primary hover:bg-primaryHover box-border border border-transparent focus:ring-2 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-lg text-xs px-2 py-1 focus:outline-none"
         >
-          Search
+          <Trans>Search</Trans>
         </button>
       </div>
     </form>

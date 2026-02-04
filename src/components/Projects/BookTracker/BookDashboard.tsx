@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BookSearch from "./BookSearch/BookSearch";
 import BookShelf from "./BookShelf/BookShelf";
+import { Trans } from "@lingui/react/macro";
 
 function BookDashboard() {
   const [tab, setTab] = useState("search");
@@ -35,7 +36,7 @@ function BookDashboard() {
               onClick={() => setTab("search")}
               className={getTabClassName("search")}
             >
-              Books
+              <Trans>Books</Trans>
             </button>
           </li>
           <li className="me-2">
@@ -45,7 +46,7 @@ function BookDashboard() {
               onClick={() => setTab("shelf")}
               className={getTabClassName("shelf")}
             >
-              Shelf
+              <Trans>Shelf</Trans>
             </button>
           </li>
         </ul>

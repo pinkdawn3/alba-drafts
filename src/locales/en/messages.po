@@ -41,6 +41,16 @@ msgstr "Add person..."
 msgid "Assign person..."
 msgstr "Assign person..."
 
+#. js-lingui-explicit-id
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:174
+msgid "Search books..."
+msgstr "Search books..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:105
+msgid "Write a review..."
+msgstr "Write a review..."
+
 #: src/components/About/About.tsx:60
 #~ msgid " I felt stuck so I decided to reinvent myself. Apart from languages, my other great passion since I was a child was computers. So, I studied software development with my initial intention being working on Game Development."
 #~ msgstr " I felt stuck so I decided to reinvent myself. Apart from languages, my other great passion since I was a child was computers. So, I studied software development with my initial intention being working on Game Development."
@@ -57,7 +67,7 @@ msgstr " Remove"
 msgid "...or download it in "
 msgstr "...or download it in "
 
-#: src/components/Header/Header.tsx:56
+#: src/components/Header/Header.tsx:66
 msgid "About me"
 msgstr "About me"
 
@@ -69,6 +79,10 @@ msgstr "About Me"
 msgid "Add to Cart"
 msgstr "Add to Cart"
 
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:123
+msgid "Add to shelf"
+msgstr "Add to shelf"
+
 #: src/pages/About.tsx:68
 msgid "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
 msgstr "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
@@ -77,13 +91,25 @@ msgstr "Along the way, however, I uncovered a passion for web development and fr
 msgid "Assigned to"
 msgstr "Assigned to"
 
+#: src/components/Header/Header.tsx:58
+msgid "Book Tracker"
+msgstr "Book Tracker"
+
+#: src/components/Projects/BookTracker/BookDashboard.tsx:39
+msgid "Books"
+msgstr "Books"
+
 #: src/components/Projects/Shop/Cart/Cart.tsx:60
 msgid "Cart"
 msgstr "Cart"
 
-#: src/pages/Home.tsx:22
+#: src/pages/Home.tsx:24
 msgid "Check the repo in Github"
 msgstr "Check the repo in Github"
+
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:123
+msgid "Close"
+msgstr "Close"
 
 #: src/components/Projects/TaskManager/Table/Table.tsx:311
 msgid "Completed"
@@ -109,7 +135,7 @@ msgstr "Download CV"
 msgid "English"
 msgstr "English"
 
-#: src/pages/Home.tsx:7
+#: src/pages/Home.tsx:9
 msgid "Hello!"
 msgstr "Hello!"
 
@@ -125,7 +151,7 @@ msgstr "I felt stuck so I decided to reinvent myself. Apart from languages, my o
 #~ msgid "Language"
 #~ msgstr "Language"
 
-#: src/pages/Home.tsx:11
+#: src/pages/Home.tsx:13
 msgid "My name is Alba, and I'm a front-end developer! <0/> This website is a porfolio with the things I know how to do."
 msgstr "My name is Alba, and I'm a front-end developer! <0/> This website is a porfolio with the things I know how to do."
 
@@ -153,6 +179,22 @@ msgstr "Products"
 #: src/components/Header/Header.tsx:23
 msgid "Projects"
 msgstr "Projects"
+
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:91
+msgid "Rating"
+msgstr "Rating"
+
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:102
+msgid "Review"
+msgstr "Review"
+
+#: src/utils/SearchBar.tsx:56
+msgid "Search"
+msgstr "Search"
+
+#: src/components/Projects/BookTracker/BookDashboard.tsx:49
+msgid "Shelf"
+msgstr "Shelf"
 
 #: src/components/Header/Header.tsx:38
 msgid "Shop"

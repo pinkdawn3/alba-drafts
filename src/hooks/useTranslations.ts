@@ -19,6 +19,9 @@ const translations = {
     // Label for Checkbox in Kanban
     Completed: "Completed",
     "Mark Completed": "Mark Completed",
+
+    // Headers for shelves in Book gracker
+    paused: "Paused",
   },
   es: {
     low: "Baja",
@@ -34,6 +37,8 @@ const translations = {
 
     Completed: "Terminado",
     "Mark Completed": "Marcar como terminado",
+
+    paused: "En Pausa",
   },
 } as const;
 

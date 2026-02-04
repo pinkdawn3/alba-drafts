@@ -7,6 +7,9 @@ import type {
 } from "../../../../types/book";
 import SearchBar from "../../../../utils/SearchBar";
 import { useBooks } from "../../../../hooks/useBooks";
+import { i18n } from "@lingui/core";
+import Spinner from "../../../Spinner/Spinner";
+import { Trans } from "@lingui/react/macro";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
 
@@ -117,8 +120,8 @@ function BookGallery({ books }: BookGalleryProp) {
               aria-label="add book"
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-1.5 bg-black/20 hover:bg-black/30 active:bg-black/40  border border-dashed border-white rounded-lg opacity-0 group-hover:opacity-100 transition"
               onClick={() => handleSave(book)}
-            >
-              Add to shelf
+            > <Trans>Add to shelf</Trans>
+              
             </button>
           </div>
 
@@ -144,7 +147,7 @@ function BookSearch() {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
 
-  // Debounce the search term
+  // Debounce search term
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
@@ -157,22 +160,20 @@ function BookSearch() {
     queryKey: ["books", debouncedSearchTerm],
     queryFn: () => searchBooks(debouncedSearchTerm),
     enabled: debouncedSearchTerm.length > 2,
-    staleTime: 0, // Changed to 0
-    gcTime: 0, // Add this - don't cache results
+    staleTime: 0,
+    gcTime: 0, // Don't cache results
   });
 
   const uniqueBooks = getUniqueBooks(data?.items);
-
-  //console.log(uniqueBooks);
 
   return (
     <div className="w-full">
       <SearchBar
         value={searchTerm}
         onChange={setSearchTerm}
-        placeholder="Search books..."
+        placeholder={i18n._("Search books...")}
       />
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Spinner />}
       {error && <p>Error: {error.message}</p>}
       <BookGallery books={uniqueBooks || []} />
     </div>
