@@ -1,9 +1,5 @@
 import { useContext } from "react";
-<<<<<<< HEAD
-import { PreferencesContext } from "../contexts/PreferencesContext";
-=======
 import { PreferencesContext } from "../contexts/Preferences/PreferencesContext";
->>>>>>> book-tracker
 
 export function usePreferences() {
   const context = useContext(PreferencesContext);
