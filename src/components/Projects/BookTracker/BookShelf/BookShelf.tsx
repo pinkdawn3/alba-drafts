@@ -6,7 +6,10 @@ import {
   type BookStatus,
   type BookType,
 } from "../../../../types/book";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrash,
+  faGripVertical as faGrip,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   DragDropContext,
   Draggable,
@@ -14,6 +17,7 @@ import {
   type DropResult,
 } from "@hello-pangea/dnd";
 import BookPage from "../BookPage/BookPage";
+import "./BookShelf.css";
 
 function BookShelf() {
   const { getBooks, dispatch } = useBooks();
@@ -54,8 +58,7 @@ function BookShelf() {
       return;
     }
 
-    // Update task status/priority based on destination
-
+    // Otherwise, update status
     dispatch({
       type: "update",
       id: draggableId,
@@ -82,7 +85,11 @@ function BookShelf() {
     <div className="mx-auto max-w-2xl px-4 py-5 sm:px-6 lg:max-w-7xl flex flex-col">
       <DragDropContext onDragEnd={onDragEnd}>
         {BookStatuses.map((bookStatus) => (
-          <Droppable key={bookStatus} droppableId={bookStatus}>
+          <Droppable
+            key={bookStatus}
+            droppableId={bookStatus}
+            direction="horizontal"
+          >
             {(provided) => (
               <div
                 ref={provided.innerRef}
@@ -92,7 +99,9 @@ function BookShelf() {
                 <h3 className="text-lg font-semibold mb-4 capitalize">
                   {normalizeString(bookStatus)}
                 </h3>
-                <div className="shrink-0 border-b-4 border-amber-900 relative before:content-[''] before:absolute before:-bottom-5 before:left-0 before:right-0 before:h-3 before:bg-black/70 before:blur-lg before:-z-10 min-h-60 sm:min-h-80 flex overflow-x-auto overflow-y-hidden gap-3 pb-3">
+
+                {/* Div that controls the shelf */}
+                <div className="shelf-container">
                   {books
                     .filter((book) => book.status == bookStatus)
                     .map((filteredBook, index) => (
@@ -105,7 +114,8 @@ function BookShelf() {
                           <div
                             ref={provided.innerRef}
                             {...provided.draggableProps}
-                            {...provided.dragHandleProps}
+                            className="shrink-0"
+                            style={provided.draggableProps.style}
                           >
                             <article className="relative overflow-hidden bg-zinc-700 rounded-lg w-32 sm:w-48 mb-3">
                               <div className="relative flex flex-col justify-center items-center group">
@@ -124,10 +134,19 @@ function BookShelf() {
                                   />
                                 </button>
 
+                                {/* Drag handle */}
+                                <div
+                                  {...provided.dragHandleProps}
+                                  className="absolute top-3 left-1 p-1 cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition bg-black/20 rounded-lg border border-dashed border-white"
+                                  aria-label="drag handle"
+                                >
+                                  <FontAwesomeIcon icon={faGrip} />
+                                </div>
+
                                 <button
                                   type="button"
                                   aria-label="delete book"
-                                  className="absolute top-3 right-1 p-1.5 bg-black/20 hover:bg-black/30 active:bg-black/40 border border-dashed border-white rounded-lg opacity-0 group-hover:opacity-100 transition z-10"
+                                  className="absolute top-3 right-1 p-1 bg-black/20 hover:bg-black/30 active:bg-black/40 border border-dashed border-white rounded-lg opacity-0 group-hover:opacity-100 transition z-10"
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     handleDeleteBook(filteredBook.id);

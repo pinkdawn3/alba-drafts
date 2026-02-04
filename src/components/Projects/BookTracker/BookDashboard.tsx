@@ -48,16 +48,6 @@ function BookDashboard() {
               Shelf
             </button>
           </li>
-          <li className="me-2">
-            <button
-              type="button"
-              aria-label="user"
-              onClick={() => setTab("user")}
-              className={getTabClassName("user")}
-            >
-              User
-            </button>
-          </li>
         </ul>
       </div>
       <div className="py-10">{toggleTab(tab)}</div>

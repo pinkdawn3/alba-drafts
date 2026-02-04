@@ -50,7 +50,7 @@ function BookPage({ bookId, onUpdate, onClose }: BookPageProps) {
       onClick={onClose}
     >
       <div
-        className="w-full sm:w-3/4 lg:w-1/2 max-h-[95vh] overflow-y-auto py-4 sm:py-5 px-4 sm:px-10 flex flex-col bg-background rounded-2xl"
+        className="w-full sm:w-3/4 lg:w-3/4 xl:w-2/3 2xl:w-1/2 max-h-[95vh] overflow-y-auto py-4 sm:py-5 px-4 sm:px-10 flex flex-col bg-background rounded-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="space-y-4 sm:space-y-5">
@@ -59,11 +59,11 @@ function BookPage({ bookId, onUpdate, onClose }: BookPageProps) {
             <p className="text-sm sm:text-base text-gray-400">{book.authors}</p>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:space-x-5 space-y-4 sm:space-y-0">
+          <div className="flex flex-col md:flex-row md:space-x-5 space-y-4 sm:space-y-0">
             <img
               src={book.img}
               alt={book.title}
-              className="rounded-3xl w-48 sm:w-64 mx-auto sm:mx-0 object-cover shrink-0"
+              className="rounded-3xl w-48 md:w-64 mx-auto sm:mx-0 object-cover shrink-0"
             />
 
             <div className="w-full flex-1 text-font space-y-3 sm:space-y-4 sm: px-10">
