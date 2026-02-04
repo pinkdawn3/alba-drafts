@@ -27,12 +27,21 @@ export const Dropdown = <T extends string>({
 
   const t = useTranslate();
 
+<<<<<<< HEAD
+=======
+  console.log(options);
+
+>>>>>>> book-tracker
   return (
     <Menu as="div" className="relative inline-block text-left">
       <MenuButton className={userStyle}>{t(value)}</MenuButton>
       <MenuItems
         anchor={userPosition}
+<<<<<<< HEAD
         className="absolute z-10 mt-2 w-32 bg-header rounded shadow"
+=======
+        className="absolute z-100 mt-2 w-32 bg-header rounded shadow"
+>>>>>>> book-tracker
       >
         {options.map((option) => (
           <MenuItem key={option} as="div">

@@ -18,6 +18,7 @@ import { messages as esMessages } from "./locales/es/messages.ts";
 
 import { usePreferences } from "./hooks/usePreferences.tsx";
 import { Toaster } from "react-hot-toast";
+import BookDashboard from "./components/Projects/BookTracker/BookDashboard.tsx";
 
 i18n.load("en", enMessages);
 i18n.load("es", esMessages);
@@ -39,7 +40,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects/shop" element={<Products />} />
           <Route path="/projects/shop/cart" element={<Cart />} />
-          <Route path="/projects/taskManager" element={<TaskManager />} />
+          <Route path="/projects/task-manager" element={<TaskManager />} />
+          <Route path="/projects/book-tracker" element={<BookDashboard />} />
         </Routes>
       </I18nProvider>
     </>
