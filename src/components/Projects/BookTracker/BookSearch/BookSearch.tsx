@@ -85,7 +85,7 @@ function BookGallery({ books }: BookGalleryProp) {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   const handleSave = (googleBook: GoogleBook) => {
-    toast("Book added to Shelf.", {
+    toast(i18n._("Book added to Shelf."), {
       position: "top-center",
     });
     const book: BookType = {

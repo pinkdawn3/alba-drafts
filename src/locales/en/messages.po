@@ -14,22 +14,16 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:88
+msgid "Book added to Shelf."
+msgstr "Book added to Shelf."
+
+#. js-lingui-explicit-id
 #: src/components/Projects/TaskManager/Kanban/Kanban.tsx:75
 #: src/components/Projects/TaskManager/Table/Table.tsx:101
 #: src/components/Projects/TaskManager/Table/Table.tsx:182
 msgid "Introduce task..."
 msgstr "Introduce task..."
-
-#. js-lingui-explicit-id
-#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:88
-msgid "Assign to..."
-msgstr "Assign to..."
-
-#. js-lingui-explicit-id
-#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:113
-#: src/components/Projects/TaskManager/Table/Table.tsx:223
-msgid "Input date..."
-msgstr "Input date..."
 
 #. js-lingui-explicit-id
 #: src/components/Projects/TaskManager/Table/Table.tsx:113
@@ -42,14 +36,25 @@ msgid "Assign person..."
 msgstr "Assign person..."
 
 #. js-lingui-explicit-id
-#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:174
-msgid "Search books..."
-msgstr "Search books..."
+#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:113
+#: src/components/Projects/TaskManager/Table/Table.tsx:223
+msgid "Input date..."
+msgstr "Input date..."
 
 #. js-lingui-explicit-id
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:105
+#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:88
+msgid "Assign to..."
+msgstr "Assign to..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:107
 msgid "Write a review..."
 msgstr "Write a review..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:203
+msgid "Search books..."
+msgstr "Search books..."
 
 #: src/components/About/About.tsx:60
 #~ msgid " I felt stuck so I decided to reinvent myself. Apart from languages, my other great passion since I was a child was computers. So, I studied software development with my initial intention being working on Game Development."
@@ -79,7 +84,7 @@ msgstr "About Me"
 msgid "Add to Cart"
 msgstr "Add to Cart"
 
-#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:123
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:153
 msgid "Add to shelf"
 msgstr "Add to shelf"
 
@@ -107,7 +112,7 @@ msgstr "Cart"
 msgid "Check the repo in Github"
 msgstr "Check the repo in Github"
 
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:123
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:125
 msgid "Close"
 msgstr "Close"
 
@@ -180,11 +185,11 @@ msgstr "Products"
 msgid "Projects"
 msgstr "Projects"
 
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:91
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:93
 msgid "Rating"
 msgstr "Rating"
 
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:102
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:104
 msgid "Review"
 msgstr "Review"
 
