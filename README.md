@@ -39,7 +39,7 @@ I built this to practice **useReducer** and get better at testing with **Vitest*
 
 ---
 
-### Book Tracker _(currently building this!)_
+### Book Tracker (currently adding more features to this!)
 
 Track what you're reading, want to read, and have finished.
 
@@ -49,7 +49,7 @@ Track what you're reading, want to read, and have finished.
 - Track your reading progress
 - Organize books into shelves
 
-Learning **React Query** with this one, plus getting comfortable working with external APIs.
+With this I learned **React Query** with this one, as well as manage external APIs. And how to delete commit history when you accidentaly upload an .env file because you didn't realize it got added when switching branches 😔.
 
 ## Built with
 
@@ -59,6 +59,7 @@ Learning **React Query** with this one, plus getting comfortable working with ex
 - **Vitest** - making sure things actually work
 - **React Router** - getting around the site
 - **Lingui** - bilingual support (English/Spanish)
+- **React Query** - fetching APIs
 
 ### Other stuff
 
