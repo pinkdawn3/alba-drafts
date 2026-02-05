@@ -14,7 +14,7 @@ function SearchBar({ value, onChange, placeholder, onSubmit }: SearchBarProps) {
   };
 
   return (
-    <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
+    <form className="max-w-md mx-auto px-4 sm:px-0" onSubmit={handleSubmit}>
       <label
         htmlFor="search"
         className="block mb-2.5 text-sm font-medium text-heading sr-only "

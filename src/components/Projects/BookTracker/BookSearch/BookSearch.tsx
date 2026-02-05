@@ -10,6 +10,7 @@ import { useBooks } from "../../../../hooks/useBooks";
 import { i18n } from "@lingui/core";
 import Spinner from "../../../Spinner/Spinner";
 import { Trans } from "@lingui/react/macro";
+import toast from "react-hot-toast";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
 
@@ -81,8 +82,12 @@ interface BookGalleryProp {
 
 function BookGallery({ books }: BookGalleryProp) {
   const { dispatch } = useBooks();
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   const handleSave = (googleBook: GoogleBook) => {
+    toast(i18n._("Book added to Shelf."), {
+      position: "top-center",
+    });
     const book: BookType = {
       id: googleBook.id,
       title: googleBook.volumeInfo.title,
@@ -102,40 +107,64 @@ function BookGallery({ books }: BookGalleryProp) {
     }
   };
 
+  const toggleMobileVisibility = (bookId: string) => {
+    setActiveCardId(activeCardId === bookId ? null : bookId);
+  };
+
   return (
-    <div className="p-1 flex flex-wrap items-center justify-center">
+    <div className="py-7 mx-10 flex flex-wrap items-center justify-center gap-5">
       {books.map((book: GoogleBook) => (
         <article
           key={book.id}
-          className="shrink-0 m-6 relative overflow-hidden bg-zinc-700 rounded-lg w-48 shadow-lg"
+          className="relative overflow-hidden bg-indigo-200 dark:bg-zinc-700 rounded-lg w-32 sm:w-48 mb-3"
+          onTouchStart={() => toggleMobileVisibility(book.id)}
         >
           <div className="relative flex flex-col justify-center items-center group">
-            <img
-              className="w-full h-64 object-cover group-hover:opacity-50 transition"
-              alt={book.volumeInfo.title}
-              src={getLargerImage(book.volumeInfo.imageLinks?.thumbnail)}
-            />
-            <button
-              type="button"
-              aria-label="add book"
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-1.5 bg-black/20 hover:bg-black/30 active:bg-black/40  border border-dashed border-white rounded-lg opacity-0 group-hover:opacity-100 transition"
-              onClick={() => handleSave(book)}
-            > <Trans>Add to shelf</Trans>
-              
-            </button>
-          </div>
+            <div className="w-full relative">
+              <button
+                type="button"
+                aria-label="view book details"
+                className="w-full"
+              >
+                <img
+                  className={`w-full h-44 sm:h-64 object-cover transition ${
+                    activeCardId === book.id
+                      ? "opacity-50"
+                      : "group-hover:opacity-50"
+                  }`}
+                  alt={book.volumeInfo.title}
+                  src={getLargerImage(book.volumeInfo.imageLinks?.thumbnail)}
+                />
+              </button>
 
-          <div className="p-4">
-            {/* TODO: create hook for tooltip on ellipsis */}
-            <h3
-              className="font-bold text-sm line-clamp-2 mb-2"
-              title={book.volumeInfo.title}
-            >
-              {book.volumeInfo.title}
-            </h3>
-            <p className="text-xs text-gray-400 line-clamp-1">
-              {book.volumeInfo.authors?.join(", ")}
-            </p>
+              <button
+                type="button"
+                aria-label="add book"
+                className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-1.5 bg-black/20 hover:bg-black/30 active:bg-black/40 border border-dashed border-white rounded-lg transition ${
+                  activeCardId === book.id
+                    ? "opacity-100"
+                    : "opacity-0 sm:group-hover:opacity-100"
+                }`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleSave(book);
+                }}
+              >
+                <Trans>Add to shelf</Trans>
+              </button>
+            </div>
+
+            <div className="p-2 sm:p-4">
+              <h3
+                className="font-bold text-xs sm:text-sm line-clamp-2 mb-2 h-8 sm:h-10 text-font"
+                title={book.volumeInfo.title}
+              >
+                {book.volumeInfo.title}
+              </h3>
+              <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1 h-4 sm:h-5">
+                {book.volumeInfo.authors?.join(", ")}
+              </p>
+            </div>
           </div>
         </article>
       ))}
