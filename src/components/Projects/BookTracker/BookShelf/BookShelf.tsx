@@ -11,6 +11,7 @@ import {
 import {
   faTrash,
   faGripVertical as faGrip,
+  faBookOpen,
 } from "@fortawesome/free-solid-svg-icons";
 
 import BookPage from "../BookPage/BookPage";
@@ -28,8 +29,11 @@ import { useTranslate } from "../../../../hooks/useTranslations";
 
 function BookShelf() {
   const { getBooks, dispatch } = useBooks();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
+  const [toggleMobileId, setToggleMobileId] = useState<string | null>(null);
+
   const t = useTranslate();
 
   const handleDeleteBook = (bookId: string) => {
@@ -82,8 +86,11 @@ function BookShelf() {
     setSelectedBookId(null);
   };
 
+  const toggleMobileVisibility = (bookId: string) => {
+    setToggleMobileId(toggleMobileId === bookId ? null : bookId);
+  };
+
   const books = getBooks();
-  console.log(books);
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-5 sm:px-6 lg:max-w-7xl flex flex-col">
@@ -121,27 +128,32 @@ function BookShelf() {
                             className="shrink-0"
                             style={provided.draggableProps.style}
                           >
-                            <article className="relative overflow-hidden bg-indigo-200 dark:bg-zinc-700 rounded-lg w-32 sm:w-48 mb-3">
+                            <article
+                              key={filteredBook.id}
+                              className="relative overflow-hidden bg-indigo-200 dark:bg-zinc-700 rounded-lg w-32 sm:w-48 mb-3"
+                              onTouchStart={() =>
+                                toggleMobileVisibility(filteredBook.id)
+                              }
+                            >
                               <div className="relative flex flex-col justify-center items-center group">
-                                <button
-                                  type="button"
-                                  aria-label="view book details"
-                                  className="w-full"
-                                  onClick={() =>
-                                    handleBookClick(filteredBook.id)
-                                  }
-                                >
-                                  <img
-                                    className="w-full h-44 sm:h-64 object-cover group-hover:opacity-50 transition"
-                                    alt={filteredBook.title}
-                                    src={filteredBook.img}
-                                  />
-                                </button>
+                                <img
+                                  className={`w-full h-44 sm:h-64 object-cover transition ${
+                                    toggleMobileId === filteredBook.id
+                                      ? "opacity-50"
+                                      : "group-hover:opacity-50"
+                                  }`}
+                                  alt={filteredBook.title}
+                                  src={filteredBook.img}
+                                />
 
                                 {/* Drag handle */}
                                 <div
                                   {...provided.dragHandleProps}
-                                  className="absolute top-3 left-1 p-1 cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition bg-black/20 rounded-lg border border-dashed border-white"
+                                  className={`absolute top-3 left-1 p-1 cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition bg-black/20 rounded-lg border border-dashed border-white ${
+                                    toggleMobileId === filteredBook.id
+                                      ? "opacity-100"
+                                      : "opacity-0 group-hover:opacity-100"
+                                  }`}
                                   aria-label="drag handle"
                                 >
                                   <FontAwesomeIcon
@@ -153,8 +165,14 @@ function BookShelf() {
                                 <button
                                   type="button"
                                   aria-label="delete book"
-                                  className="absolute top-3 right-1 p-1 bg-black/20 hover:bg-black/30 active:bg-black/40 border border-dashed border-white rounded-lg opacity-0 group-hover:opacity-100 transition z-10"
-                                  onClick={(e) => {
+                                  className={`absolute top-3 right-1 p-1 bg-black/20 hover:bg-black/30 active:bg-black/40 border border-dashed border-white rounded-lg opacity-0 group-hover:opacity-100 transition z-10 
+                                    ${
+                                      toggleMobileId === filteredBook.id
+                                        ? "opacity-100"
+                                        : "opacity-0 group-hover:opacity-100"
+                                    }
+                                      `}
+                                  onMouseDown={(e) => {
                                     e.stopPropagation();
                                     handleDeleteBook(filteredBook.id);
                                   }}
@@ -164,26 +182,40 @@ function BookShelf() {
                                     color="white"
                                   />
                                 </button>
+
+                                <button
+                                  type="button"
+                                  aria-label="open book details"
+                                  className={`absolute bottom-3 right-1 p-1 bg-black/20 hover:bg-black/30 active:bg-black/40 border border-dashed border-white rounded-lg opacity-0 group-hover:opacity-100 transition z-10 
+                                    ${
+                                      toggleMobileId === filteredBook.id
+                                        ? "opacity-100"
+                                        : "opacity-0 group-hover:opacity-100"
+                                    }
+                                      `}
+                                  onMouseDown={(e) => {
+                                    e.stopPropagation();
+                                    handleBookClick(filteredBook.id);
+                                  }}
+                                >
+                                  <FontAwesomeIcon
+                                    icon={faBookOpen}
+                                    color="white"
+                                  />
+                                </button>
                               </div>
 
-                              <button
-                                type="button"
-                                aria-label="view book details"
-                                className="w-full text-left"
-                                onClick={() => handleBookClick(filteredBook.id)}
-                              >
-                                <div className="p-2 sm:p-4">
-                                  <h3
-                                    className="font-bold text-xs sm:text-sm line-clamp-2 mb-2 h-8 sm:h-10 text-font"
-                                    title={filteredBook.title}
-                                  >
-                                    {filteredBook.title}
-                                  </h3>
-                                  <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1 h-4 sm:h-5">
-                                    {filteredBook.authors?.join(", ")}
-                                  </p>
-                                </div>
-                              </button>
+                              <div className="p-2 sm:p-4">
+                                <h3
+                                  className="font-bold text-xs sm:text-sm line-clamp-2 mb-2 h-8 sm:h-10 text-font"
+                                  title={filteredBook.title}
+                                >
+                                  {filteredBook.title}
+                                </h3>
+                                <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1 h-4 sm:h-5">
+                                  {filteredBook.authors?.join(", ")}
+                                </p>
+                              </div>
                             </article>
                           </div>
                         )}

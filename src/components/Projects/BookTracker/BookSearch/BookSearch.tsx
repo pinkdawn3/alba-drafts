@@ -10,6 +10,7 @@ import { useBooks } from "../../../../hooks/useBooks";
 import { i18n } from "@lingui/core";
 import Spinner from "../../../Spinner/Spinner";
 import { Trans } from "@lingui/react/macro";
+import toast from "react-hot-toast";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
 
@@ -84,6 +85,9 @@ function BookGallery({ books }: BookGalleryProp) {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   const handleSave = (googleBook: GoogleBook) => {
+    toast("Book added to Shelf.", {
+      position: "top-center",
+    });
     const book: BookType = {
       id: googleBook.id,
       title: googleBook.volumeInfo.title,
