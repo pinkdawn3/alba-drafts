@@ -1,20 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
+import { i18n } from "@lingui/core";
+import { Trans } from "@lingui/react/macro";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
+import toast from "react-hot-toast";
+
+import Spinner from "../../../Spinner/Spinner";
+const BookPage = lazy(() => import("../BookPage/BookPage"));
+
+import SearchBar from "../../../../utils/SearchBar";
+import { useBooks } from "../../../../hooks/useBooks";
+import { useNYTBooks } from "../../../../hooks/useNYTBooks";
+
 import type {
   BookType,
   GoogleBook,
   GoogleBooksResponse,
 } from "../../../../types/book";
-import SearchBar from "../../../../utils/SearchBar";
-import { useBooks } from "../../../../hooks/useBooks";
-import { i18n } from "@lingui/core";
-import Spinner from "../../../Spinner/Spinner";
-import { Trans } from "@lingui/react/macro";
-import toast from "react-hot-toast";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
-import BookPage from "../BookPage/BookPage";
-import { useNYTBooks } from "../../../../hooks/useNYTBooks";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
 

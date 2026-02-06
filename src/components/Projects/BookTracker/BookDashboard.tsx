@@ -1,7 +1,8 @@
-import { useState } from "react";
-import BookSearch from "./BookSearch/BookSearch";
-import BookShelf from "./BookShelf/BookShelf";
+import { lazy, useState } from "react";
 import { Trans } from "@lingui/react/macro";
+
+const BookSearch = lazy(() => import("./BookSearch/BookSearch"));
+const BookShelf = lazy(() => import("./BookShelf/BookShelf"));
 
 function BookDashboard() {
   const [tab, setTab] = useState("search");

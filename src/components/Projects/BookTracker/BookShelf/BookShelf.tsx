@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { lazy, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,7 +14,7 @@ import {
   faBookOpen,
 } from "@fortawesome/free-solid-svg-icons";
 
-import BookPage from "../BookPage/BookPage";
+const BookPage = lazy(() => import("../BookPage/BookPage"));
 
 import "./BookShelf.css";
 
