@@ -14,16 +14,22 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:88
-msgid "Book added to Shelf."
-msgstr "Book added to Shelf."
-
-#. js-lingui-explicit-id
 #: src/components/Projects/TaskManager/Kanban/Kanban.tsx:75
 #: src/components/Projects/TaskManager/Table/Table.tsx:101
 #: src/components/Projects/TaskManager/Table/Table.tsx:182
 msgid "Introduce task..."
 msgstr "Introduce task..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:88
+msgid "Assign to..."
+msgstr "Assign to..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:113
+#: src/components/Projects/TaskManager/Table/Table.tsx:223
+msgid "Input date..."
+msgstr "Input date..."
 
 #. js-lingui-explicit-id
 #: src/components/Projects/TaskManager/Table/Table.tsx:113
@@ -36,25 +42,19 @@ msgid "Assign person..."
 msgstr "Assign person..."
 
 #. js-lingui-explicit-id
-#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:113
-#: src/components/Projects/TaskManager/Table/Table.tsx:223
-msgid "Input date..."
-msgstr "Input date..."
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:95
+msgid "Book added to Shelf."
+msgstr "Book added to Shelf."
 
 #. js-lingui-explicit-id
-#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:88
-msgid "Assign to..."
-msgstr "Assign to..."
-
-#. js-lingui-explicit-id
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:107
-msgid "Write a review..."
-msgstr "Write a review..."
-
-#. js-lingui-explicit-id
-#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:203
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:251
 msgid "Search books..."
 msgstr "Search books..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:67
+msgid "Write a review..."
+msgstr "Write a review..."
 
 #: src/components/About/About.tsx:60
 #~ msgid " I felt stuck so I decided to reinvent myself. Apart from languages, my other great passion since I was a child was computers. So, I studied software development with my initial intention being working on Game Development."
@@ -84,9 +84,14 @@ msgstr "About Me"
 msgid "Add to Cart"
 msgstr "Add to Cart"
 
-#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:153
-msgid "Add to shelf"
-msgstr "Add to shelf"
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:172
+#~ msgid "Add to shelf"
+#~ msgstr "Add to shelf"
+
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:92
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:172
+msgid "Add to Shelf"
+msgstr "Add to Shelf"
 
 #: src/pages/About.tsx:68
 msgid "Along the way, however, I uncovered a passion for web development and front-end, and here I am now. I am excited to keep learning and creating new things along the way."
@@ -112,7 +117,7 @@ msgstr "Cart"
 msgid "Check the repo in Github"
 msgstr "Check the repo in Github"
 
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:125
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:208
 msgid "Close"
 msgstr "Close"
 
@@ -173,6 +178,10 @@ msgstr "No tasks available."
 #~ msgid "or "
 #~ msgstr "or "
 
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:186
+msgid "Page Count"
+msgstr "Page Count"
+
 #: src/components/Projects/TaskManager/Table/Table.tsx:302
 msgid "Priority"
 msgstr "Priority"
@@ -185,11 +194,15 @@ msgstr "Products"
 msgid "Projects"
 msgstr "Projects"
 
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:93
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:176
+msgid "Published"
+msgstr "Published"
+
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:57
 msgid "Rating"
 msgstr "Rating"
 
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:104
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:64
 msgid "Review"
 msgstr "Review"
 
@@ -238,3 +251,7 @@ msgstr "The cart is empty."
 #: src/components/Projects/Shop/Products/Products.tsx:80
 msgid "The product list is empty."
 msgstr "The product list is empty."
+
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:257
+msgid "Trending"
+msgstr "Trending"

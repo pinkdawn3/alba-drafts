@@ -14,16 +14,22 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:88
-msgid "Book added to Shelf."
-msgstr "Libro añadido a Estantería."
-
-#. js-lingui-explicit-id
 #: src/components/Projects/TaskManager/Kanban/Kanban.tsx:75
 #: src/components/Projects/TaskManager/Table/Table.tsx:101
 #: src/components/Projects/TaskManager/Table/Table.tsx:182
 msgid "Introduce task..."
 msgstr "Añadir tarea"
+
+#. js-lingui-explicit-id
+#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:88
+msgid "Assign to..."
+msgstr "Se encarga..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:113
+#: src/components/Projects/TaskManager/Table/Table.tsx:223
+msgid "Input date..."
+msgstr "Añadir fecha..."
 
 #. js-lingui-explicit-id
 #: src/components/Projects/TaskManager/Table/Table.tsx:113
@@ -36,25 +42,19 @@ msgid "Assign person..."
 msgstr "Se encarga..."
 
 #. js-lingui-explicit-id
-#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:113
-#: src/components/Projects/TaskManager/Table/Table.tsx:223
-msgid "Input date..."
-msgstr "Añadir fecha..."
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:95
+msgid "Book added to Shelf."
+msgstr "Libro añadido a Estantería."
 
 #. js-lingui-explicit-id
-#: src/components/Projects/TaskManager/Kanban/Kanban.tsx:88
-msgid "Assign to..."
-msgstr "Se encarga..."
-
-#. js-lingui-explicit-id
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:107
-msgid "Write a review..."
-msgstr "Añade una reseña..."
-
-#. js-lingui-explicit-id
-#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:203
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:251
 msgid "Search books..."
 msgstr "Buscar libros..."
+
+#. js-lingui-explicit-id
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:67
+msgid "Write a review..."
+msgstr "Añade una reseña..."
 
 #: src/components/Projects/Shop/Cart/Cart.tsx:121
 msgid " Remove"
@@ -76,8 +76,13 @@ msgstr "Sobre mí"
 msgid "Add to Cart"
 msgstr "Añadir a la cesta"
 
-#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:153
-msgid "Add to shelf"
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:172
+#~ msgid "Add to shelf"
+#~ msgstr "Añadir a estantería"
+
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:92
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:172
+msgid "Add to Shelf"
 msgstr "Añadir a estantería"
 
 #: src/pages/About.tsx:68
@@ -104,7 +109,7 @@ msgstr "Cesta"
 msgid "Check the repo in Github"
 msgstr "Echa un vistazo al repo en Github"
 
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:125
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:208
 msgid "Close"
 msgstr "Cerrar"
 
@@ -165,6 +170,10 @@ msgstr "No se han encontrado tareas."
 #~ msgid "or "
 #~ msgstr "o "
 
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:186
+msgid "Page Count"
+msgstr "Número de páginas"
+
 #: src/components/Projects/TaskManager/Table/Table.tsx:302
 msgid "Priority"
 msgstr "Prioridad"
@@ -177,11 +186,15 @@ msgstr "Productos"
 msgid "Projects"
 msgstr "Proyectos"
 
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:93
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:176
+msgid "Published"
+msgstr "Publicado"
+
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:57
 msgid "Rating"
 msgstr "Puntuación"
 
-#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:104
+#: src/components/Projects/BookTracker/BookPage/BookPage.tsx:64
 msgid "Review"
 msgstr "Reseña"
 
@@ -226,3 +239,7 @@ msgstr "La cesta está vacía."
 #: src/components/Projects/Shop/Products/Products.tsx:80
 msgid "The product list is empty."
 msgstr "No hay productos que mostrar."
+
+#: src/components/Projects/BookTracker/BookSearch/BookSearch.tsx:257
+msgid "Trending"
+msgstr "Tendencias"

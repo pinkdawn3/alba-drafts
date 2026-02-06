@@ -169,7 +169,7 @@ function BookGallery({ books }: BookGalleryProp) {
                   handleSave(book);
                 }}
               >
-                <Trans>Add to shelf</Trans>
+                <Trans>Add to Shelf</Trans>
               </button>
 
               <button
@@ -253,7 +253,9 @@ function BookSearch() {
       {isLoading && <Spinner />}
       {error && <p>Error: {error.message}</p>}
       {uniqueBooks.length === 0 && (
-        <h2 className="mx-10 font-semibold text-4xl">Trending</h2>
+        <h2 className="mx-10 font-semibold text-4xl">
+          <Trans>Trending</Trans>
+        </h2>
       )}
       <BookGallery books={booksForGallery || []} />
     </div>
