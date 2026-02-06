@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
 import BookPage from "../BookPage/BookPage";
+import { useNYTBooks } from "../../../../hooks/useNYTBooks";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
 
@@ -218,6 +219,7 @@ function BookGallery({ books }: BookGalleryProp) {
 function BookSearch() {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+  const { data: trendingBooks } = useNYTBooks();
 
   // Debounce search term
   useEffect(() => {
@@ -238,6 +240,9 @@ function BookSearch() {
 
   const uniqueBooks = getUniqueBooks(data?.items);
 
+  const booksForGallery =
+    uniqueBooks.length === 0 ? trendingBooks : uniqueBooks;
+
   return (
     <div className="w-full">
       <SearchBar
@@ -247,7 +252,10 @@ function BookSearch() {
       />
       {isLoading && <Spinner />}
       {error && <p>Error: {error.message}</p>}
-      <BookGallery books={uniqueBooks || []} />
+      {uniqueBooks.length === 0 && (
+        <h2 className="mx-10 font-semibold text-4xl">Trending</h2>
+      )}
+      <BookGallery books={booksForGallery || []} />
     </div>
   );
 }
