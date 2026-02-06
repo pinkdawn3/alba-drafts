@@ -5,8 +5,9 @@ import type {
   NYTBook,
 } from "../types/book";
 
+const API_KEY = import.meta.env.VITE_NYTIMES_BOOKS_API_KEY;
+
 const fetchNYTBestSellers = async (): Promise<NYTBestSellersResponse> => {
-  const API_KEY = import.meta.env.VITE_NYTIMES_BOOKS_API_KEY;
   const response = await fetch(
     `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${API_KEY}`,
   );
