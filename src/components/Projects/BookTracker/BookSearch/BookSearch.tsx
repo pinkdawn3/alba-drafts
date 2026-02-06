@@ -11,6 +11,9 @@ import { i18n } from "@lingui/core";
 import Spinner from "../../../Spinner/Spinner";
 import { Trans } from "@lingui/react/macro";
 import toast from "react-hot-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
+import BookPage from "../BookPage/BookPage";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
 
@@ -21,18 +24,18 @@ const searchBooks = async (query: string): Promise<GoogleBooksResponse> => {
 
   const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&printType=books&orderBy=relevance&maxResults=40&key=${API_KEY}`;
 
-  console.log("Fetching URL:", url); // See the actual URL
+  //console.log("Fetching URL:", url); // See the actual URL
 
   const response = await fetch(url);
 
-  console.log("Response status:", response.status); // Check status code
+  //console.log("Response status:", response.status); // Check status code
 
   if (!response.ok) {
     throw new Error("Failed to fetch books");
   }
 
   const data = await response.json();
-  console.log("API Response:", data);
+  //console.log("API Response:", data);
 
   return data;
 };
@@ -82,7 +85,10 @@ interface BookGalleryProp {
 
 function BookGallery({ books }: BookGalleryProp) {
   const { dispatch } = useBooks();
-  const [activeCardId, setActiveCardId] = useState<string | null>(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBook, setSelectedBook] = useState<GoogleBook | null>(null);
+  const [toggleMobileId, setToggleMobileId] = useState<string | null>(null);
 
   const handleSave = (googleBook: GoogleBook) => {
     toast(i18n._("Book added to Shelf."), {
@@ -94,6 +100,8 @@ function BookGallery({ books }: BookGalleryProp) {
       authors: googleBook.volumeInfo.authors,
       img: getLargerImage(googleBook.volumeInfo.imageLinks?.thumbnail),
       description: googleBook.volumeInfo.description,
+      publishedDate: googleBook.volumeInfo.publishedDate,
+      pageCount: googleBook.volumeInfo.pageCount,
       status: "not-started",
       rating: 0,
       review: "",
@@ -107,8 +115,18 @@ function BookGallery({ books }: BookGalleryProp) {
     }
   };
 
+  const handleBookClick = (book: GoogleBook) => {
+    setSelectedBook(book);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedBook(null);
+  };
+
   const toggleMobileVisibility = (bookId: string) => {
-    setActiveCardId(activeCardId === bookId ? null : bookId);
+    setToggleMobileId(toggleMobileId === bookId ? null : bookId);
   };
 
   return (
@@ -128,7 +146,7 @@ function BookGallery({ books }: BookGalleryProp) {
               >
                 <img
                   className={`w-full h-44 sm:h-64 object-cover transition ${
-                    activeCardId === book.id
+                    toggleMobileId === book.id
                       ? "opacity-50"
                       : "group-hover:opacity-50"
                   }`}
@@ -140,8 +158,8 @@ function BookGallery({ books }: BookGalleryProp) {
               <button
                 type="button"
                 aria-label="add book"
-                className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-1.5 bg-black/20 hover:bg-black/30 active:bg-black/40 border border-dashed border-white rounded-lg transition ${
-                  activeCardId === book.id
+                className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-1.5 bg-black/20 hover:bg-black/30 active:bg-black/40 border border-dashed border-white text-white rounded-lg transition ${
+                  toggleMobileId === book.id
                     ? "opacity-100"
                     : "opacity-0 sm:group-hover:opacity-100"
                 }`}
@@ -151,6 +169,24 @@ function BookGallery({ books }: BookGalleryProp) {
                 }}
               >
                 <Trans>Add to shelf</Trans>
+              </button>
+
+              <button
+                type="button"
+                aria-label="open book details"
+                className={`absolute bottom-3 right-1 p-1 bg-black/20 hover:bg-black/30 active:bg-black/40 border border-dashed border-white rounded-lg opacity-0 group-hover:opacity-100 transition z-10 
+                                    ${
+                                      toggleMobileId === book.id
+                                        ? "opacity-100"
+                                        : "opacity-0 group-hover:opacity-100"
+                                    }
+                                      `}
+                onMouseDown={(e) => {
+                  e.stopPropagation();
+                  handleBookClick(book);
+                }}
+              >
+                <FontAwesomeIcon icon={faBookOpen} color="white" />
               </button>
             </div>
 
@@ -168,6 +204,13 @@ function BookGallery({ books }: BookGalleryProp) {
           </div>
         </article>
       ))}
+      {isModalOpen && selectedBook && (
+        <BookPage
+          googleBook={selectedBook}
+          onSave={handleSave}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 }

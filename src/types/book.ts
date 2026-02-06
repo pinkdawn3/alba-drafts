@@ -46,6 +46,8 @@ export type BookType = {
   authors?: string[];
   img?: string;
   description?: string;
+  publishedDate?: string;
+  pageCount?: number;
   status: BookStatus;
   rating: number;
   review: string;
