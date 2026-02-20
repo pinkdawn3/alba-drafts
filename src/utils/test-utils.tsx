@@ -8,6 +8,7 @@ import { i18n } from "@lingui/core";
 import { messages as enMessages } from "../locales/en/messages.ts";
 import { messages as esMessages } from "../locales/es/messages.ts";
 import { TasksProvider } from "../contexts/Tasks/TasksProvider.tsx";
+import { BooksProvider } from "../contexts/Books/BooksProvider.tsx";
 
 i18n.load("en", enMessages);
 i18n.load("es", esMessages);
@@ -18,7 +19,9 @@ export function renderWithProviders(ui: React.ReactElement) {
     <HashRouter>
       <PreferencesProvider>
         <TasksProvider>
-          <I18nProvider i18n={i18n}>{ui}</I18nProvider>
+          <BooksProvider>
+            <I18nProvider i18n={i18n}>{ui}</I18nProvider>
+          </BooksProvider>
         </TasksProvider>
       </PreferencesProvider>
     </HashRouter>,
