@@ -4,7 +4,6 @@ import { screen, fireEvent, waitFor } from "@testing-library/react";
 import { renderWithProviders } from "../../../utils/test-utils";
 import BookDashboard from "./BookDashboard";
 
-// Mock the child components BEFORE the React mock
 vi.mock("./BookSearch/BookSearch", () => ({
   default: () => <div data-testid="book-search">Book Search Component</div>,
 }));
